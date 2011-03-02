@@ -337,41 +337,79 @@ bool MIDI_Class::parse(byte inChannel) {
 			parse(inChannel);
 			
 		}
-		else { // Add extracted byte to pending message
+		else { 
 			
-			mPendingMessage[mPendingMessageIndex] = extracted;
 			
-			// If this is not a data byte
+			// First, test if this is a status byte
 			if (extracted >= 0x80) {
-				// Status byte, hmm.. What the hell are you doing here?
 				
-				// Unless you are an EOX?
-				if ( (extracted == 0xF7) && (getTypeFromStatusByte(mPendingMessage[0]) == SystemExclusive) ) {
+				// Reception of status bytes are allowed only for interleaved Real Time message or EOX
+				switch (extracted) {
+					case Clock:
+					case Start:
+					case Continue:
+					case Stop:
+					case ActiveSensing:
+					case SystemReset:
+
+						/*
+						 This is tricky. Here we will have to extract the one-byte message,
+						 pass it to the structure for being read outside the MIDI class,
+						 and recompose the message it was interleaved into.
+						 
+						 Oh, and without killing the running status.. 
+						 
+						 This is done by leaving the pending message as is, it will be completed on next calls.
+						 */
+						
+						mMessage.type = (kMIDIType)extracted;
+						mMessage.data1 = 0;
+						mMessage.data2 = 0;
+						mMessage.valid = true;
+						return true;
+						
+						break;
 					
-					// Store System Exclusive array in midimsg structure
-					for (byte i=0;i<MIDI_SYSEX_ARRAY_SIZE;i++) {
-						mMessage.sysex_array[i] = mPendingMessage[i];
-					}
-					
-					// Get length
-					mMessage.data1 = mPendingMessageIndex+1;
-					mMessage.data2 = 0;
-					mMessage.valid = true;
-					
-					mPendingMessageIndex = 0;
-					mPendingMessageExpectedLenght = 0;
-					mRunningStatus_RX = InvalidType;
-					
-					return true;
+						// End of Exclusive
+					case 0xF7:
+						if (getTypeFromStatusByte(mPendingMessage[0]) == SystemExclusive) {
+							
+							// Store System Exclusive array in midimsg structure
+							for (byte i=0;i<MIDI_SYSEX_ARRAY_SIZE;i++) {
+								mMessage.sysex_array[i] = mPendingMessage[i];
+							}
+							
+							// Get length
+							mMessage.data1 = mPendingMessageIndex+1;
+							mMessage.data2 = 0;
+							mMessage.valid = true;
+							
+							mPendingMessageIndex = 0;
+							mPendingMessageExpectedLenght = 0;
+							mRunningStatus_RX = InvalidType;
+							
+							return true;
+						}
+						else {
+							// Well well well.. error.
+							mPendingMessageIndex = 0;
+							mPendingMessageExpectedLenght = 0;
+							mRunningStatus_RX = InvalidType;
+							return false;
+						}
+
+						break;
+					default:
+						break;
 				}
-				else {
-					// Well well well.. error.
-					mPendingMessageIndex = 0;
-					mPendingMessageExpectedLenght = 0;
-					mRunningStatus_RX = InvalidType;
-					return false;
-				}
+				
+				
+				
 			}
+			
+			
+			// Add extracted data byte to pending message
+			mPendingMessage[mPendingMessageIndex] = extracted;
 			
 			
 			// Now we are going to check if we have reached the end of the message

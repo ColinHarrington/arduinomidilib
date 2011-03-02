@@ -189,8 +189,12 @@ public:
 private:
 	
 	inline const kMIDIType getTypeFromStatusByte(const byte inStatus) {
-		if (inStatus < 0x80) return InvalidType;
-		if (inStatus < 0xF0) return (kMIDIType)(inStatus & 0xF0);
+		if ((inStatus < 0x80) 
+			|| (inStatus == 0xF4) 
+			|| (inStatus == 0xF5) 
+			|| (inStatus == 0xF9) 
+			|| (inStatus == 0xFD)) return InvalidType; // data bytes and undefined.
+		if (inStatus < 0xF0) return (kMIDIType)(inStatus & 0xF0);	// Channel message, remove channel nibble.
 		else return (kMIDIType)inStatus;
 	}
 	
