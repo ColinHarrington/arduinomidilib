@@ -123,6 +123,25 @@ void MIDI_Class::sendControlChange(byte ControlNumber, byte ControlValue,byte Ch
 void MIDI_Class::sendPolyPressure(byte NoteNumber,byte Pressure,byte Channel) { send(AfterTouchPoly,NoteNumber,Pressure,Channel); }
 /*! Monophonic AfterTouch */
 void MIDI_Class::sendAfterTouch(byte Pressure,byte Channel) { send(AfterTouchChannel,Pressure,0,Channel); }
+/*! Send a Pitch Bend message using an integer value.
+ \param PitchValue	The amount of bend to send (in an integer format), between 0 (maximum downwards bend) and 16383 (max upwards bend), center value is 8192.
+ */
+void MIDI_Class::sendPitchBend(unsigned int PitchValue,byte Channel) {
+
+	send(PitchBend,(PitchValue & 0x7F),(PitchValue >> 7) & 0x7F,Channel);
+	
+}
+/*! Send a Pitch Bend message using a floating point value.
+ \param PitchValue	The amount of bend to send (in a floating point format), between -1 (maximum downwards bend) and +1 (max upwards bend), center value is 0.
+ */
+void MIDI_Class::sendPitchBend(double PitchValue,byte Channel) {
+
+	unsigned int pitchval = (PitchValue+1.f)*8192;
+	if (pitchval >= 16383) pitchval = 16383;		// overflow protection
+	sendPitchBend(pitchval,Channel);
+	
+}
+
 /*! Generate and send a System Exclusive frame.
  \param length	The size of the array to send
  \param array	The byte array containing the data to send\n
@@ -135,6 +154,35 @@ void MIDI_Class::sendSysEx(byte length, byte * array, bool ArrayContainsBoundari
 }
 
 void MIDI_Class::sendTuneRequest() { sendRealTime(TuneRequest); }
+
+void MIDI_Class::sendTimeCodeQuarterFrame(byte TypeNibble, byte ValuesNibble) {
+	
+	byte data = ( ((TypeNibble & 0x07) << 4) | (ValuesNibble & 0x0F) );
+	sendTimeCodeQuarterFrame(data);
+	
+}
+
+void MIDI_Class::sendTimeCodeQuarterFrame(byte data) {
+	
+	USE_SERIAL_PORT.write(TimeCodeQuarterFrame);
+	USE_SERIAL_PORT.write(data);
+	
+}
+
+void MIDI_Class::sendSongPosition(unsigned int Beats) {
+	
+	USE_SERIAL_PORT.write(SongPosition);
+	USE_SERIAL_PORT.write(Beats & 0x7F);
+	USE_SERIAL_PORT.write((Beats >> 7) & 0x7F);
+	
+}
+
+void MIDI_Class::sendSongSelect(byte SongNumber) {
+	
+	USE_SERIAL_PORT.write(SongSelect);
+	USE_SERIAL_PORT.write(SongNumber & 0x7F);
+	
+}
 
 /*! Send a Real Time (one byte) message. \n You can also send Tune Request with this method. */
 void MIDI_Class::sendRealTime(kMIDIType Type) {
@@ -201,24 +249,6 @@ bool MIDI_Class::read(const byte inChannel) {
 }
 
 
-void MIDI_Class::filter(byte inChannel) {
-	switch (mThruFilterMode) {
-		case Off: // Do nothing (Thru disabled)
-			break;
-		case Full:
-			// TODO: voir comment looper les messages complexes.
-			send(mMessage.type,mMessage.data1,mMessage.data2,mMessage.channel);
-			break;
-		case DifferentChannel:
-			
-			break;
-		case SameChannel:
-			
-			break;
-		default:
-			break;
-	}
-}
 bool MIDI_Class::parse(byte inChannel) { 
 	
 	// If the buffer is full -> Don't Panic! Call the Vogons to destroy it.
@@ -537,6 +567,26 @@ void MIDI_Class::turnThruOff() {
 	mThruActivated = false; 
 	mThruFilterMode = Off;
 }
+
+void MIDI_Class::filter(byte inChannel) {
+	switch (mThruFilterMode) {
+		case Off: // Do nothing (Thru disabled)
+			break;
+		case Full:
+			// TODO: voir comment looper les messages complexes.
+			send(mMessage.type,mMessage.data1,mMessage.data2,mMessage.channel);
+			break;
+		case DifferentChannel:
+			
+			break;
+		case SameChannel:
+			
+			break;
+		default:
+			break;
+	}
+}
+
 
 #endif // Thru
 

@@ -140,21 +140,26 @@ public:
 	void sendNoteOff(byte NoteNumber,byte Velocity,byte Channel);
 	void sendProgramChange(byte ProgramNumber,byte Channel);
 	void sendControlChange(byte ControlNumber, byte ControlValue,byte Channel);
-	void sendPitchBend(int PitchValue,byte Channel);
+	void sendPitchBend(unsigned int PitchValue,byte Channel);
+	void sendPitchBend(double PitchValue,byte Channel);
 	void sendPolyPressure(byte NoteNumber,byte Pressure,byte Channel);
 	void sendAfterTouch(byte Pressure,byte Channel);
 	void sendSysEx(byte length, byte * array,bool ArrayContainsBoundaries = false);	
-	void sendTimeCodeQuarterFrame();
-	void sendSongPosition();
-	void sendSongSelect();
+	void sendTimeCodeQuarterFrame(byte TypeNibble, byte ValuesNibble);
+	void sendTimeCodeQuarterFrame(byte data);
+	void sendSongPosition(unsigned int Beats);
+	void sendSongSelect(byte SongNumber);
 	void sendTuneRequest();
 	void sendRealTime(kMIDIType Type);
+	
+	
+	
 	
 	
 private:
 	
 	const byte genstatus(const kMIDIType inType,const byte inChannel);
-	void send(kMIDIType type, byte param1, byte param2, byte canal);
+	void send(kMIDIType type, byte param1, byte param2, byte channel);
 	
 	// Attributes
 #if USE_RUNNING_STATUS
