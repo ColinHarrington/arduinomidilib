@@ -381,7 +381,9 @@ bool MIDI_Class::parse(byte inChannel) {
 					mPendingMessageIndex = 0;
 					mPendingMessageExpectedLenght = 0;
 					mRunningStatus_RX = InvalidType;
+#if DEBUG
 					Serial << "Error (394)" << endl;
+#endif
 					return false;
 					break;
 			}
@@ -390,7 +392,7 @@ bool MIDI_Class::parse(byte inChannel) {
 			mPendingMessageIndex++;
 			
 			// And call the parser, again.
-			parse(inChannel);
+			return parse(inChannel);
 			
 		}
 		else { 
@@ -453,13 +455,17 @@ bool MIDI_Class::parse(byte inChannel) {
 							mPendingMessageIndex = 0;
 							mPendingMessageExpectedLenght = 0;
 							mRunningStatus_RX = InvalidType;
+#if DEBUG
 							Serial << "Error (467)" << endl;
+#endif
 							return false;
 						}
 
 						break;
 					default:
+#if DEBUG
 						Serial << "Error (472)" << endl;
+#endif
 						break;
 				}
 				
@@ -528,9 +534,8 @@ bool MIDI_Class::parse(byte inChannel) {
 						mRunningStatus_RX = InvalidType;
 						break;
 				}
-				/*Serial << "ChanMsg extr: type 0x";
-				Serial.printNumber(mMessage.type,16);
-				Serial << endl;*/
+				//Serial << "CME" << endl;;
+				//Serial.printNumber(mMessage.type,16);
 				return true;
 			}
 			else {
@@ -538,7 +543,7 @@ bool MIDI_Class::parse(byte inChannel) {
 				mPendingMessageIndex++;
 				
 				// And call the parser, again.
-				parse(inChannel);
+				return parse(inChannel);
 			}
 			
 		}
