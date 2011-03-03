@@ -270,8 +270,8 @@ bool MIDI_Class::read(const byte inChannel) {
 	if (inChannel >= MIDI_CHANNEL_OFF) return false; // MIDI Input disabled.
 	
 	
-	return parse(inChannel);
-	
+	if (parse(inChannel)) return filter(inChannel);
+	else return false;
 	
 }
 
@@ -622,52 +622,100 @@ void MIDI_Class::turnThruOff() {
  */
 bool MIDI_Class::filter(byte inChannel) {
 	
-	// TODO: y'a encore du boulot ici..
+	/*
+		This method handles both recognition of channel (to know if the message is destinated to the Arduino) and Soft-Thru filtering.
+	 
+		Soft-Thru filtering:
+		- All system messages (System Exclusive, Common and Real Time) are passed to output unless filter is set to Off
+		- Channel messages are passed to the output whether their channel is matching the input channel and the filter setting
+	 
+	 */
 	
-	if (!mMessage.valid) return false; // Invalid message.
 	
-	bool channels_do_match = false;
+	bool validate_message = false;
 	
-	
-	switch (mMessage.type) {
-			// Channel messages
-		case NoteOff:
-		case NoteOn:
-		case ProgramChange:
-		case ControlChange:
-		case PitchBend:
-		case AfterTouchPoly:
-		case AfterTouchChannel:	
-			// Compare channels
-			if (mMessage.channel == inChannel) channels_do_match = true;
-			break;
-				
-		default:
-			break;
+	// First, check if the received message is Channel
+	if (mMessage.type >= NoteOff && mMessage.type <= PitchBend) {
+		
+		// Then we need to know if we listen to it
+		if ((mMessage.channel == mInputChannel) || (mInputChannel == MIDI_CHANNEL_OMNI)) {
+			validate_message = true;
+			
+		}
+		else {
+			// We don't listen to this channel
+			validate_message = false;
+		}
+		
+		// Now let's pass it to the output
+		switch (mThruFilterMode) {
+			case Full:
+				send(mMessage.type,mMessage.data1,mMessage.data2,mMessage.channel);
+				break;
+			case SameChannel:
+				if (validate_message) {
+					send(mMessage.type,mMessage.data1,mMessage.data2,mMessage.channel);
+				}
+				break;
+			case DifferentChannel:
+				if (!validate_message) {
+					send(mMessage.type,mMessage.data1,mMessage.data2,mMessage.channel);
+				}
+			case Off:
+				// Do nothing
+				break;
+			default:
+				break;
+		}
+		
 	}
-	
-	switch (mThruFilterMode) {
-		case Off: // Do nothing (Thru disabled)
-			break;
-		case Full:
-			// TODO: voir comment looper les messages complexes.
-			send(mMessage.type,mMessage.data1,mMessage.data2,mMessage.channel);
-			break;
-		case DifferentChannel:
-			if (!channels_do_match) {
+	else {
+		
+		// System messages are always received
+		validate_message = true;
+		
+		// Send the message to the output
+		if (mThruFilterMode != Off) {
+			switch (mMessage.type) {
+					// Real Time and 1 byte
+				case Clock:
+				case Start:
+				case Stop:
+				case Continue:
+				case ActiveSensing:
+				case SystemReset:
+				case TuneRequest:	
+					sendRealTime(mMessage.type);
+					break;
+					
+				case SystemExclusive:
+					// Send SysEx (0xF0 and 0xF7 are included in the buffer)
+					sendSysEx(mMessage.data1,mMessage.sysex_array,true); 
+					break;
+					
+				case SongSelect:
+					sendSongSelect(mMessage.data1); // TODO: check this
+					break;
+					
+				case SongPosition:
+					sendSongPosition(mMessage.data1 | ((unsigned)mMessage.data2<<7));	// TODO: check this
+					break;
 				
+				case TimeCodeQuarterFrame:
+					sendTimeCodeQuarterFrame(mMessage.data1,mMessage.data2); // TODO: check this
+					break;
+				default:
+					break;
 			}
-			break;
-		case SameChannel:
-			if (channels_do_match) {
-				
-			}
-			break;
-		default:
-			break;
+			
+		}
+		
 	}
+
 	
-	return channels_do_match;
+	
+	
+	return validate_message;
 }
 
 
