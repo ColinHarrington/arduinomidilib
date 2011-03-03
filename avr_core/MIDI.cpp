@@ -270,26 +270,16 @@ bool MIDI_Class::read(const byte inChannel) {
 	if (inChannel >= MIDI_CHANNEL_OFF) return false; // MIDI Input disabled.
 	
 	
+	return parse(inChannel);
 	
 	
-	if (parse(inChannel)) {
-		
-		return filter(inChannel);
-		/* Filtering Algorithm:
-		 - Get the extracted message's channel and compare it to the input channel
-		 - 
-		 */
-		
-	}
-	
-	return false;
 }
 
 
 bool MIDI_Class::parse(byte inChannel) { 
 	
 	// If the buffer is full -> Don't Panic! Call the Vogons to destroy it.
-	if (USE_SERIAL_PORT.available() == UART_BUFFER_SIZE) { 
+	if (USE_SERIAL_PORT.available() == UART_BUFFER_SIZE) { Serial << "Overflow, call the Vogons!!" << endl;
 		USE_SERIAL_PORT.flush();
 	}	
 	
@@ -328,11 +318,8 @@ bool MIDI_Class::parse(byte inChannel) {
 					if (extracted < 0x80) {
 						mPendingMessage[0] = mRunningStatus_RX;
 						mPendingMessage[1] = extracted;
-						mPendingMessageIndex++;
+						mPendingMessageIndex = 1;
 					}
-					
-					// TODO: gérer l'entrelacement des System Real Time avec les running status (et les autres messages..).
-					
 					// Else: well, we received another status byte, so the running status does not apply here.
 					// It will be updated upon completion of this message.
 					
@@ -394,6 +381,7 @@ bool MIDI_Class::parse(byte inChannel) {
 					mPendingMessageIndex = 0;
 					mPendingMessageExpectedLenght = 0;
 					mRunningStatus_RX = InvalidType;
+					Serial << "Error (394)" << endl;
 					return false;
 					break;
 			}
@@ -465,11 +453,13 @@ bool MIDI_Class::parse(byte inChannel) {
 							mPendingMessageIndex = 0;
 							mPendingMessageExpectedLenght = 0;
 							mRunningStatus_RX = InvalidType;
+							Serial << "Error (467)" << endl;
 							return false;
 						}
 
 						break;
 					default:
+						Serial << "Error (472)" << endl;
 						break;
 				}
 				
@@ -496,15 +486,27 @@ bool MIDI_Class::parse(byte inChannel) {
 				}
 				
 				
-				// Reset local variables
-				mPendingMessageIndex = 0;
-				mPendingMessageExpectedLenght = 0;
+
 				
 				mMessage.type = getTypeFromStatusByte(mPendingMessage[0]);
 				mMessage.channel = (mPendingMessage[0] & 0x0F)+1; // Don't check if it is a Channel Message
 				
-				if (mPendingMessageExpectedLenght >= 2) mMessage.data1 = mPendingMessage[1]; // Checking this is futile, as 1 byte message were processed in the switch.
-				if (mPendingMessageExpectedLenght >= 3) mMessage.data1 = mPendingMessage[2];
+				
+				/*Serial << "Debug:";
+				for (unsigned i=0;i<8;i++) {
+					Serial << " 0x";
+					Serial.printNumber(mPendingMessage[i],16);
+				}
+				Serial << endl;
+				Serial << "ExpLen: " << (int)mPendingMessageExpectedLenght;
+				Serial << "\t Index: " << (int)mPendingMessageIndex << endl;*/
+				
+				mMessage.data1 = mPendingMessage[1]; // Checking this is futile, as 1 byte message were processed in the switch.
+				mMessage.data2 = mPendingMessage[2];
+				
+				// Reset local variables
+				mPendingMessageIndex = 0;
+				mPendingMessageExpectedLenght = 0;
 				
 				mMessage.valid = true;
 				
@@ -526,7 +528,9 @@ bool MIDI_Class::parse(byte inChannel) {
 						mRunningStatus_RX = InvalidType;
 						break;
 				}
-				
+				/*Serial << "ChanMsg extr: type 0x";
+				Serial.printNumber(mMessage.type,16);
+				Serial << endl;*/
 				return true;
 			}
 			else {
