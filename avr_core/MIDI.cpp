@@ -381,9 +381,6 @@ bool MIDI_Class::parse(byte inChannel) {
 					mPendingMessageIndex = 0;
 					mPendingMessageExpectedLenght = 0;
 					mRunningStatus_RX = InvalidType;
-#if DEBUG
-					Serial << "Error (394)" << endl;
-#endif
 					return false;
 					break;
 			}
@@ -455,17 +452,11 @@ bool MIDI_Class::parse(byte inChannel) {
 							mPendingMessageIndex = 0;
 							mPendingMessageExpectedLenght = 0;
 							mRunningStatus_RX = InvalidType;
-#if DEBUG
-							Serial << "Error (467)" << endl;
-#endif
 							return false;
 						}
 
 						break;
 					default:
-#if DEBUG
-						Serial << "Error (472)" << endl;
-#endif
 						break;
 				}
 				
