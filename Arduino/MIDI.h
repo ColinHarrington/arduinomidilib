@@ -34,11 +34,8 @@
 #define COMPFLAG_MIDI_OUT       1           // Set this setting to 1 to use the MIDI output. 
 
 
-#if USE_USB_CONNECTION
-  #define USE_SERIAL_PORT       Serial      // This Serial port is the one connected to the USB plug.
-#else
-  #define USE_SERIAL_PORT       Serial1     // Change the number (to Serial1 for example) if you want
-#endif                                      // to use a different serial port for MIDI I/O.
+#define USE_SERIAL_PORT         Serial      // Change the number (to Serial1 for example) if you want
+                                            // to use a different serial port for MIDI I/O.
 
 
 #define USE_RUNNING_STATUS		1			// Running status enables short messages when sending multiple values

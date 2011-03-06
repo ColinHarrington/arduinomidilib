@@ -316,7 +316,7 @@ bool MIDI_Class::read(const byte inChannel) {
 bool MIDI_Class::parse(byte inChannel) { 
 	
 	// If the buffer is full -> Don't Panic! Call the Vogons to destroy it.
-	if (USE_SERIAL_PORT.available() == UART_BUFFER_SIZE) { Serial << "Overflow, call the Vogons!!" << endl;
+	if (USE_SERIAL_PORT.available() == 128) {
 		USE_SERIAL_PORT.flush();
 	}	
 	
@@ -328,10 +328,10 @@ bool MIDI_Class::parse(byte inChannel) {
 		
 		/* Parsing algorithm:
 		 Get a byte from the serial buffer.
-		 • If there is no pending message to be recomposed, start a new one.
+		 * If there is no pending message to be recomposed, start a new one.
 			- Find type and channel (if pertinent)
 			- Look for other bytes in buffer, call parser recursively, until the message is assembled or the buffer is empty.
-		 • Else, add the extracted byte to the pending message, and check validity. When the message is done, store it.
+		 * Else, add the extracted byte to the pending message, and check validity. When the message is done, store it.
 		 */
 		
 		
@@ -525,16 +525,6 @@ bool MIDI_Class::parse(byte inChannel) {
 				mMessage.type = getTypeFromStatusByte(mPendingMessage[0]);
 				mMessage.channel = (mPendingMessage[0] & 0x0F)+1; // Don't check if it is a Channel Message
 				
-				
-				/*Serial << "Debug:";
-				for (unsigned i=0;i<8;i++) {
-					Serial << " 0x";
-					Serial.printNumber(mPendingMessage[i],16);
-				}
-				Serial << endl;
-				Serial << "ExpLen: " << (int)mPendingMessageExpectedLenght;
-				Serial << "\t Index: " << (int)mPendingMessageIndex << endl;*/
-				
 				mMessage.data1 = mPendingMessage[1]; // Checking this is futile, as 1 byte message were processed in the switch.
 				mMessage.data2 = mPendingMessage[2];
 				
@@ -562,8 +552,6 @@ bool MIDI_Class::parse(byte inChannel) {
 						mRunningStatus_RX = InvalidType;
 						break;
 				}
-				//Serial << "CME" << endl;;
-				//Serial.printNumber(mMessage.type,16);
 				return true;
 			}
 			else {
@@ -603,7 +591,7 @@ bool MIDI_Class::check() { return mMessage.valid; }
  \param Channel the channel value. Valid values are 1 to 16, 
  MIDI_CHANNEL_OMNI if you want to listen to all channels, and MIDI_CHANNEL_OFF to disable MIDI input.
  */
-void MIDI_Class::setInputChannel(const byte Channel) { mInputChannel = inChannel; }
+void MIDI_Class::setInputChannel(const byte Channel) { mInputChannel = Channel; }
 
 
 #endif // COMPFLAG_MIDI_IN

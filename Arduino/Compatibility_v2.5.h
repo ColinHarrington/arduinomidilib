@@ -1,15 +1,9 @@
-/*
-  MIDI.h - Library for Arduino MIDI I/O communications.
-  Created by Francois Best, January 2, 2009.
-  Released into the public domain.
-*/
-
 /*!
  *  @file		Compatibility_v2.5.h
  *  Project		MIDI Library
  *	@brief		Compatibility file for MIDI Library v2.5
  *	Version		3.0
- *  @author		François Best 
+ *  @author		Francois Best 
  *	@date		24/02/11
  *  License		GPL Forty Seven Effects - 2011
  */
