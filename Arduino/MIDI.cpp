@@ -1,30 +1,18 @@
-/*
- MIDI.cpp - Library for Arduino MIDI I/O communications.
- Created by Francois Best, January 2, 2009.
- Released into the public domain.
- Last update:	10/06/2009
-*/ 
+/*!
+ *  @file		MIDI.cpp
+ *  Project		MIDI Library
+ *	@brief		MIDI Library for the Arduino
+ *	@version	3.0
+ *  @author		François Best 
+ *	@date		24/02/11
+ *  @license	GPL Forty Seven Effects - 2011
+ */
 
-
-/*! to ATmega 644p users: this library uses the serial port #1 for MIDI. */
-#ifdef __AVR_ATmega644P__
-#undef UART
-#define UART Serial1
-#else
-/*! to any other ATmega users: this library uses the serial port #0 for MIDI (if you have more than one UART).*/
-#undef UART
-#define UART Serial
-#endif
-
-
-
-#include <inttypes.h> 
+#include "MIDI.h"
 #include <stdlib.h>
 #include "WConstants.h" 
-#include "MIDI.h"
-
 #include "HardwareSerial.h"
-#define Channel_Refused 0
+
 
 /*! Main instance (the class comes pre-instantiated). */
 MIDI_Class MIDI;
@@ -33,82 +21,134 @@ MIDI_Class MIDI;
 /*! Default constructor for MIDI_Class. */
 MIDI_Class::MIDI_Class() { }
 /*! Default destructor for MIDI_Class.\n
-	This is not really useful for the Arduino, as it is never called...
+ This is not really useful for the Arduino, as it is never called...
  */
 MIDI_Class::~MIDI_Class() { }
 
 
 /*! Call the begin method in the setup() function of the Arduino.
 	All parameters are set to their default values:
+	- Input channel set to 1 if no value is specified
 	- Full thru mirroring
-	- Input channel set to 1 if no value specified
  */
-void MIDI_Class::begin(byte inChannel) {
-	// All default values loaded
-	UART.begin(MIDI_rate);				
-	delMsg();
-	sysex_ID = MANUFACTURER_ID_H;						// Default ID = non commercial
+void MIDI_Class::begin(const byte inChannel) {
+	
+	// Initialise the Serial port
+	USE_SERIAL_PORT.begin(MIDI_BAUDRATE);
+	
+	
+#if COMPFLAG_MIDI_OUT
+	
+#if USE_RUNNING_STATUS
+	mRunningStatus_TX = InvalidType;
+#endif // USE_RUNNING_STATUS
+	
+#endif // COMPFLAG_MIDI_OUT
+	
+	
+#if COMPFLAG_MIDI_IN
+	
 	mInputChannel = inChannel;
-	mThruActivated = true;
-	mFilterMode = MIDI_FILTER_FULL;
-	mRunningStatus_TX = Channel_Refused;
-	mRunningStatus_RX = Channel_Refused;
-	return;
+	mRunningStatus_RX = InvalidType;
+	mPendingMessageIndex = 0;
+	mPendingMessageExpectedLenght = 0;
+	
+	mMessage.valid = false;
+	mMessage.type = InvalidType;
+	mMessage.channel = 0;
+	mMessage.data1 = 0;
+	mMessage.data2 = 0;
+	
+#endif // COMPFLAG_MIDI_IN
+	
+	
+#if (COMPFLAG_MIDI_IN && COMPFLAG_MIDI_OUT) // Thru
+	
+	mThruFilterMode = Full;
+	
+#endif // Thru
+	
 }
 
-/*! Internal method, don't care about this one.. \n It generates a status byte over a channel and a type, by bitshifting. */
-byte MIDI_Class::genctrl(byte canal, byte type) {
-	byte result = 128;
-	result += ((type & 0x07)<<4) & 0x70;
-	result += ((canal-1) & 0x0F);
-	return result;
-}
 
+#if COMPFLAG_MIDI_OUT
+
+/*! Internal method, don't care about this one.. \n It generates a status byte with given channel and type. */
+const byte MIDI_Class::genstatus(const kMIDIType inType,const byte inChannel) {
+	return ((byte)inType | ((inChannel-1) & 0x0F));
+}
 
 /*! Generate and send a custom MIDI mMessage.
-	\param type		The message type (see type defines for reference)
-	\param data1	The first data byte
-	\param data2	The second data byte (if the message contains only 1 data byte, set this one to 0)
-	\param channel	The output channel on which the message will be sent
+ \param type		The message type (see type defines for reference)
+ \param data1	The first data byte
+ \param data2	The second data byte (if the message contains only 1 data byte, set this one to 0)
+ \param channel	The output channel on which the message will be sent (values from 1 to 16)
  */
-void MIDI_Class::send(byte type, byte data1, byte data2, byte channel) {
-	//if (channel > 16) return; // Not cool, but handled by MIDI_CHANNEL_OFF
-	data1 &= 0x7F;
-	data2 &= 0x7F;
+void MIDI_Class::send(kMIDIType type, byte data1, byte data2, byte channel) {
+	
+	// Then test if channel is valid
 	if (channel >= MIDI_CHANNEL_OFF) {
-		mRunningStatus_TX = Channel_Refused;
+		
+#if USE_RUNNING_STATUS	
+		mRunningStatus_TX = InvalidType;
+#endif 
+		
 		return; // Don't send anything
 	}
-	if (mRunningStatus_TX == genctrl(channel,type)) {
-		// Send only data bytes
-		if (type == PC || type == ATCanal) {
-			UART.print(data1, BYTE);
+	
+	switch (type) {
+			// Channel messages
+		case NoteOff:
+		case NoteOn:
+		case ProgramChange:
+		case ControlChange:
+		case PitchBend:
+		case AfterTouchPoly:
+		case AfterTouchChannel:	
+		{
+			
+			// Protection: remove MSBs on data
+			data1 &= 0x7F;
+			data2 &= 0x7F;
+			
+			byte statusbyte = genstatus(type,channel);
+			
+#if USE_RUNNING_STATUS
+			// Check Running Status
+			if (mRunningStatus_TX != statusbyte) {
+				// New message, memorise and send header
+				mRunningStatus_TX = statusbyte;
+				USE_SERIAL_PORT.write(mRunningStatus_TX);
+			}
+#else
+			// Don't care about running status, send the Control byte.
+			USE_SERIAL_PORT.write(statusbyte);
+#endif
+			
+			// Then send data
+			USE_SERIAL_PORT.write(data1);
+			if (type != ProgramChange && type != AfterTouchChannel) {
+				USE_SERIAL_PORT.write(data2);
+			}
 		}
-		else if (type == SysEx) {
-			// Use sendSysEx...
-		}
-		else {
-			UART.print(data1, BYTE);
-			UART.print(data2, BYTE);
-		}
+			break;
+			
+			// Real Time messages
+		case Clock:
+		case Start:
+		case Stop:	
+		case Continue:
+		case ActiveSensing:
+		case SystemReset:
+		case TuneRequest: // Not really real-time, but one byte anyway.
+			sendRealTime(type);
+			break;
+			
+		default:
+			break;
 	}
-	else {
-		// New message
-		if (type == PC || type == ATCanal) {
-			UART.print(genctrl(channel,type), BYTE);
-			UART.print(data1, BYTE);
-		}
-		else if (type == SysEx) {
-			UART.print(genctrl(channel,type));
-		}
-		else {
-			UART.print(genctrl(channel,type), BYTE);
-			UART.print(data1, BYTE);
-			UART.print(data2, BYTE);
-		}
-		mRunningStatus_TX = genctrl(channel,type);
-	}
-	return;
+	
+	
 }
 
 /*! Send a Note On message */
@@ -116,210 +156,97 @@ void MIDI_Class::sendNoteOn(byte NoteNumber,byte Velocity,byte Channel) { send(N
 /*! Send a Note Off message (a real Note Off, not a Note On with null velocity) */
 void MIDI_Class::sendNoteOff(byte NoteNumber,byte Velocity,byte Channel) { send(NoteOff,NoteNumber,Velocity,Channel); }
 /*! Send a Program Change message */
-void MIDI_Class::sendProgramChange(byte ProgramNumber,byte Channel) { send(PC,ProgramNumber,0,Channel); }
+void MIDI_Class::sendProgramChange(byte ProgramNumber,byte Channel) { send(ProgramChange,ProgramNumber,0,Channel); }
 /*! Send a Control Change message */
-void MIDI_Class::sendControlChange(byte ControlNumber, byte ControlValue,byte Channel) { send(CC,ControlNumber,ControlValue,Channel); }
+void MIDI_Class::sendControlChange(byte ControlNumber, byte ControlValue,byte Channel) { send(ControlChange,ControlNumber,ControlValue,Channel); }
 /*! Polyphonic AfterTouch (carries the information of pressure of the given key/note) */
-void MIDI_Class::sendPolyPressure(byte NoteNumber,byte Pressure,byte Channel) { send(ATPoly,NoteNumber,Pressure,Channel); }
+void MIDI_Class::sendPolyPressure(byte NoteNumber,byte Pressure,byte Channel) { send(AfterTouchPoly,NoteNumber,Pressure,Channel); }
 /*! Monophonic AfterTouch */
-void MIDI_Class::sendAfterTouch(byte Pressure,byte Channel) { send(ATCanal,Pressure,0,Channel); }
+void MIDI_Class::sendAfterTouch(byte Pressure,byte Channel) { send(AfterTouchChannel,Pressure,0,Channel); }
+/*! Send a Pitch Bend message using an integer value.
+ \param PitchValue	The amount of bend to send (in an integer format), between 0 (maximum downwards bend) and 16383 (max upwards bend), center value is 8192.
+ */
+void MIDI_Class::sendPitchBend(unsigned int PitchValue,byte Channel) {
+
+	send(PitchBend,(PitchValue & 0x7F),(PitchValue >> 7) & 0x7F,Channel);
+	
+}
+/*! Send a Pitch Bend message using a floating point value.
+ \param PitchValue	The amount of bend to send (in a floating point format), between -1 (maximum downwards bend) and +1 (max upwards bend), center value is 0.
+ */
+void MIDI_Class::sendPitchBend(double PitchValue,byte Channel) {
+
+	unsigned int pitchval = (PitchValue+1.f)*8192;
+	if (pitchval > 16383) pitchval = 16383;		// overflow protection
+	sendPitchBend(pitchval,Channel);
+	
+}
+
 /*! Generate and send a System Exclusive frame.
-	\param length	The size of the array to send
-	\param array	The byte array containing the data to send\n
-	Don't put F0 or F7 (start & stop SysEx codes), but put destination device's Manufacturer's ID and/or Device ID in the buffer array.
+ \param length	The size of the array to send
+ \param array	The byte array containing the data to send\n
+ Don't put F0 or F7 (start & stop SysEx codes), but put destination device's Manufacturer's ID and/or Device ID in the buffer array.
  */
-void MIDI_Class::sendSysEx(byte length, byte * array) {
-	UART.print(0xF0,BYTE);
-	for (byte i=0;i<length;i++) UART.print(array[i],BYTE);
-	UART.print(0xF7,BYTE);
+void MIDI_Class::sendSysEx(byte length, byte * array, bool ArrayContainsBoundaries) {
+	if (!ArrayContainsBoundaries) USE_SERIAL_PORT.write(0xF0);
+	for (byte i=0;i<length;i++) USE_SERIAL_PORT.write(array[i]);
+	if (!ArrayContainsBoundaries) USE_SERIAL_PORT.write(0xF7);
 }
-/* Getters */
-/*! Getter method: access to the message type stored in the structure. */
-byte MIDI_Class::getType() { return mMessage.type; }
-/*! Getter method: access to the channel of the message stored in the structure. */
-byte MIDI_Class::getChannel() { return mMessage.channel; }
-/*! Getter method: access to the first data byte of the message stored in the structure. \n If the message is SysEx, the length of the array is stocked there. */
-byte MIDI_Class::getData1() { return mMessage.data1; }
-/*! Getter method: access to the second data byte of the message stored in the structure. */
-byte MIDI_Class::getData2() { return mMessage.data2; }
-/*! Getter method: access to the System Exclusive byte array. Array length is stocked in Data1. */
-byte * MIDI_Class::getSysExArray() { return mMessage.sysex_array; }
-/*! Check if a valid message is stored in the structure. */
-bool MIDI_Class::check() { return mMessage.OK; }
 
-/* Setters */
-/*! Use this method to delete the message stored in the structure. */
-void MIDI_Class::delMsg() {
-	setChannel(0);
-	setType(0);
-	setData1(0);
-	setData2(0);
-	setStatus(false);
-	delSysEx();
-	return;
+void MIDI_Class::sendTuneRequest() { sendRealTime(TuneRequest); }
+
+void MIDI_Class::sendTimeCodeQuarterFrame(byte TypeNibble, byte ValuesNibble) {
+	
+	byte data = ( ((TypeNibble & 0x07) << 4) | (ValuesNibble & 0x0F) );
+	sendTimeCodeQuarterFrame(data);
+	
 }
-void MIDI_Class::delSysEx() { 
-	for (int i=0;i<MIDI_SYSEX_ARRAY_SIZE;i++) mMessage.sysex_array[i] = 0;
+
+void MIDI_Class::sendTimeCodeQuarterFrame(byte data) {
+	
+	USE_SERIAL_PORT.write(TimeCodeQuarterFrame);
+	USE_SERIAL_PORT.write(data);
+	
 }
-/*! Set the System Exclusive Device ID (for listening to SysEx messages) */
-void MIDI_Class::setDeviceID(byte sysID) { sysex_ID = sysID; }
-/*! Set the value for the input MIDI channel 
- \param channel the channel value. Valid values are 1 to 16, 
- MIDI_CHANNEL_OMNI if you want to listen all channels, and MIDI_CHANNEL_OFF to disable MIDI input.
- */
-void MIDI_Class::setInputChannel(byte channel) { mInputChannel = channel; }
-/*! Set the filter for thru mirroring
- \param filter a filter mode:
- - MIDI_FILTER_FULL			Every incoming message is mirrored.
- - MIDI_FILTER_CANAL		Every message matching the input channel is mirrored.
- - MIDI_FILTER_ANTICANAL	Every message non-matching the input channel is mirrored.
- */
-void MIDI_Class::setFilter(byte filter) { mFilterMode = filter; }
 
-/*! Setter method: turn message mirroring on. */
-void MIDI_Class::turnThruOn() { mThruActivated = true; }
-/*! Setter method: turn message mirroring off. */
-void MIDI_Class::turnThruOff() { mThruActivated = false; }
-/*! Setter method: set message mirroring to the specified value. */
-void MIDI_Class::turnThru(bool val) { mThruActivated = val; }
+void MIDI_Class::sendSongPosition(unsigned int Beats) {
+	
+	USE_SERIAL_PORT.write(SongPosition);
+	USE_SERIAL_PORT.write(Beats & 0x7F);
+	USE_SERIAL_PORT.write((Beats >> 7) & 0x7F);
+	
+}
 
+void MIDI_Class::sendSongSelect(byte SongNumber) {
+	
+	USE_SERIAL_PORT.write(SongSelect);
+	USE_SERIAL_PORT.write(SongNumber & 0x7F);
+	
+}
 
-void MIDI_Class::setType(byte type) { mMessage.type = type; }
-void MIDI_Class::setChannel(byte channel) { mMessage.channel = channel; }
-void MIDI_Class::setData1(byte D) { mMessage.data1 = D; }
-void MIDI_Class::setData2(byte D) { mMessage.data2 = D; }
-void MIDI_Class::setStatus(bool ok) { mMessage.OK = ok; }
-
-
-bool MIDI_Class::parse(byte inChannelFilter) {
-	if (inChannelFilter >= MIDI_CHANNEL_OFF) return false;	// MIDI input disabled
-	byte tStatus=0,tChannel=0,tType=0,tData1=0,tData2=0;
-	delMsg();	// Cleanup
-	if (UART.available() == 128) { UART.flush(); };	
-	if (UART.available() > 0) { // do we have something to read?
-		tStatus = UART.read();
-		if (tStatus > 127) {
-			tChannel = (tStatus&0x0F)+1;
-			tType = ((tStatus&0x70)>>4)&0x07;
-			if (tChannel == inChannelFilter || inChannelFilter == MIDI_CHANNEL_OMNI || tType == SysEx) {
-				if (tType == PC || tType == ATCanal) {
-					// 2 bytes long message
-					if(UART.available() > 0) {
-						tData1 = UART.read();
-						if (tData1 < 128) {
-							// Saving to struct
-							setChannel(tChannel);
-							setType(tType);
-							setData1(tData1);
-							setData2(0);
-							setStatus(true);
-							mRunningStatus_RX = tStatus;
-						}
-					}
-					else {
-						// Data on next turn
-						mRunningStatus_RX = tStatus;
-						return false;
-					}
-				}
-				else if (tType == SysEx) { // Handle all system messages
-					mMessage.sysex_array[0] = tStatus;
-					unsigned length;
-					for (length=1;length<MIDI_SYSEX_ARRAY_SIZE;length++) {
-						while(!UART.available()) {};
-						tData1 = UART.read();
-						mMessage.sysex_array[length] = tData1;
-						if (tData1 == 0xF7) {
-							length++;
-							break;
-						}
-					}
-					setType(SysEx);
-					setData1(length);
-					setStatus(true);
-					mRunningStatus_RX = Channel_Refused; // No running status with SysEx
-				}
-				else {
-					// 3 bytes message
-					if(UART.available() > 0) {
-						tData1 = UART.read();
-						if (tData1 < 128) {
-							// Wait for the third byte
-							while(!UART.available()) {};
-							if(UART.available() > 0) {
-								tData2 = UART.read();
-								if (tData2 < 128) {
-									// Saving
-									setChannel(tChannel);
-									setType(tType);
-									setData1(tData1);
-									setData2(tData2);
-									setStatus(true);
-									mRunningStatus_RX = tStatus;
-								}
-							}
-						}
-						else {
-							// We were expecting for a data byte
-							return false;
-						}
-					}
-					else {
-						// Data on next turn
-						mRunningStatus_RX = tStatus;
-						return false;
-					}
-				}
-			}
-			else {
-				// Channel refused
-				mRunningStatus_RX = Channel_Refused;
-				return false;
-			}
-		}
-		else {
-			// Running status?
-			// data matching the previous control byte
-			if (mRunningStatus_RX == Channel_Refused) {
-				return false;
-			}
-			else {
-				tChannel = (mRunningStatus_RX&0x0F)+1;
-				tType = ((mRunningStatus_RX&0x70)>>4)&0x07;
-				if (tType == PC || tType == ATCanal) {
-					// Saving	
-					setChannel(tChannel);
-					setType(tType);
-					setData1(tStatus);
-					setData2(0);
-					setStatus(true);
-				}
-				else if (tType == SysEx) {
-					// Normally not possible (as we don't recognize SysEx as a Running Status
-					mRunningStatus_RX = Channel_Refused;
-				}
-				else {
-					// 3 bytes
-					while(!UART.available()) {};
-					if(UART.available() > 0) {
-						tData2 = UART.read();
-						if (tData2 < 128) {
-							// Saving
-							setChannel(tChannel);
-							setType(tType);
-							setData1(tStatus);
-							setData2(tData2);
-							setStatus(true);
-						}
-					}
-				}
-			}
-		}
+/*! Send a Real Time (one byte) message. \n You can also send Tune Request with this method. */
+void MIDI_Class::sendRealTime(kMIDIType Type) {
+	switch (Type) {
+		case TuneRequest: // Not really real-time, but one byte anyway.
+		case Clock:
+		case Start:
+		case Stop:	
+		case Continue:
+		case ActiveSensing:
+		case SystemReset:
+			USE_SERIAL_PORT.write((byte)Type);
+			break;
+		default:
+			// Invalid Real Time marker
+			break;
 	}
-	else return false;
-	return check();
 }
 
+#endif // COMPFLAG_MIDI_OUT
+
+
+
+#if COMPFLAG_MIDI_IN
 
 /*! Read a MIDI message from the serial port using the main input channel (see setInputChannel() for reference). \n
  Returned value: true if any valid message has been stored in the structure, false if not.
@@ -329,48 +256,461 @@ bool MIDI_Class::parse(byte inChannelFilter) {
 bool MIDI_Class::read() {
 	return read(mInputChannel);
 }
-/*! Reading/mirroring method, the same as read() with a given input channel to read on. */
-bool MIDI_Class::read(byte channel) {
-	if (parse(MIDI_CHANNEL_OMNI)) {
-		if (channel >= MIDI_CHANNEL_OFF && getType() != SysEx) { // Input disabled
-			delMsg(); 
-			return false; 
-		} 
-		if (mThruActivated) filter(channel); // Filter and send (if thru enabled)
-		if (getChannel() == channel || channel == MIDI_CHANNEL_OMNI || getType() == SysEx)	return true;
-		else { 
-			delMsg(); 
-			return false; 
-		}
-	}
-	else return false;
-}
 
-void MIDI_Class::filter(byte channel) { // Mirroring filter
-	// MIDI message validity already checked by thru
-	switch (mFilterMode) {
-		case MIDI_FILTER_FULL:
-			// All pass
-			send(getType(),getData1(),getData2(),getChannel());
-			break;
-		case MIDI_FILTER_CANAL:
-			// Same channel
-			if (channel >= MIDI_CHANNEL_OFF) return;
-			if (getChannel() == channel || channel == MIDI_CHANNEL_OMNI) send(getType(),getData1(),getData2(),getChannel());
-			break;
-		case MIDI_FILTER_ANTICANAL:
-			// Different channel
-			if (channel == MIDI_CHANNEL_OMNI) return;
-			if (getChannel() != channel || channel >= MIDI_CHANNEL_OFF) send(getType(),getData1(),getData2(),getChannel());
-			break;
-		default:
-			break;
-	}
-	return;
-}
+/*! Reading/thru-ing method, the same as read() with a given input channel to read on. */
+bool MIDI_Class::read(const byte inChannel) {
 	
+	/*
+	 Algorithme:
+	 - Lancer le parseur pour tenter de récupérer un message.
+	 - Si on a quelque chose, le passer au filter pour vérifier s'il nous est destiné, et pour le renvoyer au thru.
+	
+	 */
+	
+	
+	if (inChannel >= MIDI_CHANNEL_OFF) return false; // MIDI Input disabled.
+	
+	
+	if (parse(inChannel)) return filter(inChannel);
+	else return false;
+	
+}
+
+
+bool MIDI_Class::parse(byte inChannel) { 
+	
+	// If the buffer is full -> Don't Panic! Call the Vogons to destroy it.
+	if (USE_SERIAL_PORT.available() == UART_BUFFER_SIZE) { Serial << "Overflow, call the Vogons!!" << endl;
+		USE_SERIAL_PORT.flush();
+	}	
+	
+	if (USE_SERIAL_PORT.available() <= 0) {
+		// No data available.
+		return false;
+	}
+	else {
+		
+		/* Parsing algorithm:
+		 Get a byte from the serial buffer.
+		 • If there is no pending message to be recomposed, start a new one.
+			- Find type and channel (if pertinent)
+			- Look for other bytes in buffer, call parser recursively, until the message is assembled or the buffer is empty.
+		 • Else, add the extracted byte to the pending message, and check validity. When the message is done, store it.
+		 */
+		
+		
+		byte extracted = USE_SERIAL_PORT.read();
+		
+		if (mPendingMessageIndex == 0) { // Start a new pending message
+			mPendingMessage[0] = extracted;
+			
+			// Check for running status first
+			switch (getTypeFromStatusByte(mRunningStatus_RX)) {
+					// Only these types allow Running Status:
+				case NoteOff:
+				case NoteOn:
+				case AfterTouchPoly:
+				case ControlChange:
+				case ProgramChange:
+				case AfterTouchChannel:
+				case PitchBend:	
+					
+					// If the status byte is not received, prepend it to the pending message
+					if (extracted < 0x80) {
+						mPendingMessage[0] = mRunningStatus_RX;
+						mPendingMessage[1] = extracted;
+						mPendingMessageIndex = 1;
+					}
+					// Else: well, we received another status byte, so the running status does not apply here.
+					// It will be updated upon completion of this message.
+					
+					break;
+					
+				default:
+					// No running status
+					break;
+			}
+			
+			
+			switch (getTypeFromStatusByte(mPendingMessage[0])) {
+					
+					// 1 byte messages
+				case Start:
+				case Continue:
+				case Stop:
+				case Clock:
+				case ActiveSensing:
+				case SystemReset:
+				case TuneRequest:
+					// Handle the message type directly here.
+					mMessage.type = getTypeFromStatusByte(mPendingMessage[0]);
+					mMessage.channel = 0;
+					mMessage.data1 = 0;
+					mMessage.data2 = 0;
+					mMessage.valid = true;
+					mPendingMessageExpectedLenght = 0;
+					mPendingMessageIndex = 0;
+					mRunningStatus_RX = InvalidType;
+					return true;
+					break;
+					
+					// 2 bytes messages
+				case ProgramChange:
+				case AfterTouchChannel:
+				case TimeCodeQuarterFrame:
+				case SongSelect:
+					mPendingMessageExpectedLenght = 2;
+					break;
+					
+					// 3 bytes messages
+				case NoteOn:
+				case NoteOff:
+				case ControlChange:
+				case PitchBend:
+				case AfterTouchPoly:
+				case SongPosition:
+					mPendingMessageExpectedLenght = 3;
+					break;
+					
+				case SystemExclusive:
+					mPendingMessageExpectedLenght = MIDI_SYSEX_ARRAY_SIZE; // As the message can be any lenght between 3 and MIDI_SYSEX_ARRAY_SIZE bytes
+					break;
+					
+				case InvalidType:
+				default:
+					// This is obviously wrong. Let's get the hell out'a here.
+					mPendingMessageIndex = 0;
+					mPendingMessageExpectedLenght = 0;
+					mRunningStatus_RX = InvalidType;
+					return false;
+					break;
+			}
+			
+			// Then update the index of the pending message.
+			mPendingMessageIndex++;
+			
+			// And call the parser, again.
+			return parse(inChannel);
+			
+		}
+		else { 
+			
+			
+			// First, test if this is a status byte
+			if (extracted >= 0x80) {
+				
+				// Reception of status bytes are allowed only for interleaved Real Time message or EOX
+				switch (extracted) {
+					case Clock:
+					case Start:
+					case Continue:
+					case Stop:
+					case ActiveSensing:
+					case SystemReset:
+
+						/*
+						 This is tricky. Here we will have to extract the one-byte message,
+						 pass it to the structure for being read outside the MIDI class,
+						 and recompose the message it was interleaved into.
+						 
+						 Oh, and without killing the running status.. 
+						 
+						 This is done by leaving the pending message as is, it will be completed on next calls.
+						 */
+						
+						mMessage.type = (kMIDIType)extracted;
+						mMessage.data1 = 0;
+						mMessage.data2 = 0;
+						mMessage.channel = 0;
+						mMessage.valid = true;
+						return true;
+						
+						break;
+					
+						// End of Exclusive
+					case 0xF7:
+						if (getTypeFromStatusByte(mPendingMessage[0]) == SystemExclusive) {
+							
+							// Store System Exclusive array in midimsg structure
+							for (byte i=0;i<MIDI_SYSEX_ARRAY_SIZE;i++) {
+								mMessage.sysex_array[i] = mPendingMessage[i];
+							}
+							
+							// Get length
+							mMessage.data1 = mPendingMessageIndex+1;
+							mMessage.data2 = 0;
+							mMessage.channel = 0;
+							mMessage.valid = true;
+							
+							mPendingMessageIndex = 0;
+							mPendingMessageExpectedLenght = 0;
+							mRunningStatus_RX = InvalidType;
+							
+							return true;
+						}
+						else {
+							// Well well well.. error.
+							mPendingMessageIndex = 0;
+							mPendingMessageExpectedLenght = 0;
+							mRunningStatus_RX = InvalidType;
+							return false;
+						}
+
+						break;
+					default:
+						break;
+				}
+				
+				
+				
+			}
+			
+			
+			// Add extracted data byte to pending message
+			mPendingMessage[mPendingMessageIndex] = extracted;
+			
+			
+			// Now we are going to check if we have reached the end of the message
+			if (mPendingMessageIndex >= (mPendingMessageExpectedLenght-1)) {
+				
+				// "FML" case: fall down here with an overflown SysEx..
+				// This means we received the last possible data byte that can fit the buffer.
+				// If this happens, try increasing MIDI_SYSEX_ARRAY_SIZE.
+				if (getTypeFromStatusByte(mPendingMessage[0]) == SystemExclusive) {
+					mPendingMessageIndex = 0;
+					mPendingMessageExpectedLenght = 0;
+					mRunningStatus_RX = InvalidType;
+					return false;
+				}
+				
+				
+
+				
+				mMessage.type = getTypeFromStatusByte(mPendingMessage[0]);
+				mMessage.channel = (mPendingMessage[0] & 0x0F)+1; // Don't check if it is a Channel Message
+				
+				
+				/*Serial << "Debug:";
+				for (unsigned i=0;i<8;i++) {
+					Serial << " 0x";
+					Serial.printNumber(mPendingMessage[i],16);
+				}
+				Serial << endl;
+				Serial << "ExpLen: " << (int)mPendingMessageExpectedLenght;
+				Serial << "\t Index: " << (int)mPendingMessageIndex << endl;*/
+				
+				mMessage.data1 = mPendingMessage[1]; // Checking this is futile, as 1 byte message were processed in the switch.
+				mMessage.data2 = mPendingMessage[2];
+				
+				// Reset local variables
+				mPendingMessageIndex = 0;
+				mPendingMessageExpectedLenght = 0;
+				
+				mMessage.valid = true;
+				
+				// Activate running status (if enabled for the received type)
+				switch (mMessage.type) {
+					case NoteOff:
+					case NoteOn:
+					case AfterTouchPoly:
+					case ControlChange:
+					case ProgramChange:
+					case AfterTouchChannel:
+					case PitchBend:	
+						// Running status enabled: store it from received message
+						mRunningStatus_RX = mPendingMessage[0];
+						break;
+						
+					default:
+						// No running status
+						mRunningStatus_RX = InvalidType;
+						break;
+				}
+				//Serial << "CME" << endl;;
+				//Serial.printNumber(mMessage.type,16);
+				return true;
+			}
+			else {
+				// Then update the index of the pending message.
+				mPendingMessageIndex++;
+				
+				// And call the parser, again.
+				return parse(inChannel);
+			}
+			
+		}
+		
+		
+	}
+	
+	// What are our chances to fall here?
+	return false;
+}
+
+
+// Getters
+/*! Getter method: access to the message type stored in the structure. \n Returns an enumerated type. */
+kMIDIType MIDI_Class::getType() { return mMessage.type; }
+/*! Getter method: access to the channel of the message stored in the structure. */
+byte MIDI_Class::getChannel() { return mMessage.channel; }
+/*! Getter method: access to the first data byte of the message stored in the structure. \n If the message is SysEx, the length of the array is stocked there. */
+byte MIDI_Class::getData1() { return mMessage.data1; }
+/*! Getter method: access to the second data byte of the message stored in the structure. */
+byte MIDI_Class::getData2() { return mMessage.data2; }
+/*! Getter method: access to the System Exclusive byte array. Array length is stocked in Data1. */
+byte * MIDI_Class::getSysExArray() { return mMessage.sysex_array; }
+/*! Check if a valid message is stored in the structure. */
+bool MIDI_Class::check() { return mMessage.valid; }
+
+// Setters
+/*! Set the value for the input MIDI channel 
+ \param channel the channel value. Valid values are 1 to 16, 
+ MIDI_CHANNEL_OMNI if you want to listen to all channels, and MIDI_CHANNEL_OFF to disable MIDI input.
+ */
+void MIDI_Class::setInputChannel(const byte inChannel) { mInputChannel = inChannel; }
+
+
+#endif // COMPFLAG_MIDI_IN
 
 
 
+
+#if (COMPFLAG_MIDI_IN && COMPFLAG_MIDI_OUT) // Thru
+
+/*! Set the filter for thru mirroring
+ \param inThruFilterMode a filter mode
+ See kThruFilterMode for detailed description.
+ */
+void MIDI_Class::setThruFilterMode(kThruFilterMode inThruFilterMode) { 
+	mThruFilterMode = inThruFilterMode;
+	if (mThruFilterMode != Off) mThruActivated = true;
+	else mThruActivated = false;
+}
+/*! Set the filter for thru mirroring
+ \param inThruFilterMode a filter mode
+ See kThruFilterMode for detailed description. \n
+ This method uses a byte parameter and is for compatibility only, please use kThruFilterMode for future programs.
+ */
+void MIDI_Class::setThruFilterMode(byte inThruFilterMode) { 
+	mThruFilterMode = (kThruFilterMode)inThruFilterMode;
+	if (mThruFilterMode != Off) mThruActivated = true;
+	else mThruActivated = false;
+}
+
+
+/*! Setter method: turn message mirroring on. */
+void MIDI_Class::turnThruOn(kThruFilterMode inThruFilterMode) { 
+	mThruActivated = true;
+	mThruFilterMode = inThruFilterMode;
+}
+/*! Setter method: turn message mirroring off. */
+void MIDI_Class::turnThruOff() {
+	mThruActivated = false; 
+	mThruFilterMode = Off;
+}
+
+/*! This method is called upon reception of a message and checks if the message stored is destinated to be read (matching channel).
+	It also takes care of Thru filtering and sending.
+ */
+bool MIDI_Class::filter(byte inChannel) {
+	
+	/*
+		This method handles both recognition of channel (to know if the message is destinated to the Arduino) and Soft-Thru filtering.
+	 
+		Soft-Thru filtering:
+		- All system messages (System Exclusive, Common and Real Time) are passed to output unless filter is set to Off
+		- Channel messages are passed to the output whether their channel is matching the input channel and the filter setting
+	 
+	 */
+	
+	
+	bool validate_message = false;
+	
+	// First, check if the received message is Channel
+	if (mMessage.type >= NoteOff && mMessage.type <= PitchBend) {
+		
+		// Then we need to know if we listen to it
+		if ((mMessage.channel == mInputChannel) || (mInputChannel == MIDI_CHANNEL_OMNI)) {
+			validate_message = true;
+			
+		}
+		else {
+			// We don't listen to this channel
+			validate_message = false;
+		}
+		
+		// Now let's pass it to the output
+		switch (mThruFilterMode) {
+			case Full:
+				send(mMessage.type,mMessage.data1,mMessage.data2,mMessage.channel);
+				break;
+			case SameChannel:
+				if (validate_message) {
+					send(mMessage.type,mMessage.data1,mMessage.data2,mMessage.channel);
+				}
+				break;
+			case DifferentChannel:
+				if (!validate_message) {
+					send(mMessage.type,mMessage.data1,mMessage.data2,mMessage.channel);
+				}
+			case Off:
+				// Do nothing
+				break;
+			default:
+				break;
+		}
+		
+	}
+	else {
+		
+		// System messages are always received
+		validate_message = true;
+		
+		// Send the message to the output
+		if (mThruFilterMode != Off) {
+			switch (mMessage.type) {
+					// Real Time and 1 byte
+				case Clock:
+				case Start:
+				case Stop:
+				case Continue:
+				case ActiveSensing:
+				case SystemReset:
+				case TuneRequest:	
+					sendRealTime(mMessage.type);
+					break;
+					
+				case SystemExclusive:
+					// Send SysEx (0xF0 and 0xF7 are included in the buffer)
+					sendSysEx(mMessage.data1,mMessage.sysex_array,true); 
+					break;
+					
+				case SongSelect:
+					sendSongSelect(mMessage.data1); // TODO: check this
+					break;
+					
+				case SongPosition:
+					sendSongPosition(mMessage.data1 | ((unsigned)mMessage.data2<<7));	// TODO: check this
+					break;
+				
+				case TimeCodeQuarterFrame:
+					sendTimeCodeQuarterFrame(mMessage.data1,mMessage.data2); // TODO: check this
+					break;
+				default:
+					break;
+			}
+			
+		}
+		
+	}
+
+	
+	
+	
+	return validate_message;
+}
+
+
+#endif // Thru
 
 

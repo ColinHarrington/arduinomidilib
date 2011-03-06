@@ -1,60 +1,107 @@
-/*
-  MIDI.h - Library for Arduino MIDI I/O communications.
-  Created by Francois Best, January 2, 2009.
-  Released into the public domain.
-*/
+/*!
+ *  @file		MIDI.h
+ *  Project		MIDI Library
+ *	@brief		MIDI Library for the Arduino
+ *	Version		3.0
+ *  @author		François Best 
+ *	@date		24/02/11
+ *  License		GPL Forty Seven Effects - 2011
+ */
 
-#ifndef MIDI_h
-#define MIDI_h
-
+#ifndef LIB_MIDI_H_
+#define LIB_MIDI_H_
 
 #include <inttypes.h> 
 
-/*! The basic baudrate for MIDI communications. */
-#define MIDI_rate 31250
-/*! Message type Note Off (equivalent to a NoteOn with null velocity)*/
-#define NoteOff 0
-/*! Message type Note On			*/
-#define NoteOn 1
-/*! Message type AfterTouch Poly	*/
-#define ATPoly 2	
-/*! Message type Control Change		*/
-#define CC 3		
-/*! Message type Program Change		*/
-#define PC 4		
-/*! Message type AfterTouch Channel	*/
-#define ATCanal 5	
-/*! Message type Pitch Bend			*/
-#define	PitchBend 6	
-/*! Message type System Exclusive 	*/
-#define SysEx 7	
 
-/*#define MIDI_THRU_ON 128
-#define MIDI_OPTO_EXT 64
-#define MIDI_OPTO_ON 32*/
+/*  
+    ###############################################################
+    #                                                             #
+    #    CONFIGURATION AREA                                       #
+    #                                                             #
+    #    Here are a few settings you can change to customize      #
+    #    the library for your own project. You can for example    #
+    #    choose to compile only parts of it so you gain flash     #
+    #    space and optimise the speed of your sketch.             #
+    #                                                             #
+    ###############################################################
+ */
 
-#define MIDI_FILTER_OFF			0
-#define MIDI_FILTER_FULL		1
-#define MIDI_FILTER_CANAL		2
-#define MIDI_FILTER_ANTICANAL	3
-
-#define MIDI_CHANNEL_OMNI 0
-#define MIDI_CHANNEL_OFF 17
+#define COMPATIBILITY_V25		1			// Enable compatibility with MIDI Library v2.5
 
 
-#define MIDI_SYSEX_ARRAY_SIZE	256
+#define COMPFLAG_MIDI_IN        1           // Set this setting to 1 to use the MIDI input.
+#define COMPFLAG_MIDI_OUT       1           // Set this setting to 1 to use the MIDI output. 
 
-#define MANUFACTURER_ID_H	0x7D	// Non-Commercial
+
+#if USE_USB_CONNECTION
+  #define USE_SERIAL_PORT       Serial      // This Serial port is the one connected to the USB plug.
+#else
+  #define USE_SERIAL_PORT       Serial1     // Change the number (to Serial1 for example) if you want
+#endif                                      // to use a different serial port for MIDI I/O.
+
+
+#define USE_RUNNING_STATUS		1			// Running status enables short messages when sending multiple values
+                                            // of the same type and channel.
+                                            // Set to 0 if you have troubles with controlling you hardware.
+
+
+// END OF CONFIGURATION AREA 
+// (do not modify anything under this line unless you know what you are doing)
+
+#if COMPATIBILITY_V25
+#include "Compatibility_v2.5.h"
+#endif
+
+#define MIDI_BAUDRATE			31250
+
+
+#define MIDI_CHANNEL_OMNI		0
+#define MIDI_CHANNEL_OFF		17 // and over
+
+#define MIDI_SYSEX_ARRAY_SIZE	255
 
 /*! Type definition for practical use (because "unsigned char" is a bit long to write.. )*/
 typedef uint8_t byte;
 
-/*! This structure contains decoded data of a MIDI message read from the serial port with read() or thru(). \n */
+/*! Enumeration of MIDI types */
+enum kMIDIType {
+	NoteOff	              = 0x80,	// Note Off
+	NoteOn                = 0x90,	// Note On
+	AfterTouchPoly        = 0xA0,	// Polyphonic AfterTouch
+	ControlChange         = 0xB0,	// Control Change / Channel Mode
+	ProgramChange         = 0xC0,	// Program Change
+	AfterTouchChannel     = 0xD0,	// Channel (monophonic) AfterTouch
+	PitchBend             = 0xE0,	// Pitch Bend
+	SystemExclusive       = 0xF0,	// System Exclusive
+	TimeCodeQuarterFrame  = 0xF1,	// System Common - MIDI Time Code Quarter Frame
+	SongPosition          = 0xF2,	// System Common - Song Position Pointer
+	SongSelect            = 0xF3,	// System Common - Song Select
+	TuneRequest           = 0xF6,	// System Common - Tune Request
+	Clock                 = 0xF8,	// System Real Time - Timing Clock
+	Start                 = 0xFA,	// System Real Time - Start
+	Continue              = 0xFB,	// System Real Time - Continue
+	Stop                  = 0xFC,	// System Real Time - Stop
+	ActiveSensing         = 0xFE,	// System Real Time - Active Sensing
+	SystemReset           = 0xFF,	// System Real Time - System Reset
+	InvalidType           = 0x00    // For notifying errors
+};
+
+/*! Enumeration of Thru filter modes */
+enum kThruFilterMode {
+	Off                   = 0,  // Thru disabled (nothing passes through).
+	Full                  = 1,  // Fully enabled Thru (every incoming message is sent back).
+	SameChannel           = 2,  // Only the messages on the Input Channel will be sent back.
+	DifferentChannel      = 3   // All the messages but the ones on the Input Channel will be sent back.
+};
+
+
+/*! The midimsg structure contains decoded data of a MIDI message read from the serial port with read() or thru(). \n */
 struct midimsg {
 	/*! The MIDI channel on which the message was recieved. \n Value goes from 1 to 16. */
 	byte channel; 
 	/*! The type of the message (see the define section for types reference) */
-	byte type;
+	kMIDIType type;
 	/*! The first data byte.\n Value goes from 0 to 127.\n If the message is SysEx, this byte contains the array length. */
 	byte data1;
 	/*! The second data byte. If the message is only 2 bytes long, this one is null.\n Value goes from 0 to 127. */
@@ -62,78 +109,141 @@ struct midimsg {
 	/*! System Exclusive dedicated byte array. \n Array length is stocked in data1. */
 	byte sysex_array[MIDI_SYSEX_ARRAY_SIZE];
 	/*! This boolean indicates if the message is valid or not. There is no channel consideration here, validity means the message respects the MIDI norm. */
-	bool OK;
+	bool valid;
 };
 
 
+/*! The main class for MIDI handling.
+	See member descriptions for knowing how to use it,
+	or go see the examples supplied with the library.
+ */
 class MIDI_Class {
+	
+	
 public:
-	MIDI_Class(); // Constructeurs
-	~MIDI_Class(); // Destructeur
+	// Constructor and Destructor
+	MIDI_Class();
+	~MIDI_Class();
 	
-	void begin(byte inChannel = 1);
 	
-	// Input methods
-	bool read();
-	bool read(byte channel);
+	void begin(const byte inChannel = 1);
+	
+	
+	
+	
+/* ####### OUTPUT COMPILATION BLOCK ####### */	
+#if COMPFLAG_MIDI_OUT
 
-	// Output methods
-	void send(byte type, byte param1, byte param2, byte canal);
+public:	
 	
 	void sendNoteOn(byte NoteNumber,byte Velocity,byte Channel);
 	void sendNoteOff(byte NoteNumber,byte Velocity,byte Channel);
 	void sendProgramChange(byte ProgramNumber,byte Channel);
 	void sendControlChange(byte ControlNumber, byte ControlValue,byte Channel);
-	void sendPitchBend(int PitchValue,byte Channel);
+	void sendPitchBend(unsigned int PitchValue,byte Channel);
+	void sendPitchBend(double PitchValue,byte Channel);
 	void sendPolyPressure(byte NoteNumber,byte Pressure,byte Channel);
 	void sendAfterTouch(byte Pressure,byte Channel);
-	void sendSysEx(byte length, byte * array);
+	void sendSysEx(byte length, byte * array,bool ArrayContainsBoundaries = false);	
+	void sendTimeCodeQuarterFrame(byte TypeNibble, byte ValuesNibble);
+	void sendTimeCodeQuarterFrame(byte data);
+	void sendSongPosition(unsigned int Beats);
+	void sendSongSelect(byte SongNumber);
+	void sendTuneRequest();
+	void sendRealTime(kMIDIType Type);
 	
-	// Thru
-	void turnThruOn();
-	void turnThruOff();
-	void turnThru(bool state);
+	
+private:
+	
+	const byte genstatus(const kMIDIType inType,const byte inChannel);
+	void send(kMIDIType type, byte param1, byte param2, byte channel);
+	
+	// Attributes
+#if USE_RUNNING_STATUS
+	byte			mRunningStatus_TX;
+#endif // USE_RUNNING_STATUS
+
+#endif	// COMPFLAG_MIDI_OUT
+	
+
+	
+/* ####### INPUT COMPILATION BLOCK ####### */
+#if COMPFLAG_MIDI_IN	
+	
+public:
+	
+	bool read();
+	bool read(const byte Channel);
 	
 	// Getters
-	byte getType();
+	kMIDIType getType();
 	byte getChannel();
 	byte getData1();
 	byte getData2();
 	byte * getSysExArray();
 	bool check();
+	
 	byte getInputChannel() { return mInputChannel; }
-	byte getFilterMode() { return mFilterMode; }
-	bool getThruState() { return mThruActivated; }
 	
 	// Setters
-	void setDeviceID(byte sysID);
-	void delMsg();
-	void delSysEx();
-	void setInputChannel(byte channel);
-	void setFilter(byte filter);
+	void setInputChannel(const byte Channel);
+	
+private:
+	
+	inline const kMIDIType getTypeFromStatusByte(const byte inStatus) {
+		if ((inStatus < 0x80) 
+			|| (inStatus == 0xF4) 
+			|| (inStatus == 0xF5) 
+			|| (inStatus == 0xF9) 
+			|| (inStatus == 0xFD)) return InvalidType; // data bytes and undefined.
+		if (inStatus < 0xF0) return (kMIDIType)(inStatus & 0xF0);	// Channel message, remove channel nibble.
+		else return (kMIDIType)inStatus;
+	}
+	
+	bool filter(byte inChannel);
+	bool parse(byte inChannel);
+	
+	
+	// Attributes
+	byte			mRunningStatus_RX;
+	byte			mInputChannel;
+	
+	byte			mPendingMessage[MIDI_SYSEX_ARRAY_SIZE];
+	byte			mPendingMessageExpectedLenght;
+	byte			mPendingMessageIndex;
+	
+	midimsg			mMessage;
+	
+#endif // COMPFLAG_MIDI_IN
+	
+
+/* ####### THRU COMPILATION BLOCK ####### */
+#if (COMPFLAG_MIDI_IN && COMPFLAG_MIDI_OUT) // Thru
+	
+public:
+	
+	// Getters
+	kThruFilterMode getFilterMode() { return mThruFilterMode; }
+	bool getThruState() { return mThruActivated; }
+	
+	
+	// Setters
+	void turnThruOn(kThruFilterMode inThruFilterMode = Full);
+	void turnThruOff();
+	
+	void setThruFilterMode(const byte inThruFilterMode);	// For compatibility only, avoid in future programs.
+	void setThruFilterMode(const kThruFilterMode inThruFilterMode);
 	
 	
 private:
-	byte genctrl(byte canal, byte type);
-	void filter(byte channel);
-	void setType(byte type);
-	void setChannel(byte channel);
-	void setData1(byte data);
-	void setData2(byte data);
-	void setStatus(bool status);
-	bool parse(byte channel);
 	
-	// Class access only
-	byte mInputChannel;
-	byte mFilterMode;
-	byte sysex_ID;
-	byte mRunningStatus_TX;
-	byte mRunningStatus_RX;
-	midimsg mMessage;
-	bool mThruActivated;
+	bool				mThruActivated;
+	kThruFilterMode		mThruFilterMode;
+	
+#endif // Thru
+	
 };
-
 
 extern MIDI_Class MIDI;
 
-#endif // MIDI_h
+#endif // LIB_MIDI_H_
