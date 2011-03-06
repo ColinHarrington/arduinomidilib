@@ -1,0 +1,366 @@
+\hypertarget{_m_i_d_i_8h}{
+\section{/Users/franky/Documents/Dropbox/SVN/embedded/toolbox/libraries/MIDILib/trunk/Arduino/MIDI.h File Reference}
+\label{_m_i_d_i_8h}\index{/Users/franky/Documents/Dropbox/SVN/embedded/toolbox/libraries/MIDILib/trunk/Arduino/MIDI.h@{/Users/franky/Documents/Dropbox/SVN/embedded/toolbox/libraries/MIDILib/trunk/Arduino/MIDI.h}}
+}
+MIDI Library for the Arduino Version 3.0.  
+
+
+{\tt \#include $<$inttypes.h$>$}\par
+{\tt \#include \char`\"{}Compatibility\_\-v2.5.h\char`\"{}}\par
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+struct \hyperlink{structmidimsg}{midimsg}
+\item 
+class \hyperlink{class_m_i_d_i___class}{MIDI\_\-Class}
+\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \hyperlink{_m_i_d_i_8h_e0728ada9c5d497b9432867689a6a4dd}{COMPATIBILITY\_\-V25}~1
+\item 
+\#define \hyperlink{_m_i_d_i_8h_db53af4af7a0951e281f84a3df9accb8}{COMPFLAG\_\-MIDI\_\-IN}~1
+\item 
+\#define \hyperlink{_m_i_d_i_8h_fddfda8939443e97b04712d62d2b3984}{COMPFLAG\_\-MIDI\_\-OUT}~1
+\item 
+\#define \hyperlink{_m_i_d_i_8h_9f150c76e70559513c7f5d20496c8c9c}{USE\_\-SERIAL\_\-PORT}~Serial1
+\item 
+\#define \hyperlink{_m_i_d_i_8h_8c1f90f3cbcf8dddaaf29fad5ca72e9b}{USE\_\-RUNNING\_\-STATUS}~1
+\item 
+\#define \hyperlink{_m_i_d_i_8h_2d027d77d9e279583f292ce854cbafb2}{MIDI\_\-BAUDRATE}~31250
+\item 
+\#define \hyperlink{_m_i_d_i_8h_c60eaa68c9d91e29fca58a6128c3d1cf}{MIDI\_\-CHANNEL\_\-OMNI}~0
+\item 
+\#define \hyperlink{_m_i_d_i_8h_e5f8dc293002c1090c3551ba40f6aee8}{MIDI\_\-CHANNEL\_\-OFF}~17
+\item 
+\#define \hyperlink{_m_i_d_i_8h_e919960c6f3448f1a78739108d2bda4e}{MIDI\_\-SYSEX\_\-ARRAY\_\-SIZE}~255
+\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef uint8\_\-t \hyperlink{_m_i_d_i_8h_b8ef12fab634c171394422d0ee8baf94}{byte}
+\end{CompactItemize}
+\subsection*{Enumerations}
+\begin{CompactItemize}
+\item 
+enum \hyperlink{_m_i_d_i_8h_802feb46a169642d43b2415d02390545}{kMIDIType} \{ \par
+\hyperlink{_m_i_d_i_8h_802feb46a169642d43b2415d02390545d37718bd43a7976d5e89e8ee7819e5fd}{NoteOff} =  0x80, 
+\hyperlink{_m_i_d_i_8h_802feb46a169642d43b2415d02390545ffc541f2571710265776574dd39fc319}{NoteOn} =  0x90, 
+\hyperlink{_m_i_d_i_8h_802feb46a169642d43b2415d02390545ef074e16a30d86e0a42b873dd6843cd2}{AfterTouchPoly} =  0xA0, 
+\hyperlink{_m_i_d_i_8h_802feb46a169642d43b2415d02390545c150258f2e69ec1e535cee9df3f5bb1e}{ControlChange} =  0xB0, 
+\par
+\hyperlink{_m_i_d_i_8h_802feb46a169642d43b2415d023905451b28117f91e20a90f91f6a6886023186}{ProgramChange} =  0xC0, 
+\hyperlink{_m_i_d_i_8h_802feb46a169642d43b2415d02390545040c84d19624cf23edd3f54c2d432793}{AfterTouchChannel} =  0xD0, 
+\hyperlink{_m_i_d_i_8h_802feb46a169642d43b2415d02390545d0eed86b1606c722a91a0cb9e71305e6}{PitchBend} =  0xE0, 
+\hyperlink{_m_i_d_i_8h_802feb46a169642d43b2415d0239054576531e9669a6601f0c84b1702314e5e3}{SystemExclusive} =  0xF0, 
+\par
+\hyperlink{_m_i_d_i_8h_802feb46a169642d43b2415d02390545faf9b74dab5ac5ae3542d66515c2afcf}{TimeCodeQuarterFrame} =  0xF1, 
+\hyperlink{_m_i_d_i_8h_802feb46a169642d43b2415d02390545996450aa045571374864c2dc9404e944}{SongPosition} =  0xF2, 
+\hyperlink{_m_i_d_i_8h_802feb46a169642d43b2415d02390545d512934b4f2e896bee884c262f64acb1}{SongSelect} =  0xF3, 
+\hyperlink{_m_i_d_i_8h_802feb46a169642d43b2415d02390545afec2fa09eaa764d5d629798a8f8429c}{TuneRequest} =  0xF6, 
+\par
+\hyperlink{_m_i_d_i_8h_802feb46a169642d43b2415d023905454b52d61cc39d9427f91d3b8606319e2c}{Clock} =  0xF8, 
+\hyperlink{_m_i_d_i_8h_802feb46a169642d43b2415d02390545bd5f9c956752ce4dc707b4624b3a36f7}{Start} =  0xFA, 
+\hyperlink{_m_i_d_i_8h_802feb46a169642d43b2415d0239054545a66636ecd16b869e4aadd738813583}{Continue} =  0xFB, 
+\hyperlink{_m_i_d_i_8h_802feb46a169642d43b2415d02390545f98d707eb4ed173ccfdbaf4eaa87100d}{Stop} =  0xFC, 
+\par
+\hyperlink{_m_i_d_i_8h_802feb46a169642d43b2415d0239054555c1135b4b41d3cff4b7832b81352823}{ActiveSensing} =  0xFE, 
+\hyperlink{_m_i_d_i_8h_802feb46a169642d43b2415d023905457256ac4658ec7af1eb4705b83266a603}{SystemReset} =  0xFF, 
+\hyperlink{_m_i_d_i_8h_802feb46a169642d43b2415d02390545791c6b5c1e5f30ce6c7b0937e93adbbb}{InvalidType} =  0x00
+ \}
+\item 
+enum \hyperlink{_m_i_d_i_8h_315ccd12c0a15c11eca5cc4acdb6397d}{kThruFilterMode} \{ \hyperlink{_m_i_d_i_8h_315ccd12c0a15c11eca5cc4acdb6397dd8a892b94d3a94ea861543c085ae782b}{Off} =  0, 
+\hyperlink{_m_i_d_i_8h_315ccd12c0a15c11eca5cc4acdb6397d8b7c5cd8bd8eb51ee6d3fd0eac584679}{Full} =  1, 
+\hyperlink{_m_i_d_i_8h_315ccd12c0a15c11eca5cc4acdb6397dad2a3e2910e3ceaaa71318bc8063ca75}{SameChannel} =  2, 
+\hyperlink{_m_i_d_i_8h_315ccd12c0a15c11eca5cc4acdb6397d406da1028bd17ebf898e4e5ac3a19a4e}{DifferentChannel} =  3
+ \}
+\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+\hyperlink{class_m_i_d_i___class}{MIDI\_\-Class} \hyperlink{_m_i_d_i_8h_0b7683bb48d0f678b6e11414dfc260ee}{MIDI}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+MIDI Library for the Arduino Version 3.0. 
+
+Project MIDI Library \begin{Desc}
+\item[Author:]François Best \end{Desc}
+\begin{Desc}
+\item[Date:]24/02/11 License GPL Forty Seven Effects - 2011 \end{Desc}
+
+
+Definition in file \hyperlink{_m_i_d_i_8h-source}{MIDI.h}.
+
+\subsection{Define Documentation}
+\hypertarget{_m_i_d_i_8h_e0728ada9c5d497b9432867689a6a4dd}{
+\index{MIDI.h@{MIDI.h}!COMPATIBILITY\_\-V25@{COMPATIBILITY\_\-V25}}
+\index{COMPATIBILITY\_\-V25@{COMPATIBILITY\_\-V25}!MIDI.h@{MIDI.h}}
+\subsubsection[{COMPATIBILITY\_\-V25}]{\setlength{\rightskip}{0pt plus 5cm}\#define COMPATIBILITY\_\-V25~1}}
+\label{_m_i_d_i_8h_e0728ada9c5d497b9432867689a6a4dd}
+
+
+
+
+Definition at line 30 of file MIDI.h.\hypertarget{_m_i_d_i_8h_db53af4af7a0951e281f84a3df9accb8}{
+\index{MIDI.h@{MIDI.h}!COMPFLAG\_\-MIDI\_\-IN@{COMPFLAG\_\-MIDI\_\-IN}}
+\index{COMPFLAG\_\-MIDI\_\-IN@{COMPFLAG\_\-MIDI\_\-IN}!MIDI.h@{MIDI.h}}
+\subsubsection[{COMPFLAG\_\-MIDI\_\-IN}]{\setlength{\rightskip}{0pt plus 5cm}\#define COMPFLAG\_\-MIDI\_\-IN~1}}
+\label{_m_i_d_i_8h_db53af4af7a0951e281f84a3df9accb8}
+
+
+
+
+Definition at line 33 of file MIDI.h.\hypertarget{_m_i_d_i_8h_fddfda8939443e97b04712d62d2b3984}{
+\index{MIDI.h@{MIDI.h}!COMPFLAG\_\-MIDI\_\-OUT@{COMPFLAG\_\-MIDI\_\-OUT}}
+\index{COMPFLAG\_\-MIDI\_\-OUT@{COMPFLAG\_\-MIDI\_\-OUT}!MIDI.h@{MIDI.h}}
+\subsubsection[{COMPFLAG\_\-MIDI\_\-OUT}]{\setlength{\rightskip}{0pt plus 5cm}\#define COMPFLAG\_\-MIDI\_\-OUT~1}}
+\label{_m_i_d_i_8h_fddfda8939443e97b04712d62d2b3984}
+
+
+
+
+Definition at line 34 of file MIDI.h.\hypertarget{_m_i_d_i_8h_2d027d77d9e279583f292ce854cbafb2}{
+\index{MIDI.h@{MIDI.h}!MIDI\_\-BAUDRATE@{MIDI\_\-BAUDRATE}}
+\index{MIDI\_\-BAUDRATE@{MIDI\_\-BAUDRATE}!MIDI.h@{MIDI.h}}
+\subsubsection[{MIDI\_\-BAUDRATE}]{\setlength{\rightskip}{0pt plus 5cm}\#define MIDI\_\-BAUDRATE~31250}}
+\label{_m_i_d_i_8h_2d027d77d9e279583f292ce854cbafb2}
+
+
+
+
+Definition at line 56 of file MIDI.h.\hypertarget{_m_i_d_i_8h_e5f8dc293002c1090c3551ba40f6aee8}{
+\index{MIDI.h@{MIDI.h}!MIDI\_\-CHANNEL\_\-OFF@{MIDI\_\-CHANNEL\_\-OFF}}
+\index{MIDI\_\-CHANNEL\_\-OFF@{MIDI\_\-CHANNEL\_\-OFF}!MIDI.h@{MIDI.h}}
+\subsubsection[{MIDI\_\-CHANNEL\_\-OFF}]{\setlength{\rightskip}{0pt plus 5cm}\#define MIDI\_\-CHANNEL\_\-OFF~17}}
+\label{_m_i_d_i_8h_e5f8dc293002c1090c3551ba40f6aee8}
+
+
+
+
+Definition at line 60 of file MIDI.h.\hypertarget{_m_i_d_i_8h_c60eaa68c9d91e29fca58a6128c3d1cf}{
+\index{MIDI.h@{MIDI.h}!MIDI\_\-CHANNEL\_\-OMNI@{MIDI\_\-CHANNEL\_\-OMNI}}
+\index{MIDI\_\-CHANNEL\_\-OMNI@{MIDI\_\-CHANNEL\_\-OMNI}!MIDI.h@{MIDI.h}}
+\subsubsection[{MIDI\_\-CHANNEL\_\-OMNI}]{\setlength{\rightskip}{0pt plus 5cm}\#define MIDI\_\-CHANNEL\_\-OMNI~0}}
+\label{_m_i_d_i_8h_c60eaa68c9d91e29fca58a6128c3d1cf}
+
+
+
+
+Definition at line 59 of file MIDI.h.\hypertarget{_m_i_d_i_8h_e919960c6f3448f1a78739108d2bda4e}{
+\index{MIDI.h@{MIDI.h}!MIDI\_\-SYSEX\_\-ARRAY\_\-SIZE@{MIDI\_\-SYSEX\_\-ARRAY\_\-SIZE}}
+\index{MIDI\_\-SYSEX\_\-ARRAY\_\-SIZE@{MIDI\_\-SYSEX\_\-ARRAY\_\-SIZE}!MIDI.h@{MIDI.h}}
+\subsubsection[{MIDI\_\-SYSEX\_\-ARRAY\_\-SIZE}]{\setlength{\rightskip}{0pt plus 5cm}\#define MIDI\_\-SYSEX\_\-ARRAY\_\-SIZE~255}}
+\label{_m_i_d_i_8h_e919960c6f3448f1a78739108d2bda4e}
+
+
+
+
+Definition at line 62 of file MIDI.h.\hypertarget{_m_i_d_i_8h_8c1f90f3cbcf8dddaaf29fad5ca72e9b}{
+\index{MIDI.h@{MIDI.h}!USE\_\-RUNNING\_\-STATUS@{USE\_\-RUNNING\_\-STATUS}}
+\index{USE\_\-RUNNING\_\-STATUS@{USE\_\-RUNNING\_\-STATUS}!MIDI.h@{MIDI.h}}
+\subsubsection[{USE\_\-RUNNING\_\-STATUS}]{\setlength{\rightskip}{0pt plus 5cm}\#define USE\_\-RUNNING\_\-STATUS~1}}
+\label{_m_i_d_i_8h_8c1f90f3cbcf8dddaaf29fad5ca72e9b}
+
+
+
+
+Definition at line 44 of file MIDI.h.\hypertarget{_m_i_d_i_8h_9f150c76e70559513c7f5d20496c8c9c}{
+\index{MIDI.h@{MIDI.h}!USE\_\-SERIAL\_\-PORT@{USE\_\-SERIAL\_\-PORT}}
+\index{USE\_\-SERIAL\_\-PORT@{USE\_\-SERIAL\_\-PORT}!MIDI.h@{MIDI.h}}
+\subsubsection[{USE\_\-SERIAL\_\-PORT}]{\setlength{\rightskip}{0pt plus 5cm}\#define USE\_\-SERIAL\_\-PORT~Serial1}}
+\label{_m_i_d_i_8h_9f150c76e70559513c7f5d20496c8c9c}
+
+
+
+
+Definition at line 40 of file MIDI.h.
+
+\subsection{Typedef Documentation}
+\hypertarget{_m_i_d_i_8h_b8ef12fab634c171394422d0ee8baf94}{
+\index{MIDI.h@{MIDI.h}!byte@{byte}}
+\index{byte@{byte}!MIDI.h@{MIDI.h}}
+\subsubsection[{byte}]{\setlength{\rightskip}{0pt plus 5cm}typedef uint8\_\-t {\bf byte}}}
+\label{_m_i_d_i_8h_b8ef12fab634c171394422d0ee8baf94}
+
+
+Type definition for practical use (because \char`\"{}unsigned char\char`\"{} is a bit long to write.. ) 
+
+Definition at line 65 of file MIDI.h.
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{_m_i_d_i_8h_802feb46a169642d43b2415d02390545}{
+\index{MIDI.h@{MIDI.h}!kMIDIType@{kMIDIType}}
+\index{kMIDIType@{kMIDIType}!MIDI.h@{MIDI.h}}
+\subsubsection[{kMIDIType}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf kMIDIType}}}
+\label{_m_i_d_i_8h_802feb46a169642d43b2415d02390545}
+
+
+Enumeration of MIDI types \begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{NoteOff@{NoteOff}!MIDI.h@{MIDI.h}}\index{MIDI.h@{MIDI.h}!NoteOff@{NoteOff}}\item[{\em 
+\hypertarget{_m_i_d_i_8h_802feb46a169642d43b2415d02390545d37718bd43a7976d5e89e8ee7819e5fd}{
+NoteOff}
+\label{_m_i_d_i_8h_802feb46a169642d43b2415d02390545d37718bd43a7976d5e89e8ee7819e5fd}
+}]\index{NoteOn@{NoteOn}!MIDI.h@{MIDI.h}}\index{MIDI.h@{MIDI.h}!NoteOn@{NoteOn}}\item[{\em 
+\hypertarget{_m_i_d_i_8h_802feb46a169642d43b2415d02390545ffc541f2571710265776574dd39fc319}{
+NoteOn}
+\label{_m_i_d_i_8h_802feb46a169642d43b2415d02390545ffc541f2571710265776574dd39fc319}
+}]\index{AfterTouchPoly@{AfterTouchPoly}!MIDI.h@{MIDI.h}}\index{MIDI.h@{MIDI.h}!AfterTouchPoly@{AfterTouchPoly}}\item[{\em 
+\hypertarget{_m_i_d_i_8h_802feb46a169642d43b2415d02390545ef074e16a30d86e0a42b873dd6843cd2}{
+AfterTouchPoly}
+\label{_m_i_d_i_8h_802feb46a169642d43b2415d02390545ef074e16a30d86e0a42b873dd6843cd2}
+}]\index{ControlChange@{ControlChange}!MIDI.h@{MIDI.h}}\index{MIDI.h@{MIDI.h}!ControlChange@{ControlChange}}\item[{\em 
+\hypertarget{_m_i_d_i_8h_802feb46a169642d43b2415d02390545c150258f2e69ec1e535cee9df3f5bb1e}{
+ControlChange}
+\label{_m_i_d_i_8h_802feb46a169642d43b2415d02390545c150258f2e69ec1e535cee9df3f5bb1e}
+}]\index{ProgramChange@{ProgramChange}!MIDI.h@{MIDI.h}}\index{MIDI.h@{MIDI.h}!ProgramChange@{ProgramChange}}\item[{\em 
+\hypertarget{_m_i_d_i_8h_802feb46a169642d43b2415d023905451b28117f91e20a90f91f6a6886023186}{
+ProgramChange}
+\label{_m_i_d_i_8h_802feb46a169642d43b2415d023905451b28117f91e20a90f91f6a6886023186}
+}]\index{AfterTouchChannel@{AfterTouchChannel}!MIDI.h@{MIDI.h}}\index{MIDI.h@{MIDI.h}!AfterTouchChannel@{AfterTouchChannel}}\item[{\em 
+\hypertarget{_m_i_d_i_8h_802feb46a169642d43b2415d02390545040c84d19624cf23edd3f54c2d432793}{
+AfterTouchChannel}
+\label{_m_i_d_i_8h_802feb46a169642d43b2415d02390545040c84d19624cf23edd3f54c2d432793}
+}]\index{PitchBend@{PitchBend}!MIDI.h@{MIDI.h}}\index{MIDI.h@{MIDI.h}!PitchBend@{PitchBend}}\item[{\em 
+\hypertarget{_m_i_d_i_8h_802feb46a169642d43b2415d02390545d0eed86b1606c722a91a0cb9e71305e6}{
+PitchBend}
+\label{_m_i_d_i_8h_802feb46a169642d43b2415d02390545d0eed86b1606c722a91a0cb9e71305e6}
+}]\index{SystemExclusive@{SystemExclusive}!MIDI.h@{MIDI.h}}\index{MIDI.h@{MIDI.h}!SystemExclusive@{SystemExclusive}}\item[{\em 
+\hypertarget{_m_i_d_i_8h_802feb46a169642d43b2415d0239054576531e9669a6601f0c84b1702314e5e3}{
+SystemExclusive}
+\label{_m_i_d_i_8h_802feb46a169642d43b2415d0239054576531e9669a6601f0c84b1702314e5e3}
+}]\index{TimeCodeQuarterFrame@{TimeCodeQuarterFrame}!MIDI.h@{MIDI.h}}\index{MIDI.h@{MIDI.h}!TimeCodeQuarterFrame@{TimeCodeQuarterFrame}}\item[{\em 
+\hypertarget{_m_i_d_i_8h_802feb46a169642d43b2415d02390545faf9b74dab5ac5ae3542d66515c2afcf}{
+TimeCodeQuarterFrame}
+\label{_m_i_d_i_8h_802feb46a169642d43b2415d02390545faf9b74dab5ac5ae3542d66515c2afcf}
+}]\index{SongPosition@{SongPosition}!MIDI.h@{MIDI.h}}\index{MIDI.h@{MIDI.h}!SongPosition@{SongPosition}}\item[{\em 
+\hypertarget{_m_i_d_i_8h_802feb46a169642d43b2415d02390545996450aa045571374864c2dc9404e944}{
+SongPosition}
+\label{_m_i_d_i_8h_802feb46a169642d43b2415d02390545996450aa045571374864c2dc9404e944}
+}]\index{SongSelect@{SongSelect}!MIDI.h@{MIDI.h}}\index{MIDI.h@{MIDI.h}!SongSelect@{SongSelect}}\item[{\em 
+\hypertarget{_m_i_d_i_8h_802feb46a169642d43b2415d02390545d512934b4f2e896bee884c262f64acb1}{
+SongSelect}
+\label{_m_i_d_i_8h_802feb46a169642d43b2415d02390545d512934b4f2e896bee884c262f64acb1}
+}]\index{TuneRequest@{TuneRequest}!MIDI.h@{MIDI.h}}\index{MIDI.h@{MIDI.h}!TuneRequest@{TuneRequest}}\item[{\em 
+\hypertarget{_m_i_d_i_8h_802feb46a169642d43b2415d02390545afec2fa09eaa764d5d629798a8f8429c}{
+TuneRequest}
+\label{_m_i_d_i_8h_802feb46a169642d43b2415d02390545afec2fa09eaa764d5d629798a8f8429c}
+}]\index{Clock@{Clock}!MIDI.h@{MIDI.h}}\index{MIDI.h@{MIDI.h}!Clock@{Clock}}\item[{\em 
+\hypertarget{_m_i_d_i_8h_802feb46a169642d43b2415d023905454b52d61cc39d9427f91d3b8606319e2c}{
+Clock}
+\label{_m_i_d_i_8h_802feb46a169642d43b2415d023905454b52d61cc39d9427f91d3b8606319e2c}
+}]\index{Start@{Start}!MIDI.h@{MIDI.h}}\index{MIDI.h@{MIDI.h}!Start@{Start}}\item[{\em 
+\hypertarget{_m_i_d_i_8h_802feb46a169642d43b2415d02390545bd5f9c956752ce4dc707b4624b3a36f7}{
+Start}
+\label{_m_i_d_i_8h_802feb46a169642d43b2415d02390545bd5f9c956752ce4dc707b4624b3a36f7}
+}]\index{Continue@{Continue}!MIDI.h@{MIDI.h}}\index{MIDI.h@{MIDI.h}!Continue@{Continue}}\item[{\em 
+\hypertarget{_m_i_d_i_8h_802feb46a169642d43b2415d0239054545a66636ecd16b869e4aadd738813583}{
+Continue}
+\label{_m_i_d_i_8h_802feb46a169642d43b2415d0239054545a66636ecd16b869e4aadd738813583}
+}]\index{Stop@{Stop}!MIDI.h@{MIDI.h}}\index{MIDI.h@{MIDI.h}!Stop@{Stop}}\item[{\em 
+\hypertarget{_m_i_d_i_8h_802feb46a169642d43b2415d02390545f98d707eb4ed173ccfdbaf4eaa87100d}{
+Stop}
+\label{_m_i_d_i_8h_802feb46a169642d43b2415d02390545f98d707eb4ed173ccfdbaf4eaa87100d}
+}]\index{ActiveSensing@{ActiveSensing}!MIDI.h@{MIDI.h}}\index{MIDI.h@{MIDI.h}!ActiveSensing@{ActiveSensing}}\item[{\em 
+\hypertarget{_m_i_d_i_8h_802feb46a169642d43b2415d0239054555c1135b4b41d3cff4b7832b81352823}{
+ActiveSensing}
+\label{_m_i_d_i_8h_802feb46a169642d43b2415d0239054555c1135b4b41d3cff4b7832b81352823}
+}]\index{SystemReset@{SystemReset}!MIDI.h@{MIDI.h}}\index{MIDI.h@{MIDI.h}!SystemReset@{SystemReset}}\item[{\em 
+\hypertarget{_m_i_d_i_8h_802feb46a169642d43b2415d023905457256ac4658ec7af1eb4705b83266a603}{
+SystemReset}
+\label{_m_i_d_i_8h_802feb46a169642d43b2415d023905457256ac4658ec7af1eb4705b83266a603}
+}]\index{InvalidType@{InvalidType}!MIDI.h@{MIDI.h}}\index{MIDI.h@{MIDI.h}!InvalidType@{InvalidType}}\item[{\em 
+\hypertarget{_m_i_d_i_8h_802feb46a169642d43b2415d02390545791c6b5c1e5f30ce6c7b0937e93adbbb}{
+InvalidType}
+\label{_m_i_d_i_8h_802feb46a169642d43b2415d02390545791c6b5c1e5f30ce6c7b0937e93adbbb}
+}]\end{description}
+\end{Desc}
+
+
+
+Definition at line 68 of file MIDI.h.
+
+\begin{Code}\begin{verbatim}68                {
+69         NoteOff               = 0x80,   // Note Off
+70         NoteOn                = 0x90,   // Note On
+71         AfterTouchPoly        = 0xA0,   // Polyphonic AfterTouch
+72         ControlChange         = 0xB0,   // Control Change / Channel Mode
+73         ProgramChange         = 0xC0,   // Program Change
+74         AfterTouchChannel     = 0xD0,   // Channel (monophonic) AfterTouch
+75         PitchBend             = 0xE0,   // Pitch Bend
+76         SystemExclusive       = 0xF0,   // System Exclusive
+77         TimeCodeQuarterFrame  = 0xF1,   // System Common - MIDI Time Code Quarter Frame
+78         SongPosition          = 0xF2,   // System Common - Song Position Pointer
+79         SongSelect            = 0xF3,   // System Common - Song Select
+80         TuneRequest           = 0xF6,   // System Common - Tune Request
+81         Clock                 = 0xF8,   // System Real Time - Timing Clock
+82         Start                 = 0xFA,   // System Real Time - Start
+83         Continue              = 0xFB,   // System Real Time - Continue
+84         Stop                  = 0xFC,   // System Real Time - Stop
+85         ActiveSensing         = 0xFE,   // System Real Time - Active Sensing
+86         SystemReset           = 0xFF,   // System Real Time - System Reset
+87         InvalidType           = 0x00    // For notifying errors
+88 };
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{_m_i_d_i_8h_315ccd12c0a15c11eca5cc4acdb6397d}{
+\index{MIDI.h@{MIDI.h}!kThruFilterMode@{kThruFilterMode}}
+\index{kThruFilterMode@{kThruFilterMode}!MIDI.h@{MIDI.h}}
+\subsubsection[{kThruFilterMode}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf kThruFilterMode}}}
+\label{_m_i_d_i_8h_315ccd12c0a15c11eca5cc4acdb6397d}
+
+
+Enumeration of Thru filter modes \begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{Off@{Off}!MIDI.h@{MIDI.h}}\index{MIDI.h@{MIDI.h}!Off@{Off}}\item[{\em 
+\hypertarget{_m_i_d_i_8h_315ccd12c0a15c11eca5cc4acdb6397dd8a892b94d3a94ea861543c085ae782b}{
+Off}
+\label{_m_i_d_i_8h_315ccd12c0a15c11eca5cc4acdb6397dd8a892b94d3a94ea861543c085ae782b}
+}]\index{Full@{Full}!MIDI.h@{MIDI.h}}\index{MIDI.h@{MIDI.h}!Full@{Full}}\item[{\em 
+\hypertarget{_m_i_d_i_8h_315ccd12c0a15c11eca5cc4acdb6397d8b7c5cd8bd8eb51ee6d3fd0eac584679}{
+Full}
+\label{_m_i_d_i_8h_315ccd12c0a15c11eca5cc4acdb6397d8b7c5cd8bd8eb51ee6d3fd0eac584679}
+}]\index{SameChannel@{SameChannel}!MIDI.h@{MIDI.h}}\index{MIDI.h@{MIDI.h}!SameChannel@{SameChannel}}\item[{\em 
+\hypertarget{_m_i_d_i_8h_315ccd12c0a15c11eca5cc4acdb6397dad2a3e2910e3ceaaa71318bc8063ca75}{
+SameChannel}
+\label{_m_i_d_i_8h_315ccd12c0a15c11eca5cc4acdb6397dad2a3e2910e3ceaaa71318bc8063ca75}
+}]\index{DifferentChannel@{DifferentChannel}!MIDI.h@{MIDI.h}}\index{MIDI.h@{MIDI.h}!DifferentChannel@{DifferentChannel}}\item[{\em 
+\hypertarget{_m_i_d_i_8h_315ccd12c0a15c11eca5cc4acdb6397d406da1028bd17ebf898e4e5ac3a19a4e}{
+DifferentChannel}
+\label{_m_i_d_i_8h_315ccd12c0a15c11eca5cc4acdb6397d406da1028bd17ebf898e4e5ac3a19a4e}
+}]\end{description}
+\end{Desc}
+
+
+
+Definition at line 91 of file MIDI.h.
+
+\begin{Code}\begin{verbatim}91                      {
+92         Off                   = 0,  // Thru disabled (nothing passes through).
+93         Full                  = 1,  // Fully enabled Thru (every incoming message is sent back).
+94         SameChannel           = 2,  // Only the messages on the Input Channel will be sent back.
+95         DifferentChannel      = 3   // All the messages but the ones on the Input Channel will be sent back.
+96 };
+\end{verbatim}
+\end{Code}
+
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{_m_i_d_i_8h_0b7683bb48d0f678b6e11414dfc260ee}{
+\index{MIDI.h@{MIDI.h}!MIDI@{MIDI}}
+\index{MIDI@{MIDI}!MIDI.h@{MIDI.h}}
+\subsubsection[{MIDI}]{\setlength{\rightskip}{0pt plus 5cm}{\bf MIDI\_\-Class} {\bf MIDI}}}
+\label{_m_i_d_i_8h_0b7683bb48d0f678b6e11414dfc260ee}
+
+
+Main instance (the class comes pre-instantiated). 
+
+Definition at line 18 of file MIDI.cpp.

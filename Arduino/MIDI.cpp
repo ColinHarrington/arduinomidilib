@@ -73,7 +73,7 @@ void MIDI_Class::begin(const byte inChannel) {
 
 #if COMPFLAG_MIDI_OUT
 
-/*! Internal method, don't care about this one.. \n It generates a status byte with given channel and type. */
+// Private method for generating a status byte from channel and type
 const byte MIDI_Class::genstatus(const kMIDIType inType,const byte inChannel) {
 	return ((byte)inType | ((inChannel-1) & 0x0F));
 }
@@ -165,6 +165,7 @@ void MIDI_Class::sendPolyPressure(byte NoteNumber,byte Pressure,byte Channel) { 
 void MIDI_Class::sendAfterTouch(byte Pressure,byte Channel) { send(AfterTouchChannel,Pressure,0,Channel); }
 /*! Send a Pitch Bend message using an integer value.
  \param PitchValue	The amount of bend to send (in an integer format), between 0 (maximum downwards bend) and 16383 (max upwards bend), center value is 8192.
+ \param Channel		The channel to send the message on (1 to 16).
  */
 void MIDI_Class::sendPitchBend(unsigned int PitchValue,byte Channel) {
 
@@ -173,6 +174,7 @@ void MIDI_Class::sendPitchBend(unsigned int PitchValue,byte Channel) {
 }
 /*! Send a Pitch Bend message using a floating point value.
  \param PitchValue	The amount of bend to send (in a floating point format), between -1 (maximum downwards bend) and +1 (max upwards bend), center value is 0.
+ \param Channel		The channel to send the message on (1 to 16).
  */
 void MIDI_Class::sendPitchBend(double PitchValue,byte Channel) {
 
@@ -184,8 +186,9 @@ void MIDI_Class::sendPitchBend(double PitchValue,byte Channel) {
 
 /*! Generate and send a System Exclusive frame.
  \param length	The size of the array to send
- \param array	The byte array containing the data to send\n
- Don't put F0 or F7 (start & stop SysEx codes), but put destination device's Manufacturer's ID and/or Device ID in the buffer array.
+ \param array	The byte array containing the data to send
+ \param ArrayContainsBoundaries  When set to 'true', 0xF0 & 0xF7 bytes (start & stop SysEx) will NOT be sent (and therefore must be included in the array).\
+ default value is set to 'false' for compatibility with previous versions of the library.
  */
 void MIDI_Class::sendSysEx(byte length, byte * array, bool ArrayContainsBoundaries) {
 	if (!ArrayContainsBoundaries) USE_SERIAL_PORT.write(0xF0);
@@ -193,8 +196,13 @@ void MIDI_Class::sendSysEx(byte length, byte * array, bool ArrayContainsBoundari
 	if (!ArrayContainsBoundaries) USE_SERIAL_PORT.write(0xF7);
 }
 
+/*! Send a Tune Request message. When a MIDI unit receives this message, it should tune its oscillators (if equipped with any) */
 void MIDI_Class::sendTuneRequest() { sendRealTime(TuneRequest); }
 
+/*! Send a MIDI Time Code Quarter Frame. See MIDI Specification for more information.
+	\param TypeNibble	MTC type
+	\param ValuesNibble	MTC data
+ */
 void MIDI_Class::sendTimeCodeQuarterFrame(byte TypeNibble, byte ValuesNibble) {
 	
 	byte data = ( ((TypeNibble & 0x07) << 4) | (ValuesNibble & 0x0F) );
@@ -202,6 +210,9 @@ void MIDI_Class::sendTimeCodeQuarterFrame(byte TypeNibble, byte ValuesNibble) {
 	
 }
 
+/*! Send a MIDI Time Code Quarter Frame. See MIDI Specification for more information.
+	\param data	 if you want to encode directly the nibbles in your program, you can send the byte here.
+ */
 void MIDI_Class::sendTimeCodeQuarterFrame(byte data) {
 	
 	USE_SERIAL_PORT.write(TimeCodeQuarterFrame);
@@ -209,6 +220,9 @@ void MIDI_Class::sendTimeCodeQuarterFrame(byte data) {
 	
 }
 
+/*! Send a Song Position Pointer message.
+	\param Beats	The number of beats since the start of the song.
+ */
 void MIDI_Class::sendSongPosition(unsigned int Beats) {
 	
 	USE_SERIAL_PORT.write(SongPosition);
@@ -217,6 +231,7 @@ void MIDI_Class::sendSongPosition(unsigned int Beats) {
 	
 }
 
+/*! Send a Song Select message */
 void MIDI_Class::sendSongSelect(byte SongNumber) {
 	
 	USE_SERIAL_PORT.write(SongSelect);
@@ -224,7 +239,9 @@ void MIDI_Class::sendSongSelect(byte SongNumber) {
 	
 }
 
-/*! Send a Real Time (one byte) message. \n You can also send Tune Request with this method. */
+/*! Send a Real Time (one byte) message. \n You can also send a Tune Request with this method.
+	\param Type The available Real Time types are: Start, Stop, Continue, Clock, ActiveSensing and SystemReset. 
+ */
 void MIDI_Class::sendRealTime(kMIDIType Type) {
 	switch (Type) {
 		case TuneRequest: // Not really real-time, but one byte anyway.
@@ -260,23 +277,14 @@ bool MIDI_Class::read() {
 /*! Reading/thru-ing method, the same as read() with a given input channel to read on. */
 bool MIDI_Class::read(const byte inChannel) {
 	
-	/*
-	 Algorithme:
-	 - Lancer le parseur pour tenter de récupérer un message.
-	 - Si on a quelque chose, le passer au filter pour vérifier s'il nous est destiné, et pour le renvoyer au thru.
-	
-	 */
-	
-	
 	if (inChannel >= MIDI_CHANNEL_OFF) return false; // MIDI Input disabled.
-	
 	
 	if (parse(inChannel)) return filter(inChannel);
 	else return false;
 	
 }
 
-
+// Private method: MIDI parser
 bool MIDI_Class::parse(byte inChannel) { 
 	
 	// If the buffer is full -> Don't Panic! Call the Vogons to destroy it.
@@ -564,10 +572,10 @@ bool MIDI_Class::check() { return mMessage.valid; }
 
 // Setters
 /*! Set the value for the input MIDI channel 
- \param channel the channel value. Valid values are 1 to 16, 
+ \param Channel the channel value. Valid values are 1 to 16, 
  MIDI_CHANNEL_OMNI if you want to listen to all channels, and MIDI_CHANNEL_OFF to disable MIDI input.
  */
-void MIDI_Class::setInputChannel(const byte inChannel) { mInputChannel = inChannel; }
+void MIDI_Class::setInputChannel(const byte Channel) { mInputChannel = inChannel; }
 
 
 #endif // COMPFLAG_MIDI_IN
@@ -609,7 +617,7 @@ void MIDI_Class::turnThruOff() {
 	mThruFilterMode = Off;
 }
 
-/*! This method is called upon reception of a message and checks if the message stored is destinated to be read (matching channel).
+/* This method is called upon reception of a message and checks if the message stored is destinated to be read (matching channel).
 	It also takes care of Thru filtering and sending.
  */
 bool MIDI_Class::filter(byte inChannel) {

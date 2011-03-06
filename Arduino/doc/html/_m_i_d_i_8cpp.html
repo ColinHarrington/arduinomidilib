@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Arduino MIDI Library: /Users/franky/DIY/Arduino/Arduino.app/Contents/Resources/Java/hardware/libraries/MIDI/MIDI.cpp File Reference</title>
+<title>Arduino MIDI Library: /Users/franky/Documents/Dropbox/SVN/embedded/toolbox/libraries/MIDILib/trunk/Arduino/MIDI.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css">
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -11,16 +11,6 @@
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
-    <li>
-      <form action="search.php" method="get">
-        <table cellspacing="0" cellpadding="0" border="0">
-          <tr>
-            <td><label>&nbsp;<u>S</u>earch&nbsp;for&nbsp;</label></td>
-            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
-          </tr>
-        </table>
-      </form>
-    </li>
     </ul>
   </div>
   <div class="tabs">
@@ -31,60 +21,29 @@
   </div>
 </div>
 <div class="contents">
-<h1>/Users/franky/DIY/Arduino/Arduino.app/Contents/Resources/Java/hardware/libraries/MIDI/MIDI.cpp File Reference</h1><code>#include &lt;inttypes.h&gt;</code><br>
+<h1>/Users/franky/Documents/Dropbox/SVN/embedded/toolbox/libraries/MIDILib/trunk/Arduino/MIDI.cpp File Reference</h1>MIDI Library for the Arduino.  
+<a href="#_details">More...</a>
+<p>
+<code>#include &quot;<a class="el" href="_m_i_d_i_8h-source.html">MIDI.h</a>&quot;</code><br>
 <code>#include &lt;stdlib.h&gt;</code><br>
 <code>#include &quot;WConstants.h&quot;</code><br>
-<code>#include &quot;<a class="el" href="_m_i_d_i_8h-source.html">MIDI.h</a>&quot;</code><br>
 <code>#include &quot;HardwareSerial.h&quot;</code><br>
 
 <p>
 <a href="_m_i_d_i_8cpp-source.html">Go to the source code of this file.</a><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
-<tr><td colspan="2"><br><h2>Defines</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_i_d_i_8cpp.html#f7cb12b462b4594bd759d1b4e241ec4c">UART</a>&nbsp;&nbsp;&nbsp;Serial</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_i_d_i_8cpp.html#f2816c782b3ee9ee9a3418ca18609b19">Channel_Refused</a>&nbsp;&nbsp;&nbsp;0</td></tr>
-
 <tr><td colspan="2"><br><h2>Variables</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_m_i_d_i___class.html">MIDI_Class</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_i_d_i_8cpp.html#0b7683bb48d0f678b6e11414dfc260ee">MIDI</a></td></tr>
 
 </table>
-<hr><h2>Define Documentation</h2>
-<a class="anchor" name="f2816c782b3ee9ee9a3418ca18609b19"></a><!-- doxytag: member="MIDI.cpp::Channel_Refused" ref="f2816c782b3ee9ee9a3418ca18609b19" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define Channel_Refused&nbsp;&nbsp;&nbsp;0          </td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
+<hr><a name="_details"></a><h2>Detailed Description</h2>
+MIDI Library for the Arduino. 
 <p>
+Project MIDI Library <dl class="version" compact><dt><b>Version:</b></dt><dd>3.0 </dd></dl>
+<dl class="author" compact><dt><b>Author:</b></dt><dd>François Best </dd></dl>
+<dl class="date" compact><dt><b>Date:</b></dt><dd>24/02/11  GPL Forty Seven Effects - 2011 </dd></dl>
 
-<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00027">27</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
-
-</div>
-</div><p>
-<a class="anchor" name="f7cb12b462b4594bd759d1b4e241ec4c"></a><!-- doxytag: member="MIDI.cpp::UART" ref="f7cb12b462b4594bd759d1b4e241ec4c" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define UART&nbsp;&nbsp;&nbsp;Serial          </td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-to ATmega 644p users: this library uses the serial port #1 for MIDI.<p>
-to any other ATmega users: this library uses the serial port #0 for MIDI (if you have more than one UART). 
-<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00016">16</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
-
-</div>
-</div><p>
+<p>Definition in file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
 <hr><h2>Variable Documentation</h2>
 <a class="anchor" name="0b7683bb48d0f678b6e11414dfc260ee"></a><!-- doxytag: member="MIDI.cpp::MIDI" ref="0b7683bb48d0f678b6e11414dfc260ee" args="" -->
 <div class="memitem">
@@ -99,12 +58,12 @@ to any other ATmega users: this library uses the serial port #0 for MIDI (if you
 
 <p>
 Main instance (the class comes pre-instantiated). 
-<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00030">30</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00018">18</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
 
 </div>
 </div><p>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Mon Dec 14 14:45:29 2009 for Arduino MIDI Library by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sun Mar 6 15:48:00 2011 for Arduino MIDI Library by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
 </body>

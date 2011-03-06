@@ -1,0 +1,808 @@
+\hypertarget{class_m_i_d_i___class}{
+\section{MIDI\_\-Class Class Reference}
+\label{class_m_i_d_i___class}\index{MIDI\_\-Class@{MIDI\_\-Class}}
+}
+{\tt \#include $<$MIDI.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{class_m_i_d_i___class_5e395e8f748ec53a0818bffd0e2f176f}{MIDI\_\-Class} ()
+\item 
+\hyperlink{class_m_i_d_i___class_cea4c4db7092ba5cb7c147a3fb215e07}{$\sim$MIDI\_\-Class} ()
+\item 
+void \hyperlink{class_m_i_d_i___class_c34d163205bb01ac5e03df7e64facebe}{begin} (const \hyperlink{_m_i_d_i_8h_b8ef12fab634c171394422d0ee8baf94}{byte} inChannel=1)
+\item 
+void \hyperlink{class_m_i_d_i___class_9664e523b35d8b42749e7bc3ba888943}{sendNoteOn} (\hyperlink{_m_i_d_i_8h_b8ef12fab634c171394422d0ee8baf94}{byte} NoteNumber, \hyperlink{_m_i_d_i_8h_b8ef12fab634c171394422d0ee8baf94}{byte} Velocity, \hyperlink{_m_i_d_i_8h_b8ef12fab634c171394422d0ee8baf94}{byte} Channel)
+\item 
+void \hyperlink{class_m_i_d_i___class_381e1e8019aae5f872279cda496f964c}{sendNoteOff} (\hyperlink{_m_i_d_i_8h_b8ef12fab634c171394422d0ee8baf94}{byte} NoteNumber, \hyperlink{_m_i_d_i_8h_b8ef12fab634c171394422d0ee8baf94}{byte} Velocity, \hyperlink{_m_i_d_i_8h_b8ef12fab634c171394422d0ee8baf94}{byte} Channel)
+\item 
+void \hyperlink{class_m_i_d_i___class_803c2652837c09775d115354672bf69d}{sendProgramChange} (\hyperlink{_m_i_d_i_8h_b8ef12fab634c171394422d0ee8baf94}{byte} ProgramNumber, \hyperlink{_m_i_d_i_8h_b8ef12fab634c171394422d0ee8baf94}{byte} Channel)
+\item 
+void \hyperlink{class_m_i_d_i___class_3a80e9bd2cfdb619be91d80e8f3b7825}{sendControlChange} (\hyperlink{_m_i_d_i_8h_b8ef12fab634c171394422d0ee8baf94}{byte} ControlNumber, \hyperlink{_m_i_d_i_8h_b8ef12fab634c171394422d0ee8baf94}{byte} ControlValue, \hyperlink{_m_i_d_i_8h_b8ef12fab634c171394422d0ee8baf94}{byte} Channel)
+\item 
+void \hyperlink{class_m_i_d_i___class_45dcd73e3b8a107334e687750514f8b5}{sendPitchBend} (unsigned int PitchValue, \hyperlink{_m_i_d_i_8h_b8ef12fab634c171394422d0ee8baf94}{byte} Channel)
+\item 
+void \hyperlink{class_m_i_d_i___class_16800e955a1d0d66e6bda6727588b1eb}{sendPitchBend} (double PitchValue, \hyperlink{_m_i_d_i_8h_b8ef12fab634c171394422d0ee8baf94}{byte} Channel)
+\item 
+void \hyperlink{class_m_i_d_i___class_028ec5a49dccf9c28b00e11e7a3d1d05}{sendPolyPressure} (\hyperlink{_m_i_d_i_8h_b8ef12fab634c171394422d0ee8baf94}{byte} NoteNumber, \hyperlink{_m_i_d_i_8h_b8ef12fab634c171394422d0ee8baf94}{byte} Pressure, \hyperlink{_m_i_d_i_8h_b8ef12fab634c171394422d0ee8baf94}{byte} Channel)
+\item 
+void \hyperlink{class_m_i_d_i___class_73b57f656a80166b98dc1b57ea9a56dc}{sendAfterTouch} (\hyperlink{_m_i_d_i_8h_b8ef12fab634c171394422d0ee8baf94}{byte} Pressure, \hyperlink{_m_i_d_i_8h_b8ef12fab634c171394422d0ee8baf94}{byte} Channel)
+\item 
+void \hyperlink{class_m_i_d_i___class_73a36cacf4e77ca081979f9c7066ee28}{sendSysEx} (\hyperlink{_m_i_d_i_8h_b8ef12fab634c171394422d0ee8baf94}{byte} length, \hyperlink{_m_i_d_i_8h_b8ef12fab634c171394422d0ee8baf94}{byte} $\ast$array, bool ArrayContainsBoundaries=false)
+\item 
+void \hyperlink{class_m_i_d_i___class_d9b1bd53330652f0360a0a6ed80b5b9d}{sendTimeCodeQuarterFrame} (\hyperlink{_m_i_d_i_8h_b8ef12fab634c171394422d0ee8baf94}{byte} TypeNibble, \hyperlink{_m_i_d_i_8h_b8ef12fab634c171394422d0ee8baf94}{byte} ValuesNibble)
+\item 
+void \hyperlink{class_m_i_d_i___class_1f720df72c5253d85d1d547d09357ea0}{sendTimeCodeQuarterFrame} (\hyperlink{_m_i_d_i_8h_b8ef12fab634c171394422d0ee8baf94}{byte} data)
+\item 
+void \hyperlink{class_m_i_d_i___class_0b9a6c3437016b8dc9678d6c43ca693f}{sendSongPosition} (unsigned int Beats)
+\item 
+void \hyperlink{class_m_i_d_i___class_0b957074192d439e8e69af9eef6fab77}{sendSongSelect} (\hyperlink{_m_i_d_i_8h_b8ef12fab634c171394422d0ee8baf94}{byte} SongNumber)
+\item 
+void \hyperlink{class_m_i_d_i___class_9d9a51ca4a888c7c4c0d91a9e678c751}{sendTuneRequest} ()
+\item 
+void \hyperlink{class_m_i_d_i___class_e9086dd31c41ea773925a069dbd0080b}{sendRealTime} (\hyperlink{_m_i_d_i_8h_802feb46a169642d43b2415d02390545}{kMIDIType} Type)
+\item 
+bool \hyperlink{class_m_i_d_i___class_8e7be5af3a32cb91f596dbb8d8c297bf}{read} ()
+\item 
+bool \hyperlink{class_m_i_d_i___class_581b5b973cd81e5aa9d6b91c220342b7}{read} (const \hyperlink{_m_i_d_i_8h_b8ef12fab634c171394422d0ee8baf94}{byte} Channel)
+\item 
+\hyperlink{_m_i_d_i_8h_802feb46a169642d43b2415d02390545}{kMIDIType} \hyperlink{class_m_i_d_i___class_b43d8c2b277cf2408865b4f63111080b}{getType} ()
+\item 
+\hyperlink{_m_i_d_i_8h_b8ef12fab634c171394422d0ee8baf94}{byte} \hyperlink{class_m_i_d_i___class_6b7ac8309663b69decfd1bd2925fcbef}{getChannel} ()
+\item 
+\hyperlink{_m_i_d_i_8h_b8ef12fab634c171394422d0ee8baf94}{byte} \hyperlink{class_m_i_d_i___class_a64038c767252e358decc469ba99d4e3}{getData1} ()
+\item 
+\hyperlink{_m_i_d_i_8h_b8ef12fab634c171394422d0ee8baf94}{byte} \hyperlink{class_m_i_d_i___class_688f4f57142f1a7dfd1a79bf43e1b74d}{getData2} ()
+\item 
+\hyperlink{_m_i_d_i_8h_b8ef12fab634c171394422d0ee8baf94}{byte} $\ast$ \hyperlink{class_m_i_d_i___class_4540dd7720884677b50cff2f23d1982a}{getSysExArray} ()
+\item 
+bool \hyperlink{class_m_i_d_i___class_d5f7a96c5bb338946a0be1d243877155}{check} ()
+\item 
+\hyperlink{_m_i_d_i_8h_b8ef12fab634c171394422d0ee8baf94}{byte} \hyperlink{class_m_i_d_i___class_f05fb3c0857d2f50d6c21414eb18ef53}{getInputChannel} ()
+\item 
+void \hyperlink{class_m_i_d_i___class_35a66d47ba598c7ebbee7fbf654dafe8}{setInputChannel} (const \hyperlink{_m_i_d_i_8h_b8ef12fab634c171394422d0ee8baf94}{byte} Channel)
+\item 
+\hyperlink{_m_i_d_i_8h_315ccd12c0a15c11eca5cc4acdb6397d}{kThruFilterMode} \hyperlink{class_m_i_d_i___class_8952fc757cefe98856ba7cfc811bbbb3}{getFilterMode} ()
+\item 
+bool \hyperlink{class_m_i_d_i___class_76c71d380b9221207062aa669a9c0005}{getThruState} ()
+\item 
+void \hyperlink{class_m_i_d_i___class_7fd1759eda22c18f6122b4231e1f0a6d}{turnThruOn} (\hyperlink{_m_i_d_i_8h_315ccd12c0a15c11eca5cc4acdb6397d}{kThruFilterMode} inThruFilterMode=Full)
+\item 
+void \hyperlink{class_m_i_d_i___class_c1999ba222737523008d6f1c579d6816}{turnThruOff} ()
+\item 
+void \hyperlink{class_m_i_d_i___class_be50e76aa11dc7127bd28659c181ab77}{setThruFilterMode} (const \hyperlink{_m_i_d_i_8h_b8ef12fab634c171394422d0ee8baf94}{byte} inThruFilterMode)
+\item 
+void \hyperlink{class_m_i_d_i___class_33d450180a10a36bef08e68015c4d922}{setThruFilterMode} (const \hyperlink{_m_i_d_i_8h_315ccd12c0a15c11eca5cc4acdb6397d}{kThruFilterMode} inThruFilterMode)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+The main class for MIDI handling. See member descriptions to know how to use it, or check out the examples supplied with the library. 
+
+Definition at line 120 of file MIDI.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_m_i_d_i___class_5e395e8f748ec53a0818bffd0e2f176f}{
+\index{MIDI\_\-Class@{MIDI\_\-Class}!MIDI\_\-Class@{MIDI\_\-Class}}
+\index{MIDI\_\-Class@{MIDI\_\-Class}!MIDI_Class@{MIDI\_\-Class}}
+\subsubsection[{MIDI\_\-Class}]{\setlength{\rightskip}{0pt plus 5cm}MIDI\_\-Class::MIDI\_\-Class ()}}
+\label{class_m_i_d_i___class_5e395e8f748ec53a0818bffd0e2f176f}
+
+
+Default constructor for \hyperlink{class_m_i_d_i___class}{MIDI\_\-Class}. 
+
+Definition at line 22 of file MIDI.cpp.
+
+\begin{Code}\begin{verbatim}22 { }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_m_i_d_i___class_cea4c4db7092ba5cb7c147a3fb215e07}{
+\index{MIDI\_\-Class@{MIDI\_\-Class}!$\sim$MIDI\_\-Class@{$\sim$MIDI\_\-Class}}
+\index{$\sim$MIDI\_\-Class@{$\sim$MIDI\_\-Class}!MIDI_Class@{MIDI\_\-Class}}
+\subsubsection[{$\sim$MIDI\_\-Class}]{\setlength{\rightskip}{0pt plus 5cm}MIDI\_\-Class::$\sim$MIDI\_\-Class ()}}
+\label{class_m_i_d_i___class_cea4c4db7092ba5cb7c147a3fb215e07}
+
+
+Default destructor for \hyperlink{class_m_i_d_i___class}{MIDI\_\-Class}.\par
+ This is not really useful for the Arduino, as it is never called... 
+
+Definition at line 26 of file MIDI.cpp.
+
+\begin{Code}\begin{verbatim}26 { }
+\end{verbatim}
+\end{Code}
+
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_m_i_d_i___class_c34d163205bb01ac5e03df7e64facebe}{
+\index{MIDI\_\-Class@{MIDI\_\-Class}!begin@{begin}}
+\index{begin@{begin}!MIDI_Class@{MIDI\_\-Class}}
+\subsubsection[{begin}]{\setlength{\rightskip}{0pt plus 5cm}void MIDI\_\-Class::begin (const {\bf byte} {\em inChannel} = {\tt 1})}}
+\label{class_m_i_d_i___class_c34d163205bb01ac5e03df7e64facebe}
+
+
+Call the begin method in the setup() function of the Arduino. All parameters are set to their default values:\begin{itemize}
+\item Input channel set to 1 if no value is specified\item Full thru mirroring \end{itemize}
+
+
+Definition at line 34 of file MIDI.cpp.
+
+\begin{Code}\begin{verbatim}34                                            {
+35         
+36         // Initialise the Serial port
+37         USE_SERIAL_PORT.begin(MIDI_BAUDRATE);
+38         
+39         
+40 #if COMPFLAG_MIDI_OUT
+41         
+42 #if USE_RUNNING_STATUS
+43         mRunningStatus_TX = InvalidType;
+44 #endif // USE_RUNNING_STATUS
+45         
+46 #endif // COMPFLAG_MIDI_OUT
+47         
+48         
+49 #if COMPFLAG_MIDI_IN
+50         
+51         mInputChannel = inChannel;
+52         mRunningStatus_RX = InvalidType;
+53         mPendingMessageIndex = 0;
+54         mPendingMessageExpectedLenght = 0;
+55         
+56         mMessage.valid = false;
+57         mMessage.type = InvalidType;
+58         mMessage.channel = 0;
+59         mMessage.data1 = 0;
+60         mMessage.data2 = 0;
+61         
+62 #endif // COMPFLAG_MIDI_IN
+63         
+64         
+65 #if (COMPFLAG_MIDI_IN && COMPFLAG_MIDI_OUT) // Thru
+66         
+67         mThruFilterMode = Full;
+68         
+69 #endif // Thru
+70         
+71 }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_m_i_d_i___class_d5f7a96c5bb338946a0be1d243877155}{
+\index{MIDI\_\-Class@{MIDI\_\-Class}!check@{check}}
+\index{check@{check}!MIDI_Class@{MIDI\_\-Class}}
+\subsubsection[{check}]{\setlength{\rightskip}{0pt plus 5cm}bool MIDI\_\-Class::check ()}}
+\label{class_m_i_d_i___class_d5f7a96c5bb338946a0be1d243877155}
+
+
+Check if a valid message is stored in the structure. 
+
+Definition at line 571 of file MIDI.cpp.
+
+\begin{Code}\begin{verbatim}571 { return mMessage.valid; }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_m_i_d_i___class_6b7ac8309663b69decfd1bd2925fcbef}{
+\index{MIDI\_\-Class@{MIDI\_\-Class}!getChannel@{getChannel}}
+\index{getChannel@{getChannel}!MIDI_Class@{MIDI\_\-Class}}
+\subsubsection[{getChannel}]{\setlength{\rightskip}{0pt plus 5cm}{\bf byte} MIDI\_\-Class::getChannel ()}}
+\label{class_m_i_d_i___class_6b7ac8309663b69decfd1bd2925fcbef}
+
+
+Getter method: access to the channel of the message stored in the structure. 
+
+Definition at line 563 of file MIDI.cpp.
+
+\begin{Code}\begin{verbatim}563 { return mMessage.channel; }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_m_i_d_i___class_a64038c767252e358decc469ba99d4e3}{
+\index{MIDI\_\-Class@{MIDI\_\-Class}!getData1@{getData1}}
+\index{getData1@{getData1}!MIDI_Class@{MIDI\_\-Class}}
+\subsubsection[{getData1}]{\setlength{\rightskip}{0pt plus 5cm}{\bf byte} MIDI\_\-Class::getData1 ()}}
+\label{class_m_i_d_i___class_a64038c767252e358decc469ba99d4e3}
+
+
+Getter method: access to the first data byte of the message stored in the structure. \par
+ If the message is SysEx, the length of the array is stocked there. 
+
+Definition at line 565 of file MIDI.cpp.
+
+\begin{Code}\begin{verbatim}565 { return mMessage.data1; }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_m_i_d_i___class_688f4f57142f1a7dfd1a79bf43e1b74d}{
+\index{MIDI\_\-Class@{MIDI\_\-Class}!getData2@{getData2}}
+\index{getData2@{getData2}!MIDI_Class@{MIDI\_\-Class}}
+\subsubsection[{getData2}]{\setlength{\rightskip}{0pt plus 5cm}{\bf byte} MIDI\_\-Class::getData2 ()}}
+\label{class_m_i_d_i___class_688f4f57142f1a7dfd1a79bf43e1b74d}
+
+
+Getter method: access to the second data byte of the message stored in the structure. 
+
+Definition at line 567 of file MIDI.cpp.
+
+\begin{Code}\begin{verbatim}567 { return mMessage.data2; }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_m_i_d_i___class_8952fc757cefe98856ba7cfc811bbbb3}{
+\index{MIDI\_\-Class@{MIDI\_\-Class}!getFilterMode@{getFilterMode}}
+\index{getFilterMode@{getFilterMode}!MIDI_Class@{MIDI\_\-Class}}
+\subsubsection[{getFilterMode}]{\setlength{\rightskip}{0pt plus 5cm}{\bf kThruFilterMode} MIDI\_\-Class::getFilterMode ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_m_i_d_i___class_8952fc757cefe98856ba7cfc811bbbb3}
+
+
+
+
+Definition at line 226 of file MIDI.h.
+
+\begin{Code}\begin{verbatim}226 { return mThruFilterMode; }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_m_i_d_i___class_f05fb3c0857d2f50d6c21414eb18ef53}{
+\index{MIDI\_\-Class@{MIDI\_\-Class}!getInputChannel@{getInputChannel}}
+\index{getInputChannel@{getInputChannel}!MIDI_Class@{MIDI\_\-Class}}
+\subsubsection[{getInputChannel}]{\setlength{\rightskip}{0pt plus 5cm}{\bf byte} MIDI\_\-Class::getInputChannel ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_m_i_d_i___class_f05fb3c0857d2f50d6c21414eb18ef53}
+
+
+
+
+Definition at line 186 of file MIDI.h.
+
+\begin{Code}\begin{verbatim}186 { return mInputChannel; }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_m_i_d_i___class_4540dd7720884677b50cff2f23d1982a}{
+\index{MIDI\_\-Class@{MIDI\_\-Class}!getSysExArray@{getSysExArray}}
+\index{getSysExArray@{getSysExArray}!MIDI_Class@{MIDI\_\-Class}}
+\subsubsection[{getSysExArray}]{\setlength{\rightskip}{0pt plus 5cm}{\bf byte} $\ast$ MIDI\_\-Class::getSysExArray ()}}
+\label{class_m_i_d_i___class_4540dd7720884677b50cff2f23d1982a}
+
+
+Getter method: access to the System Exclusive byte array. Array length is stocked in Data1. 
+
+Definition at line 569 of file MIDI.cpp.
+
+\begin{Code}\begin{verbatim}569 { return mMessage.sysex_array; }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_m_i_d_i___class_76c71d380b9221207062aa669a9c0005}{
+\index{MIDI\_\-Class@{MIDI\_\-Class}!getThruState@{getThruState}}
+\index{getThruState@{getThruState}!MIDI_Class@{MIDI\_\-Class}}
+\subsubsection[{getThruState}]{\setlength{\rightskip}{0pt plus 5cm}bool MIDI\_\-Class::getThruState ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_m_i_d_i___class_76c71d380b9221207062aa669a9c0005}
+
+
+
+
+Definition at line 227 of file MIDI.h.
+
+\begin{Code}\begin{verbatim}227 { return mThruActivated; }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_m_i_d_i___class_b43d8c2b277cf2408865b4f63111080b}{
+\index{MIDI\_\-Class@{MIDI\_\-Class}!getType@{getType}}
+\index{getType@{getType}!MIDI_Class@{MIDI\_\-Class}}
+\subsubsection[{getType}]{\setlength{\rightskip}{0pt plus 5cm}{\bf kMIDIType} MIDI\_\-Class::getType ()}}
+\label{class_m_i_d_i___class_b43d8c2b277cf2408865b4f63111080b}
+
+
+Getter method: access to the message type stored in the structure. \par
+ Returns an enumerated type. 
+
+Definition at line 561 of file MIDI.cpp.
+
+\begin{Code}\begin{verbatim}561 { return mMessage.type; }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_m_i_d_i___class_581b5b973cd81e5aa9d6b91c220342b7}{
+\index{MIDI\_\-Class@{MIDI\_\-Class}!read@{read}}
+\index{read@{read}!MIDI_Class@{MIDI\_\-Class}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}bool MIDI\_\-Class::read (const {\bf byte} {\em inChannel})}}
+\label{class_m_i_d_i___class_581b5b973cd81e5aa9d6b91c220342b7}
+
+
+Reading/thru-ing method, the same as \hyperlink{class_m_i_d_i___class_8e7be5af3a32cb91f596dbb8d8c297bf}{read()} with a given input channel to read on. 
+
+Definition at line 278 of file MIDI.cpp.
+
+\begin{Code}\begin{verbatim}278                                           {
+279         
+280         if (inChannel >= MIDI_CHANNEL_OFF) return false; // MIDI Input disabled.
+281         
+282         if (parse(inChannel)) return filter(inChannel);
+283         else return false;
+284         
+285 }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_m_i_d_i___class_8e7be5af3a32cb91f596dbb8d8c297bf}{
+\index{MIDI\_\-Class@{MIDI\_\-Class}!read@{read}}
+\index{read@{read}!MIDI_Class@{MIDI\_\-Class}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}bool MIDI\_\-Class::read ()}}
+\label{class_m_i_d_i___class_8e7be5af3a32cb91f596dbb8d8c297bf}
+
+
+Read a MIDI message from the serial port using the main input channel (see \hyperlink{class_m_i_d_i___class_35a66d47ba598c7ebbee7fbf654dafe8}{setInputChannel()} for reference). \par
+ Returned value: true if any valid message has been stored in the structure, false if not. A valid message is a message that matches the input channel. \par
+\par
+ If the Thru is enabled and the messages matches the filter, it is sent back on the MIDI output. 
+
+Definition at line 273 of file MIDI.cpp.
+
+\begin{Code}\begin{verbatim}273                       {
+274         return read(mInputChannel);
+275 }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_m_i_d_i___class_73b57f656a80166b98dc1b57ea9a56dc}{
+\index{MIDI\_\-Class@{MIDI\_\-Class}!sendAfterTouch@{sendAfterTouch}}
+\index{sendAfterTouch@{sendAfterTouch}!MIDI_Class@{MIDI\_\-Class}}
+\subsubsection[{sendAfterTouch}]{\setlength{\rightskip}{0pt plus 5cm}void MIDI\_\-Class::sendAfterTouch ({\bf byte} {\em Pressure}, \/  {\bf byte} {\em Channel})}}
+\label{class_m_i_d_i___class_73b57f656a80166b98dc1b57ea9a56dc}
+
+
+Monophonic AfterTouch 
+
+Definition at line 165 of file MIDI.cpp.
+
+\begin{Code}\begin{verbatim}165 { send(AfterTouchChannel,Pressure,0,Channel); }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_m_i_d_i___class_3a80e9bd2cfdb619be91d80e8f3b7825}{
+\index{MIDI\_\-Class@{MIDI\_\-Class}!sendControlChange@{sendControlChange}}
+\index{sendControlChange@{sendControlChange}!MIDI_Class@{MIDI\_\-Class}}
+\subsubsection[{sendControlChange}]{\setlength{\rightskip}{0pt plus 5cm}void MIDI\_\-Class::sendControlChange ({\bf byte} {\em ControlNumber}, \/  {\bf byte} {\em ControlValue}, \/  {\bf byte} {\em Channel})}}
+\label{class_m_i_d_i___class_3a80e9bd2cfdb619be91d80e8f3b7825}
+
+
+Send a Control Change message 
+
+Definition at line 161 of file MIDI.cpp.
+
+\begin{Code}\begin{verbatim}161 { send(ControlChange,ControlNumber,ControlValue,Channel); }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_m_i_d_i___class_381e1e8019aae5f872279cda496f964c}{
+\index{MIDI\_\-Class@{MIDI\_\-Class}!sendNoteOff@{sendNoteOff}}
+\index{sendNoteOff@{sendNoteOff}!MIDI_Class@{MIDI\_\-Class}}
+\subsubsection[{sendNoteOff}]{\setlength{\rightskip}{0pt plus 5cm}void MIDI\_\-Class::sendNoteOff ({\bf byte} {\em NoteNumber}, \/  {\bf byte} {\em Velocity}, \/  {\bf byte} {\em Channel})}}
+\label{class_m_i_d_i___class_381e1e8019aae5f872279cda496f964c}
+
+
+Send a Note Off message (a real Note Off, not a Note On with null velocity) 
+
+Definition at line 157 of file MIDI.cpp.
+
+\begin{Code}\begin{verbatim}157 { send(NoteOff,NoteNumber,Velocity,Channel); }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_m_i_d_i___class_9664e523b35d8b42749e7bc3ba888943}{
+\index{MIDI\_\-Class@{MIDI\_\-Class}!sendNoteOn@{sendNoteOn}}
+\index{sendNoteOn@{sendNoteOn}!MIDI_Class@{MIDI\_\-Class}}
+\subsubsection[{sendNoteOn}]{\setlength{\rightskip}{0pt plus 5cm}void MIDI\_\-Class::sendNoteOn ({\bf byte} {\em NoteNumber}, \/  {\bf byte} {\em Velocity}, \/  {\bf byte} {\em Channel})}}
+\label{class_m_i_d_i___class_9664e523b35d8b42749e7bc3ba888943}
+
+
+Send a Note On message 
+
+Definition at line 155 of file MIDI.cpp.
+
+\begin{Code}\begin{verbatim}155 { send(NoteOn,NoteNumber,Velocity,Channel); }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_m_i_d_i___class_16800e955a1d0d66e6bda6727588b1eb}{
+\index{MIDI\_\-Class@{MIDI\_\-Class}!sendPitchBend@{sendPitchBend}}
+\index{sendPitchBend@{sendPitchBend}!MIDI_Class@{MIDI\_\-Class}}
+\subsubsection[{sendPitchBend}]{\setlength{\rightskip}{0pt plus 5cm}void MIDI\_\-Class::sendPitchBend (double {\em PitchValue}, \/  {\bf byte} {\em Channel})}}
+\label{class_m_i_d_i___class_16800e955a1d0d66e6bda6727588b1eb}
+
+
+Send a Pitch Bend message using a floating point value. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em PitchValue}]The amount of bend to send (in a floating point format), between -1 (maximum downwards bend) and +1 (max upwards bend), center value is 0. \item[{\em Channel}]The channel to send the message on (1 to 16). \end{description}
+\end{Desc}
+
+
+Definition at line 179 of file MIDI.cpp.
+
+\begin{Code}\begin{verbatim}179                                                              {
+180 
+181         unsigned int pitchval = (PitchValue+1.f)*8192;
+182         if (pitchval > 16383) pitchval = 16383;         // overflow protection
+183         sendPitchBend(pitchval,Channel);
+184         
+185 }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_m_i_d_i___class_45dcd73e3b8a107334e687750514f8b5}{
+\index{MIDI\_\-Class@{MIDI\_\-Class}!sendPitchBend@{sendPitchBend}}
+\index{sendPitchBend@{sendPitchBend}!MIDI_Class@{MIDI\_\-Class}}
+\subsubsection[{sendPitchBend}]{\setlength{\rightskip}{0pt plus 5cm}void MIDI\_\-Class::sendPitchBend (unsigned int {\em PitchValue}, \/  {\bf byte} {\em Channel})}}
+\label{class_m_i_d_i___class_45dcd73e3b8a107334e687750514f8b5}
+
+
+Send a Pitch Bend message using an integer value. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em PitchValue}]The amount of bend to send (in an integer format), between 0 (maximum downwards bend) and 16383 (max upwards bend), center value is 8192. \item[{\em Channel}]The channel to send the message on (1 to 16). \end{description}
+\end{Desc}
+
+
+Definition at line 170 of file MIDI.cpp.
+
+\begin{Code}\begin{verbatim}170                                                                    {
+171 
+172         send(PitchBend,(PitchValue & 0x7F),(PitchValue >> 7) & 0x7F,Channel);
+173         
+174 }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_m_i_d_i___class_028ec5a49dccf9c28b00e11e7a3d1d05}{
+\index{MIDI\_\-Class@{MIDI\_\-Class}!sendPolyPressure@{sendPolyPressure}}
+\index{sendPolyPressure@{sendPolyPressure}!MIDI_Class@{MIDI\_\-Class}}
+\subsubsection[{sendPolyPressure}]{\setlength{\rightskip}{0pt plus 5cm}void MIDI\_\-Class::sendPolyPressure ({\bf byte} {\em NoteNumber}, \/  {\bf byte} {\em Pressure}, \/  {\bf byte} {\em Channel})}}
+\label{class_m_i_d_i___class_028ec5a49dccf9c28b00e11e7a3d1d05}
+
+
+Polyphonic AfterTouch (carries the information of pressure of the given key/note) 
+
+Definition at line 163 of file MIDI.cpp.
+
+\begin{Code}\begin{verbatim}163 { send(AfterTouchPoly,NoteNumber,Pressure,Channel); }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_m_i_d_i___class_803c2652837c09775d115354672bf69d}{
+\index{MIDI\_\-Class@{MIDI\_\-Class}!sendProgramChange@{sendProgramChange}}
+\index{sendProgramChange@{sendProgramChange}!MIDI_Class@{MIDI\_\-Class}}
+\subsubsection[{sendProgramChange}]{\setlength{\rightskip}{0pt plus 5cm}void MIDI\_\-Class::sendProgramChange ({\bf byte} {\em ProgramNumber}, \/  {\bf byte} {\em Channel})}}
+\label{class_m_i_d_i___class_803c2652837c09775d115354672bf69d}
+
+
+Send a Program Change message 
+
+Definition at line 159 of file MIDI.cpp.
+
+\begin{Code}\begin{verbatim}159 { send(ProgramChange,ProgramNumber,0,Channel); }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_m_i_d_i___class_e9086dd31c41ea773925a069dbd0080b}{
+\index{MIDI\_\-Class@{MIDI\_\-Class}!sendRealTime@{sendRealTime}}
+\index{sendRealTime@{sendRealTime}!MIDI_Class@{MIDI\_\-Class}}
+\subsubsection[{sendRealTime}]{\setlength{\rightskip}{0pt plus 5cm}void MIDI\_\-Class::sendRealTime ({\bf kMIDIType} {\em Type})}}
+\label{class_m_i_d_i___class_e9086dd31c41ea773925a069dbd0080b}
+
+
+Send a Real Time (one byte) message. \par
+ You can also send a Tune Request with this method. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em Type}]The available Real Time types are: Start, Stop, Continue, Clock, ActiveSensing and SystemReset. \end{description}
+\end{Desc}
+
+
+Definition at line 245 of file MIDI.cpp.
+
+\begin{Code}\begin{verbatim}245                                             {
+246         switch (Type) {
+247                 case TuneRequest: // Not really real-time, but one byte anyway.
+248                 case Clock:
+249                 case Start:
+250                 case Stop:      
+251                 case Continue:
+252                 case ActiveSensing:
+253                 case SystemReset:
+254                         USE_SERIAL_PORT.write((byte)Type);
+255                         break;
+256                 default:
+257                         // Invalid Real Time marker
+258                         break;
+259         }
+260 }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_m_i_d_i___class_0b9a6c3437016b8dc9678d6c43ca693f}{
+\index{MIDI\_\-Class@{MIDI\_\-Class}!sendSongPosition@{sendSongPosition}}
+\index{sendSongPosition@{sendSongPosition}!MIDI_Class@{MIDI\_\-Class}}
+\subsubsection[{sendSongPosition}]{\setlength{\rightskip}{0pt plus 5cm}void MIDI\_\-Class::sendSongPosition (unsigned int {\em Beats})}}
+\label{class_m_i_d_i___class_0b9a6c3437016b8dc9678d6c43ca693f}
+
+
+Send a Song Position Pointer message. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em Beats}]The number of beats since the start of the song. \end{description}
+\end{Desc}
+
+
+Definition at line 226 of file MIDI.cpp.
+
+\begin{Code}\begin{verbatim}226                                                     {
+227         
+228         USE_SERIAL_PORT.write(SongPosition);
+229         USE_SERIAL_PORT.write(Beats & 0x7F);
+230         USE_SERIAL_PORT.write((Beats >> 7) & 0x7F);
+231         
+232 }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_m_i_d_i___class_0b957074192d439e8e69af9eef6fab77}{
+\index{MIDI\_\-Class@{MIDI\_\-Class}!sendSongSelect@{sendSongSelect}}
+\index{sendSongSelect@{sendSongSelect}!MIDI_Class@{MIDI\_\-Class}}
+\subsubsection[{sendSongSelect}]{\setlength{\rightskip}{0pt plus 5cm}void MIDI\_\-Class::sendSongSelect ({\bf byte} {\em SongNumber})}}
+\label{class_m_i_d_i___class_0b957074192d439e8e69af9eef6fab77}
+
+
+Send a Song Select message 
+
+Definition at line 235 of file MIDI.cpp.
+
+\begin{Code}\begin{verbatim}235                                                {
+236         
+237         USE_SERIAL_PORT.write(SongSelect);
+238         USE_SERIAL_PORT.write(SongNumber & 0x7F);
+239         
+240 }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_m_i_d_i___class_73a36cacf4e77ca081979f9c7066ee28}{
+\index{MIDI\_\-Class@{MIDI\_\-Class}!sendSysEx@{sendSysEx}}
+\index{sendSysEx@{sendSysEx}!MIDI_Class@{MIDI\_\-Class}}
+\subsubsection[{sendSysEx}]{\setlength{\rightskip}{0pt plus 5cm}void MIDI\_\-Class::sendSysEx ({\bf byte} {\em length}, \/  {\bf byte} $\ast$ {\em array}, \/  bool {\em ArrayContainsBoundaries} = {\tt false})}}
+\label{class_m_i_d_i___class_73a36cacf4e77ca081979f9c7066ee28}
+
+
+Generate and send a System Exclusive frame. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em length}]The size of the array to send \item[{\em array}]The byte array containing the data to send \item[{\em ArrayContainsBoundaries}]When set to 'true', 0xF0 \& 0xF7 bytes (start \& stop SysEx) will NOT be sent (and therefore must be included in the array).$\backslash$ default value is set to 'false' for compatibility with previous versions of the library. \end{description}
+\end{Desc}
+
+
+Definition at line 193 of file MIDI.cpp.
+
+\begin{Code}\begin{verbatim}193                                                                                   {
+194         if (!ArrayContainsBoundaries) USE_SERIAL_PORT.write(0xF0);
+195         for (byte i=0;i<length;i++) USE_SERIAL_PORT.write(array[i]);
+196         if (!ArrayContainsBoundaries) USE_SERIAL_PORT.write(0xF7);
+197 }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_m_i_d_i___class_1f720df72c5253d85d1d547d09357ea0}{
+\index{MIDI\_\-Class@{MIDI\_\-Class}!sendTimeCodeQuarterFrame@{sendTimeCodeQuarterFrame}}
+\index{sendTimeCodeQuarterFrame@{sendTimeCodeQuarterFrame}!MIDI_Class@{MIDI\_\-Class}}
+\subsubsection[{sendTimeCodeQuarterFrame}]{\setlength{\rightskip}{0pt plus 5cm}void MIDI\_\-Class::sendTimeCodeQuarterFrame ({\bf byte} {\em data})}}
+\label{class_m_i_d_i___class_1f720df72c5253d85d1d547d09357ea0}
+
+
+Send a MIDI Time Code Quarter Frame. See MIDI Specification for more information. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em data}]if you want to encode directly the nibbles in your program, you can send the byte here. \end{description}
+\end{Desc}
+
+
+Definition at line 216 of file MIDI.cpp.
+
+\begin{Code}\begin{verbatim}216                                                    {
+217         
+218         USE_SERIAL_PORT.write(TimeCodeQuarterFrame);
+219         USE_SERIAL_PORT.write(data);
+220         
+221 }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_m_i_d_i___class_d9b1bd53330652f0360a0a6ed80b5b9d}{
+\index{MIDI\_\-Class@{MIDI\_\-Class}!sendTimeCodeQuarterFrame@{sendTimeCodeQuarterFrame}}
+\index{sendTimeCodeQuarterFrame@{sendTimeCodeQuarterFrame}!MIDI_Class@{MIDI\_\-Class}}
+\subsubsection[{sendTimeCodeQuarterFrame}]{\setlength{\rightskip}{0pt plus 5cm}void MIDI\_\-Class::sendTimeCodeQuarterFrame ({\bf byte} {\em TypeNibble}, \/  {\bf byte} {\em ValuesNibble})}}
+\label{class_m_i_d_i___class_d9b1bd53330652f0360a0a6ed80b5b9d}
+
+
+Send a MIDI Time Code Quarter Frame. See MIDI Specification for more information. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em TypeNibble}]MTC type \item[{\em ValuesNibble}]MTC data \end{description}
+\end{Desc}
+
+
+Definition at line 206 of file MIDI.cpp.
+
+\begin{Code}\begin{verbatim}206                                                                             {
+207         
+208         byte data = ( ((TypeNibble & 0x07) << 4) | (ValuesNibble & 0x0F) );
+209         sendTimeCodeQuarterFrame(data);
+210         
+211 }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_m_i_d_i___class_9d9a51ca4a888c7c4c0d91a9e678c751}{
+\index{MIDI\_\-Class@{MIDI\_\-Class}!sendTuneRequest@{sendTuneRequest}}
+\index{sendTuneRequest@{sendTuneRequest}!MIDI_Class@{MIDI\_\-Class}}
+\subsubsection[{sendTuneRequest}]{\setlength{\rightskip}{0pt plus 5cm}void MIDI\_\-Class::sendTuneRequest ()}}
+\label{class_m_i_d_i___class_9d9a51ca4a888c7c4c0d91a9e678c751}
+
+
+Send a Tune Request message. When a MIDI unit receives this message, it should tune its oscillators (if equipped with any) 
+
+Definition at line 200 of file MIDI.cpp.
+
+\begin{Code}\begin{verbatim}200 { sendRealTime(TuneRequest); }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_m_i_d_i___class_35a66d47ba598c7ebbee7fbf654dafe8}{
+\index{MIDI\_\-Class@{MIDI\_\-Class}!setInputChannel@{setInputChannel}}
+\index{setInputChannel@{setInputChannel}!MIDI_Class@{MIDI\_\-Class}}
+\subsubsection[{setInputChannel}]{\setlength{\rightskip}{0pt plus 5cm}void MIDI\_\-Class::setInputChannel (const {\bf byte} {\em Channel})}}
+\label{class_m_i_d_i___class_35a66d47ba598c7ebbee7fbf654dafe8}
+
+
+Set the value for the input MIDI channel \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em Channel}]the channel value. Valid values are 1 to 16, MIDI\_\-CHANNEL\_\-OMNI if you want to listen to all channels, and MIDI\_\-CHANNEL\_\-OFF to disable MIDI input. \end{description}
+\end{Desc}
+
+
+Definition at line 578 of file MIDI.cpp.
+
+\begin{Code}\begin{verbatim}578 { mInputChannel = inChannel; }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_m_i_d_i___class_33d450180a10a36bef08e68015c4d922}{
+\index{MIDI\_\-Class@{MIDI\_\-Class}!setThruFilterMode@{setThruFilterMode}}
+\index{setThruFilterMode@{setThruFilterMode}!MIDI_Class@{MIDI\_\-Class}}
+\subsubsection[{setThruFilterMode}]{\setlength{\rightskip}{0pt plus 5cm}void MIDI\_\-Class::setThruFilterMode (const {\bf kThruFilterMode} {\em inThruFilterMode})}}
+\label{class_m_i_d_i___class_33d450180a10a36bef08e68015c4d922}
+
+
+Set the filter for thru mirroring \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em inThruFilterMode}]a filter mode See kThruFilterMode for detailed description. \end{description}
+\end{Desc}
+
+
+Definition at line 592 of file MIDI.cpp.
+
+\begin{Code}\begin{verbatim}592                                                                    { 
+593         mThruFilterMode = inThruFilterMode;
+594         if (mThruFilterMode != Off) mThruActivated = true;
+595         else mThruActivated = false;
+596 }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_m_i_d_i___class_be50e76aa11dc7127bd28659c181ab77}{
+\index{MIDI\_\-Class@{MIDI\_\-Class}!setThruFilterMode@{setThruFilterMode}}
+\index{setThruFilterMode@{setThruFilterMode}!MIDI_Class@{MIDI\_\-Class}}
+\subsubsection[{setThruFilterMode}]{\setlength{\rightskip}{0pt plus 5cm}void MIDI\_\-Class::setThruFilterMode (const {\bf byte} {\em inThruFilterMode})}}
+\label{class_m_i_d_i___class_be50e76aa11dc7127bd28659c181ab77}
+
+
+Set the filter for thru mirroring \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em inThruFilterMode}]a filter mode See kThruFilterMode for detailed description. \par
+ This method uses a byte parameter and is for compatibility only, please use kThruFilterMode for future programs. \end{description}
+\end{Desc}
+
+
+Definition at line 602 of file MIDI.cpp.
+
+\begin{Code}\begin{verbatim}602                                                         { 
+603         mThruFilterMode = (kThruFilterMode)inThruFilterMode;
+604         if (mThruFilterMode != Off) mThruActivated = true;
+605         else mThruActivated = false;
+606 }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_m_i_d_i___class_c1999ba222737523008d6f1c579d6816}{
+\index{MIDI\_\-Class@{MIDI\_\-Class}!turnThruOff@{turnThruOff}}
+\index{turnThruOff@{turnThruOff}!MIDI_Class@{MIDI\_\-Class}}
+\subsubsection[{turnThruOff}]{\setlength{\rightskip}{0pt plus 5cm}void MIDI\_\-Class::turnThruOff ()}}
+\label{class_m_i_d_i___class_c1999ba222737523008d6f1c579d6816}
+
+
+Setter method: turn message mirroring off. 
+
+Definition at line 615 of file MIDI.cpp.
+
+\begin{Code}\begin{verbatim}615                              {
+616         mThruActivated = false; 
+617         mThruFilterMode = Off;
+618 }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_m_i_d_i___class_7fd1759eda22c18f6122b4231e1f0a6d}{
+\index{MIDI\_\-Class@{MIDI\_\-Class}!turnThruOn@{turnThruOn}}
+\index{turnThruOn@{turnThruOn}!MIDI_Class@{MIDI\_\-Class}}
+\subsubsection[{turnThruOn}]{\setlength{\rightskip}{0pt plus 5cm}void MIDI\_\-Class::turnThruOn ({\bf kThruFilterMode} {\em inThruFilterMode} = {\tt Full})}}
+\label{class_m_i_d_i___class_7fd1759eda22c18f6122b4231e1f0a6d}
+
+
+Setter method: turn message mirroring on. 
+
+Definition at line 610 of file MIDI.cpp.
+
+\begin{Code}\begin{verbatim}610                                                             { 
+611         mThruActivated = true;
+612         mThruFilterMode = inThruFilterMode;
+613 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+/Users/franky/Documents/Dropbox/SVN/embedded/toolbox/libraries/MIDILib/trunk/Arduino/\hyperlink{_m_i_d_i_8h}{MIDI.h}\item 
+/Users/franky/Documents/Dropbox/SVN/embedded/toolbox/libraries/MIDILib/trunk/Arduino/\hyperlink{_m_i_d_i_8cpp}{MIDI.cpp}\end{CompactItemize}

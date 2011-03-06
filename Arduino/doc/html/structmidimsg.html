@@ -11,16 +11,6 @@
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
-    <li>
-      <form action="search.php" method="get">
-        <table cellspacing="0" cellpadding="0" border="0">
-          <tr>
-            <td><label>&nbsp;<u>S</u>earch&nbsp;for&nbsp;</label></td>
-            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
-          </tr>
-        </table>
-      </form>
-    </li>
     </ul>
   </div>
   <div class="tabs">
@@ -40,7 +30,7 @@
 <tr><td colspan="2"><br><h2>Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmidimsg.html#b0be990f365123787ec088f55ae6e46b">channel</a></td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmidimsg.html#85f821ca2361146feb5f5ae882fa75fc">type</a></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="_m_i_d_i_8h.html#802feb46a169642d43b2415d02390545">kMIDIType</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmidimsg.html#c2aa51d6154e6434f4426f925c6e5287">type</a></td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmidimsg.html#d0a225fbc23de9f631331d6aa52ab981">data1</a></td></tr>
 
@@ -48,13 +38,13 @@
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmidimsg.html#253df8383f977227e7d45ba488d98601">sysex_array</a> [MIDI_SYSEX_ARRAY_SIZE]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmidimsg.html#d8a40fb23c28dd1a44d6321586ac5b42">OK</a></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmidimsg.html#dd91395b86cb7ace5ba8c1654ab61d2e">valid</a></td></tr>
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-This structure contains decoded data of a MIDI message read from the serial port with read() or thru(). <br>
+The <a class="el" href="structmidimsg.html">midimsg</a> structure contains decoded data of a MIDI message read from the serial port with read() or thru(). <br>
  
-<p>Definition at line <a class="el" href="_m_i_d_i_8h-source.html#l00053">53</a> of file <a class="el" href="_m_i_d_i_8h-source.html">MIDI.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_i_d_i_8h-source.html#l00100">100</a> of file <a class="el" href="_m_i_d_i_8h-source.html">MIDI.h</a>.</p>
 <hr><h2>Member Data Documentation</h2>
 <a class="anchor" name="b0be990f365123787ec088f55ae6e46b"></a><!-- doxytag: member="midimsg::channel" ref="b0be990f365123787ec088f55ae6e46b" args="" -->
 <div class="memitem">
@@ -70,7 +60,7 @@ This structure contains decoded data of a MIDI message read from the serial port
 <p>
 The MIDI channel on which the message was recieved. <br>
  Value goes from 1 to 16. 
-<p>Definition at line <a class="el" href="_m_i_d_i_8h-source.html#l00055">55</a> of file <a class="el" href="_m_i_d_i_8h-source.html">MIDI.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_i_d_i_8h-source.html#l00102">102</a> of file <a class="el" href="_m_i_d_i_8h-source.html">MIDI.h</a>.</p>
 
 </div>
 </div><p>
@@ -89,7 +79,7 @@ The MIDI channel on which the message was recieved. <br>
 The first data byte.<br>
  Value goes from 0 to 127.<br>
  If the message is SysEx, this byte contains the array length. 
-<p>Definition at line <a class="el" href="_m_i_d_i_8h-source.html#l00059">59</a> of file <a class="el" href="_m_i_d_i_8h-source.html">MIDI.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_i_d_i_8h-source.html#l00106">106</a> of file <a class="el" href="_m_i_d_i_8h-source.html">MIDI.h</a>.</p>
 
 </div>
 </div><p>
@@ -107,24 +97,7 @@ The first data byte.<br>
 <p>
 The second data byte. If the message is only 2 bytes long, this one is null.<br>
  Value goes from 0 to 127. 
-<p>Definition at line <a class="el" href="_m_i_d_i_8h-source.html#l00061">61</a> of file <a class="el" href="_m_i_d_i_8h-source.html">MIDI.h</a>.</p>
-
-</div>
-</div><p>
-<a class="anchor" name="d8a40fb23c28dd1a44d6321586ac5b42"></a><!-- doxytag: member="midimsg::OK" ref="d8a40fb23c28dd1a44d6321586ac5b42" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool <a class="el" href="structmidimsg.html#d8a40fb23c28dd1a44d6321586ac5b42">midimsg::OK</a>          </td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-This boolean indicates if the message is valid or not. There is no channel consideration here, validity means the message respects the MIDI norm. 
-<p>Definition at line <a class="el" href="_m_i_d_i_8h-source.html#l00065">65</a> of file <a class="el" href="_m_i_d_i_8h-source.html">MIDI.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_i_d_i_8h-source.html#l00108">108</a> of file <a class="el" href="_m_i_d_i_8h-source.html">MIDI.h</a>.</p>
 
 </div>
 </div><p>
@@ -142,16 +115,16 @@ This boolean indicates if the message is valid or not. There is no channel consi
 <p>
 System Exclusive dedicated byte array. <br>
  Array length is stocked in data1. 
-<p>Definition at line <a class="el" href="_m_i_d_i_8h-source.html#l00063">63</a> of file <a class="el" href="_m_i_d_i_8h-source.html">MIDI.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_i_d_i_8h-source.html#l00110">110</a> of file <a class="el" href="_m_i_d_i_8h-source.html">MIDI.h</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="85f821ca2361146feb5f5ae882fa75fc"></a><!-- doxytag: member="midimsg::type" ref="85f821ca2361146feb5f5ae882fa75fc" args="" -->
+<a class="anchor" name="c2aa51d6154e6434f4426f925c6e5287"></a><!-- doxytag: member="midimsg::type" ref="c2aa51d6154e6434f4426f925c6e5287" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a> <a class="el" href="structmidimsg.html#85f821ca2361146feb5f5ae882fa75fc">midimsg::type</a>          </td>
+          <td class="memname"><a class="el" href="_m_i_d_i_8h.html#802feb46a169642d43b2415d02390545">kMIDIType</a> <a class="el" href="structmidimsg.html#c2aa51d6154e6434f4426f925c6e5287">midimsg::type</a>          </td>
         </tr>
       </table>
 </div>
@@ -159,14 +132,31 @@ System Exclusive dedicated byte array. <br>
 
 <p>
 The type of the message (see the define section for types reference) 
-<p>Definition at line <a class="el" href="_m_i_d_i_8h-source.html#l00057">57</a> of file <a class="el" href="_m_i_d_i_8h-source.html">MIDI.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_i_d_i_8h-source.html#l00104">104</a> of file <a class="el" href="_m_i_d_i_8h-source.html">MIDI.h</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="dd91395b86cb7ace5ba8c1654ab61d2e"></a><!-- doxytag: member="midimsg::valid" ref="dd91395b86cb7ace5ba8c1654ab61d2e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="structmidimsg.html#dd91395b86cb7ace5ba8c1654ab61d2e">midimsg::valid</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+This boolean indicates if the message is valid or not. There is no channel consideration here, validity means the message respects the MIDI norm. 
+<p>Definition at line <a class="el" href="_m_i_d_i_8h-source.html#l00112">112</a> of file <a class="el" href="_m_i_d_i_8h-source.html">MIDI.h</a>.</p>
 
 </div>
 </div><p>
 <hr>The documentation for this struct was generated from the following file:<ul>
-<li>/Users/franky/DIY/Arduino/Arduino.app/Contents/Resources/Java/hardware/libraries/MIDI/<a class="el" href="_m_i_d_i_8h-source.html">MIDI.h</a></ul>
+<li>/Users/franky/Documents/Dropbox/SVN/embedded/toolbox/libraries/MIDILib/trunk/Arduino/<a class="el" href="_m_i_d_i_8h-source.html">MIDI.h</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Mon Dec 14 14:45:29 2009 for Arduino MIDI Library by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sun Mar 6 15:48:00 2011 for Arduino MIDI Library by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
 </body>

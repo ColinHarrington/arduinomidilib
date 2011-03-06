@@ -1,0 +1,334 @@
+\begin{theindex}
+
+  \item {$\sim $MIDI\_\discretionary {-}{}{}Class}
+    \subitem {MIDI\_\discretionary {-}{}{}Class}, \hyperpage{6}
+  \item {/Users/franky/Documents/Dropbox/SVN/embedded/toolbox/libraries/MIDILib/trunk/Arduino/Compatibility\_\discretionary {-}{}{}v2.5.h}, 
+		\hyperpage{17}
+  \item {/Users/franky/Documents/Dropbox/SVN/embedded/toolbox/libraries/MIDILib/trunk/Arduino/MIDI.cpp}, 
+		\hyperpage{20}
+  \item {/Users/franky/Documents/Dropbox/SVN/embedded/toolbox/libraries/MIDILib/trunk/Arduino/MIDI.h}, 
+		\hyperpage{21}
+
+  \indexspace
+
+  \item {ActiveSensing}
+    \subitem {MIDI.h}, \hyperpage{23}
+  \item {AfterTouchChannel}
+    \subitem {MIDI.h}, \hyperpage{23}
+  \item {AfterTouchPoly}
+    \subitem {MIDI.h}, \hyperpage{23}
+  \item {ATCanal}
+    \subitem {Compatibility\_\discretionary {-}{}{}v2.5.h}, 
+		\hyperpage{18}
+  \item {ATPoly}
+    \subitem {Compatibility\_\discretionary {-}{}{}v2.5.h}, 
+		\hyperpage{18}
+
+  \indexspace
+
+  \item {begin}
+    \subitem {MIDI\_\discretionary {-}{}{}Class}, \hyperpage{6}
+  \item {byte}
+    \subitem {MIDI.h}, \hyperpage{23}
+
+  \indexspace
+
+  \item {CC}
+    \subitem {Compatibility\_\discretionary {-}{}{}v2.5.h}, 
+		\hyperpage{18}
+  \item {channel}
+    \subitem {midimsg}, \hyperpage{15}
+  \item {check}
+    \subitem {MIDI\_\discretionary {-}{}{}Class}, \hyperpage{7}
+  \item {Clock}
+    \subitem {MIDI.h}, \hyperpage{23}
+  \item {Compatibility\_\discretionary {-}{}{}v2.5.h}
+    \subitem {ATCanal}, \hyperpage{18}
+    \subitem {ATPoly}, \hyperpage{18}
+    \subitem {CC}, \hyperpage{18}
+    \subitem {MIDI\_\discretionary {-}{}{}FILTER\_\discretionary {-}{}{}ANTICANAL}, 
+		\hyperpage{18}
+    \subitem {MIDI\_\discretionary {-}{}{}FILTER\_\discretionary {-}{}{}CANAL}, 
+		\hyperpage{18}
+    \subitem {MIDI\_\discretionary {-}{}{}FILTER\_\discretionary {-}{}{}FULL}, 
+		\hyperpage{18}
+    \subitem {MIDI\_\discretionary {-}{}{}FILTER\_\discretionary {-}{}{}OFF}, 
+		\hyperpage{18}
+    \subitem {MIDI\_\discretionary {-}{}{}rate}, \hyperpage{18}
+    \subitem {PC}, \hyperpage{18}
+    \subitem {SysEx}, \hyperpage{18}
+  \item {COMPATIBILITY\_\discretionary {-}{}{}V25}
+    \subitem {MIDI.h}, \hyperpage{22}
+  \item {COMPFLAG\_\discretionary {-}{}{}MIDI\_\discretionary {-}{}{}IN}
+    \subitem {MIDI.h}, \hyperpage{22}
+  \item {COMPFLAG\_\discretionary {-}{}{}MIDI\_\discretionary {-}{}{}OUT}
+    \subitem {MIDI.h}, \hyperpage{22}
+  \item {Continue}
+    \subitem {MIDI.h}, \hyperpage{23}
+  \item {ControlChange}
+    \subitem {MIDI.h}, \hyperpage{23}
+
+  \indexspace
+
+  \item {data1}
+    \subitem {midimsg}, \hyperpage{15}
+  \item {data2}
+    \subitem {midimsg}, \hyperpage{15}
+  \item {DifferentChannel}
+    \subitem {MIDI.h}, \hyperpage{24}
+
+  \indexspace
+
+  \item {Full}
+    \subitem {MIDI.h}, \hyperpage{24}
+
+  \indexspace
+
+  \item {getChannel}
+    \subitem {MIDI\_\discretionary {-}{}{}Class}, \hyperpage{7}
+  \item {getData1}
+    \subitem {MIDI\_\discretionary {-}{}{}Class}, \hyperpage{7}
+  \item {getData2}
+    \subitem {MIDI\_\discretionary {-}{}{}Class}, \hyperpage{7}
+  \item {getFilterMode}
+    \subitem {MIDI\_\discretionary {-}{}{}Class}, \hyperpage{8}
+  \item {getInputChannel}
+    \subitem {MIDI\_\discretionary {-}{}{}Class}, \hyperpage{8}
+  \item {getSysExArray}
+    \subitem {MIDI\_\discretionary {-}{}{}Class}, \hyperpage{8}
+  \item {getThruState}
+    \subitem {MIDI\_\discretionary {-}{}{}Class}, \hyperpage{8}
+  \item {getType}
+    \subitem {MIDI\_\discretionary {-}{}{}Class}, \hyperpage{8}
+
+  \indexspace
+
+  \item {InvalidType}
+    \subitem {MIDI.h}, \hyperpage{23}
+
+  \indexspace
+
+  \item {kMIDIType}
+    \subitem {MIDI.h}, \hyperpage{23}
+  \item {kThruFilterMode}
+    \subitem {MIDI.h}, \hyperpage{24}
+
+  \indexspace
+
+  \item {MIDI}
+    \subitem {MIDI.cpp}, \hyperpage{20}
+    \subitem {MIDI.h}, \hyperpage{24}
+  \item {MIDI.cpp}
+    \subitem {MIDI}, \hyperpage{20}
+  \item {MIDI.h}
+    \subitem {ActiveSensing}, \hyperpage{23}
+    \subitem {AfterTouchChannel}, \hyperpage{23}
+    \subitem {AfterTouchPoly}, \hyperpage{23}
+    \subitem {byte}, \hyperpage{23}
+    \subitem {Clock}, \hyperpage{23}
+    \subitem {COMPATIBILITY\_\discretionary {-}{}{}V25}, \hyperpage{22}
+    \subitem {COMPFLAG\_\discretionary {-}{}{}MIDI\_\discretionary {-}{}{}IN}, 
+		\hyperpage{22}
+    \subitem {COMPFLAG\_\discretionary {-}{}{}MIDI\_\discretionary {-}{}{}OUT}, 
+		\hyperpage{22}
+    \subitem {Continue}, \hyperpage{23}
+    \subitem {ControlChange}, \hyperpage{23}
+    \subitem {DifferentChannel}, \hyperpage{24}
+    \subitem {Full}, \hyperpage{24}
+    \subitem {InvalidType}, \hyperpage{23}
+    \subitem {kMIDIType}, \hyperpage{23}
+    \subitem {kThruFilterMode}, \hyperpage{24}
+    \subitem {MIDI}, \hyperpage{24}
+    \subitem {MIDI\_\discretionary {-}{}{}BAUDRATE}, \hyperpage{22}
+    \subitem {MIDI\_\discretionary {-}{}{}CHANNEL\_\discretionary {-}{}{}OFF}, 
+		\hyperpage{22}
+    \subitem {MIDI\_\discretionary {-}{}{}CHANNEL\_\discretionary {-}{}{}OMNI}, 
+		\hyperpage{22}
+    \subitem {MIDI\_\discretionary {-}{}{}SYSEX\_\discretionary {-}{}{}ARRAY\_\discretionary {-}{}{}SIZE}, 
+		\hyperpage{22}
+    \subitem {NoteOff}, \hyperpage{23}
+    \subitem {NoteOn}, \hyperpage{23}
+    \subitem {Off}, \hyperpage{24}
+    \subitem {PitchBend}, \hyperpage{23}
+    \subitem {ProgramChange}, \hyperpage{23}
+    \subitem {SameChannel}, \hyperpage{24}
+    \subitem {SongPosition}, \hyperpage{23}
+    \subitem {SongSelect}, \hyperpage{23}
+    \subitem {Start}, \hyperpage{23}
+    \subitem {Stop}, \hyperpage{23}
+    \subitem {SystemExclusive}, \hyperpage{23}
+    \subitem {SystemReset}, \hyperpage{23}
+    \subitem {TimeCodeQuarterFrame}, \hyperpage{23}
+    \subitem {TuneRequest}, \hyperpage{23}
+    \subitem {USE\_\discretionary {-}{}{}RUNNING\_\discretionary {-}{}{}STATUS}, 
+		\hyperpage{22}
+    \subitem {USE\_\discretionary {-}{}{}SERIAL\_\discretionary {-}{}{}PORT}, 
+		\hyperpage{22}
+  \item {MIDI\_\discretionary {-}{}{}BAUDRATE}
+    \subitem {MIDI.h}, \hyperpage{22}
+  \item {MIDI\_\discretionary {-}{}{}CHANNEL\_\discretionary {-}{}{}OFF}
+    \subitem {MIDI.h}, \hyperpage{22}
+  \item {MIDI\_\discretionary {-}{}{}CHANNEL\_\discretionary {-}{}{}OMNI}
+    \subitem {MIDI.h}, \hyperpage{22}
+  \item {MIDI\_\discretionary {-}{}{}Class}, \hyperpage{5}
+    \subitem {$\sim $MIDI\_\discretionary {-}{}{}Class}, \hyperpage{6}
+    \subitem {begin}, \hyperpage{6}
+    \subitem {check}, \hyperpage{7}
+    \subitem {getChannel}, \hyperpage{7}
+    \subitem {getData1}, \hyperpage{7}
+    \subitem {getData2}, \hyperpage{7}
+    \subitem {getFilterMode}, \hyperpage{8}
+    \subitem {getInputChannel}, \hyperpage{8}
+    \subitem {getSysExArray}, \hyperpage{8}
+    \subitem {getThruState}, \hyperpage{8}
+    \subitem {getType}, \hyperpage{8}
+    \subitem {MIDI\_\discretionary {-}{}{}Class}, \hyperpage{6}
+    \subitem {MIDI\_\discretionary {-}{}{}Class}, \hyperpage{6}
+    \subitem {read}, \hyperpage{8, 9}
+    \subitem {sendAfterTouch}, \hyperpage{9}
+    \subitem {sendControlChange}, \hyperpage{9}
+    \subitem {sendNoteOff}, \hyperpage{9}
+    \subitem {sendNoteOn}, \hyperpage{9}
+    \subitem {sendPitchBend}, \hyperpage{10}
+    \subitem {sendPolyPressure}, \hyperpage{10}
+    \subitem {sendProgramChange}, \hyperpage{10}
+    \subitem {sendRealTime}, \hyperpage{11}
+    \subitem {sendSongPosition}, \hyperpage{11}
+    \subitem {sendSongSelect}, \hyperpage{11}
+    \subitem {sendSysEx}, \hyperpage{12}
+    \subitem {sendTimeCodeQuarterFrame}, \hyperpage{12}
+    \subitem {sendTuneRequest}, \hyperpage{13}
+    \subitem {setInputChannel}, \hyperpage{13}
+    \subitem {setThruFilterMode}, \hyperpage{13}
+    \subitem {turnThruOff}, \hyperpage{14}
+    \subitem {turnThruOn}, \hyperpage{14}
+  \item {MIDI\_\discretionary {-}{}{}FILTER\_\discretionary {-}{}{}ANTICANAL}
+    \subitem {Compatibility\_\discretionary {-}{}{}v2.5.h}, 
+		\hyperpage{18}
+  \item {MIDI\_\discretionary {-}{}{}FILTER\_\discretionary {-}{}{}CANAL}
+    \subitem {Compatibility\_\discretionary {-}{}{}v2.5.h}, 
+		\hyperpage{18}
+  \item {MIDI\_\discretionary {-}{}{}FILTER\_\discretionary {-}{}{}FULL}
+    \subitem {Compatibility\_\discretionary {-}{}{}v2.5.h}, 
+		\hyperpage{18}
+  \item {MIDI\_\discretionary {-}{}{}FILTER\_\discretionary {-}{}{}OFF}
+    \subitem {Compatibility\_\discretionary {-}{}{}v2.5.h}, 
+		\hyperpage{18}
+  \item {MIDI\_\discretionary {-}{}{}rate}
+    \subitem {Compatibility\_\discretionary {-}{}{}v2.5.h}, 
+		\hyperpage{18}
+  \item {MIDI\_\discretionary {-}{}{}SYSEX\_\discretionary {-}{}{}ARRAY\_\discretionary {-}{}{}SIZE}
+    \subitem {MIDI.h}, \hyperpage{22}
+  \item {midimsg}, \hyperpage{15}
+    \subitem {channel}, \hyperpage{15}
+    \subitem {data1}, \hyperpage{15}
+    \subitem {data2}, \hyperpage{15}
+    \subitem {sysex\_\discretionary {-}{}{}array}, \hyperpage{15}
+    \subitem {type}, \hyperpage{16}
+    \subitem {valid}, \hyperpage{16}
+
+  \indexspace
+
+  \item {NoteOff}
+    \subitem {MIDI.h}, \hyperpage{23}
+  \item {NoteOn}
+    \subitem {MIDI.h}, \hyperpage{23}
+
+  \indexspace
+
+  \item {Off}
+    \subitem {MIDI.h}, \hyperpage{24}
+
+  \indexspace
+
+  \item {PC}
+    \subitem {Compatibility\_\discretionary {-}{}{}v2.5.h}, 
+		\hyperpage{18}
+  \item {PitchBend}
+    \subitem {MIDI.h}, \hyperpage{23}
+  \item {ProgramChange}
+    \subitem {MIDI.h}, \hyperpage{23}
+
+  \indexspace
+
+  \item {read}
+    \subitem {MIDI\_\discretionary {-}{}{}Class}, \hyperpage{8, 9}
+
+  \indexspace
+
+  \item {SameChannel}
+    \subitem {MIDI.h}, \hyperpage{24}
+  \item {sendAfterTouch}
+    \subitem {MIDI\_\discretionary {-}{}{}Class}, \hyperpage{9}
+  \item {sendControlChange}
+    \subitem {MIDI\_\discretionary {-}{}{}Class}, \hyperpage{9}
+  \item {sendNoteOff}
+    \subitem {MIDI\_\discretionary {-}{}{}Class}, \hyperpage{9}
+  \item {sendNoteOn}
+    \subitem {MIDI\_\discretionary {-}{}{}Class}, \hyperpage{9}
+  \item {sendPitchBend}
+    \subitem {MIDI\_\discretionary {-}{}{}Class}, \hyperpage{10}
+  \item {sendPolyPressure}
+    \subitem {MIDI\_\discretionary {-}{}{}Class}, \hyperpage{10}
+  \item {sendProgramChange}
+    \subitem {MIDI\_\discretionary {-}{}{}Class}, \hyperpage{10}
+  \item {sendRealTime}
+    \subitem {MIDI\_\discretionary {-}{}{}Class}, \hyperpage{11}
+  \item {sendSongPosition}
+    \subitem {MIDI\_\discretionary {-}{}{}Class}, \hyperpage{11}
+  \item {sendSongSelect}
+    \subitem {MIDI\_\discretionary {-}{}{}Class}, \hyperpage{11}
+  \item {sendSysEx}
+    \subitem {MIDI\_\discretionary {-}{}{}Class}, \hyperpage{12}
+  \item {sendTimeCodeQuarterFrame}
+    \subitem {MIDI\_\discretionary {-}{}{}Class}, \hyperpage{12}
+  \item {sendTuneRequest}
+    \subitem {MIDI\_\discretionary {-}{}{}Class}, \hyperpage{13}
+  \item {setInputChannel}
+    \subitem {MIDI\_\discretionary {-}{}{}Class}, \hyperpage{13}
+  \item {setThruFilterMode}
+    \subitem {MIDI\_\discretionary {-}{}{}Class}, \hyperpage{13}
+  \item {SongPosition}
+    \subitem {MIDI.h}, \hyperpage{23}
+  \item {SongSelect}
+    \subitem {MIDI.h}, \hyperpage{23}
+  \item {Start}
+    \subitem {MIDI.h}, \hyperpage{23}
+  \item {Stop}
+    \subitem {MIDI.h}, \hyperpage{23}
+  \item {SysEx}
+    \subitem {Compatibility\_\discretionary {-}{}{}v2.5.h}, 
+		\hyperpage{18}
+  \item {sysex\_\discretionary {-}{}{}array}
+    \subitem {midimsg}, \hyperpage{15}
+  \item {SystemExclusive}
+    \subitem {MIDI.h}, \hyperpage{23}
+  \item {SystemReset}
+    \subitem {MIDI.h}, \hyperpage{23}
+
+  \indexspace
+
+  \item {TimeCodeQuarterFrame}
+    \subitem {MIDI.h}, \hyperpage{23}
+  \item {TuneRequest}
+    \subitem {MIDI.h}, \hyperpage{23}
+  \item {turnThruOff}
+    \subitem {MIDI\_\discretionary {-}{}{}Class}, \hyperpage{14}
+  \item {turnThruOn}
+    \subitem {MIDI\_\discretionary {-}{}{}Class}, \hyperpage{14}
+  \item {type}
+    \subitem {midimsg}, \hyperpage{16}
+
+  \indexspace
+
+  \item {USE\_\discretionary {-}{}{}RUNNING\_\discretionary {-}{}{}STATUS}
+    \subitem {MIDI.h}, \hyperpage{22}
+  \item {USE\_\discretionary {-}{}{}SERIAL\_\discretionary {-}{}{}PORT}
+    \subitem {MIDI.h}, \hyperpage{22}
+
+  \indexspace
+
+  \item {valid}
+    \subitem {midimsg}, \hyperpage{16}
+
+\end{theindex}

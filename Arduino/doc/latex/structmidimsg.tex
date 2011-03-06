@@ -1,0 +1,94 @@
+\hypertarget{structmidimsg}{
+\section{midimsg Struct Reference}
+\label{structmidimsg}\index{midimsg@{midimsg}}
+}
+{\tt \#include $<$MIDI.h$>$}
+
+\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{_m_i_d_i_8h_b8ef12fab634c171394422d0ee8baf94}{byte} \hyperlink{structmidimsg_b0be990f365123787ec088f55ae6e46b}{channel}
+\item 
+\hyperlink{_m_i_d_i_8h_802feb46a169642d43b2415d02390545}{kMIDIType} \hyperlink{structmidimsg_c2aa51d6154e6434f4426f925c6e5287}{type}
+\item 
+\hyperlink{_m_i_d_i_8h_b8ef12fab634c171394422d0ee8baf94}{byte} \hyperlink{structmidimsg_d0a225fbc23de9f631331d6aa52ab981}{data1}
+\item 
+\hyperlink{_m_i_d_i_8h_b8ef12fab634c171394422d0ee8baf94}{byte} \hyperlink{structmidimsg_240be209353b132d10757bf345146e6b}{data2}
+\item 
+\hyperlink{_m_i_d_i_8h_b8ef12fab634c171394422d0ee8baf94}{byte} \hyperlink{structmidimsg_253df8383f977227e7d45ba488d98601}{sysex\_\-array} \mbox{[}MIDI\_\-SYSEX\_\-ARRAY\_\-SIZE\mbox{]}
+\item 
+bool \hyperlink{structmidimsg_dd91395b86cb7ace5ba8c1654ab61d2e}{valid}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{structmidimsg}{midimsg} structure contains decoded data of a MIDI message read from the serial port with read() or thru(). \par
+ 
+
+Definition at line 100 of file MIDI.h.
+
+\subsection{Member Data Documentation}
+\hypertarget{structmidimsg_b0be990f365123787ec088f55ae6e46b}{
+\index{midimsg@{midimsg}!channel@{channel}}
+\index{channel@{channel}!midimsg@{midimsg}}
+\subsubsection[{channel}]{\setlength{\rightskip}{0pt plus 5cm}{\bf byte} {\bf midimsg::channel}}}
+\label{structmidimsg_b0be990f365123787ec088f55ae6e46b}
+
+
+The MIDI channel on which the message was recieved. \par
+ Value goes from 1 to 16. 
+
+Definition at line 102 of file MIDI.h.\hypertarget{structmidimsg_d0a225fbc23de9f631331d6aa52ab981}{
+\index{midimsg@{midimsg}!data1@{data1}}
+\index{data1@{data1}!midimsg@{midimsg}}
+\subsubsection[{data1}]{\setlength{\rightskip}{0pt plus 5cm}{\bf byte} {\bf midimsg::data1}}}
+\label{structmidimsg_d0a225fbc23de9f631331d6aa52ab981}
+
+
+The first data byte.\par
+ Value goes from 0 to 127.\par
+ If the message is SysEx, this byte contains the array length. 
+
+Definition at line 106 of file MIDI.h.\hypertarget{structmidimsg_240be209353b132d10757bf345146e6b}{
+\index{midimsg@{midimsg}!data2@{data2}}
+\index{data2@{data2}!midimsg@{midimsg}}
+\subsubsection[{data2}]{\setlength{\rightskip}{0pt plus 5cm}{\bf byte} {\bf midimsg::data2}}}
+\label{structmidimsg_240be209353b132d10757bf345146e6b}
+
+
+The second data byte. If the message is only 2 bytes long, this one is null.\par
+ Value goes from 0 to 127. 
+
+Definition at line 108 of file MIDI.h.\hypertarget{structmidimsg_253df8383f977227e7d45ba488d98601}{
+\index{midimsg@{midimsg}!sysex\_\-array@{sysex\_\-array}}
+\index{sysex\_\-array@{sysex\_\-array}!midimsg@{midimsg}}
+\subsubsection[{sysex\_\-array}]{\setlength{\rightskip}{0pt plus 5cm}{\bf byte} {\bf midimsg::sysex\_\-array}\mbox{[}MIDI\_\-SYSEX\_\-ARRAY\_\-SIZE\mbox{]}}}
+\label{structmidimsg_253df8383f977227e7d45ba488d98601}
+
+
+System Exclusive dedicated byte array. \par
+ Array length is stocked in data1. 
+
+Definition at line 110 of file MIDI.h.\hypertarget{structmidimsg_c2aa51d6154e6434f4426f925c6e5287}{
+\index{midimsg@{midimsg}!type@{type}}
+\index{type@{type}!midimsg@{midimsg}}
+\subsubsection[{type}]{\setlength{\rightskip}{0pt plus 5cm}{\bf kMIDIType} {\bf midimsg::type}}}
+\label{structmidimsg_c2aa51d6154e6434f4426f925c6e5287}
+
+
+The type of the message (see the define section for types reference) 
+
+Definition at line 104 of file MIDI.h.\hypertarget{structmidimsg_dd91395b86cb7ace5ba8c1654ab61d2e}{
+\index{midimsg@{midimsg}!valid@{valid}}
+\index{valid@{valid}!midimsg@{midimsg}}
+\subsubsection[{valid}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf midimsg::valid}}}
+\label{structmidimsg_dd91395b86cb7ace5ba8c1654ab61d2e}
+
+
+This boolean indicates if the message is valid or not. There is no channel consideration here, validity means the message respects the MIDI norm. 
+
+Definition at line 112 of file MIDI.h.
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+/Users/franky/Documents/Dropbox/SVN/embedded/toolbox/libraries/MIDILib/trunk/Arduino/\hyperlink{_m_i_d_i_8h}{MIDI.h}\end{CompactItemize}

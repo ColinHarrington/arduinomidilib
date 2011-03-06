@@ -1,0 +1,179 @@
+\indexentry{MIDI\_\discretionary {-}{}{}Class@{MIDI\_\discretionary {-}{}{}Class}|hyperpage}{5}
+\indexentry{MIDI\_\discretionary {-}{}{}Class@{MIDI\_\discretionary {-}{}{}Class}!MIDI\_\discretionary {-}{}{}Class@{MIDI\_\discretionary {-}{}{}Class}|hyperpage}{6}
+\indexentry{MIDI\_\discretionary {-}{}{}Class@{MIDI\_\discretionary {-}{}{}Class}!MIDI_Class@{MIDI\_\discretionary {-}{}{}Class}|hyperpage}{6}
+\indexentry{MIDI\_\discretionary {-}{}{}Class@{MIDI\_\discretionary {-}{}{}Class}!$\sim $MIDI\_\discretionary {-}{}{}Class@{$\sim $MIDI\_\discretionary {-}{}{}Class}|hyperpage}{6}
+\indexentry{$\sim $MIDI\_\discretionary {-}{}{}Class@{$\sim $MIDI\_\discretionary {-}{}{}Class}!MIDI_Class@{MIDI\_\discretionary {-}{}{}Class}|hyperpage}{6}
+\indexentry{MIDI\_\discretionary {-}{}{}Class@{MIDI\_\discretionary {-}{}{}Class}!begin@{begin}|hyperpage}{6}
+\indexentry{begin@{begin}!MIDI_Class@{MIDI\_\discretionary {-}{}{}Class}|hyperpage}{6}
+\indexentry{MIDI\_\discretionary {-}{}{}Class@{MIDI\_\discretionary {-}{}{}Class}!check@{check}|hyperpage}{7}
+\indexentry{check@{check}!MIDI_Class@{MIDI\_\discretionary {-}{}{}Class}|hyperpage}{7}
+\indexentry{MIDI\_\discretionary {-}{}{}Class@{MIDI\_\discretionary {-}{}{}Class}!getChannel@{getChannel}|hyperpage}{7}
+\indexentry{getChannel@{getChannel}!MIDI_Class@{MIDI\_\discretionary {-}{}{}Class}|hyperpage}{7}
+\indexentry{MIDI\_\discretionary {-}{}{}Class@{MIDI\_\discretionary {-}{}{}Class}!getData1@{getData1}|hyperpage}{7}
+\indexentry{getData1@{getData1}!MIDI_Class@{MIDI\_\discretionary {-}{}{}Class}|hyperpage}{7}
+\indexentry{MIDI\_\discretionary {-}{}{}Class@{MIDI\_\discretionary {-}{}{}Class}!getData2@{getData2}|hyperpage}{7}
+\indexentry{getData2@{getData2}!MIDI_Class@{MIDI\_\discretionary {-}{}{}Class}|hyperpage}{7}
+\indexentry{MIDI\_\discretionary {-}{}{}Class@{MIDI\_\discretionary {-}{}{}Class}!getFilterMode@{getFilterMode}|hyperpage}{8}
+\indexentry{getFilterMode@{getFilterMode}!MIDI_Class@{MIDI\_\discretionary {-}{}{}Class}|hyperpage}{8}
+\indexentry{MIDI\_\discretionary {-}{}{}Class@{MIDI\_\discretionary {-}{}{}Class}!getInputChannel@{getInputChannel}|hyperpage}{8}
+\indexentry{getInputChannel@{getInputChannel}!MIDI_Class@{MIDI\_\discretionary {-}{}{}Class}|hyperpage}{8}
+\indexentry{MIDI\_\discretionary {-}{}{}Class@{MIDI\_\discretionary {-}{}{}Class}!getSysExArray@{getSysExArray}|hyperpage}{8}
+\indexentry{getSysExArray@{getSysExArray}!MIDI_Class@{MIDI\_\discretionary {-}{}{}Class}|hyperpage}{8}
+\indexentry{MIDI\_\discretionary {-}{}{}Class@{MIDI\_\discretionary {-}{}{}Class}!getThruState@{getThruState}|hyperpage}{8}
+\indexentry{getThruState@{getThruState}!MIDI_Class@{MIDI\_\discretionary {-}{}{}Class}|hyperpage}{8}
+\indexentry{MIDI\_\discretionary {-}{}{}Class@{MIDI\_\discretionary {-}{}{}Class}!getType@{getType}|hyperpage}{8}
+\indexentry{getType@{getType}!MIDI_Class@{MIDI\_\discretionary {-}{}{}Class}|hyperpage}{8}
+\indexentry{MIDI\_\discretionary {-}{}{}Class@{MIDI\_\discretionary {-}{}{}Class}!read@{read}|hyperpage}{8}
+\indexentry{read@{read}!MIDI_Class@{MIDI\_\discretionary {-}{}{}Class}|hyperpage}{8}
+\indexentry{MIDI\_\discretionary {-}{}{}Class@{MIDI\_\discretionary {-}{}{}Class}!read@{read}|hyperpage}{9}
+\indexentry{read@{read}!MIDI_Class@{MIDI\_\discretionary {-}{}{}Class}|hyperpage}{9}
+\indexentry{MIDI\_\discretionary {-}{}{}Class@{MIDI\_\discretionary {-}{}{}Class}!sendAfterTouch@{sendAfterTouch}|hyperpage}{9}
+\indexentry{sendAfterTouch@{sendAfterTouch}!MIDI_Class@{MIDI\_\discretionary {-}{}{}Class}|hyperpage}{9}
+\indexentry{MIDI\_\discretionary {-}{}{}Class@{MIDI\_\discretionary {-}{}{}Class}!sendControlChange@{sendControlChange}|hyperpage}{9}
+\indexentry{sendControlChange@{sendControlChange}!MIDI_Class@{MIDI\_\discretionary {-}{}{}Class}|hyperpage}{9}
+\indexentry{MIDI\_\discretionary {-}{}{}Class@{MIDI\_\discretionary {-}{}{}Class}!sendNoteOff@{sendNoteOff}|hyperpage}{9}
+\indexentry{sendNoteOff@{sendNoteOff}!MIDI_Class@{MIDI\_\discretionary {-}{}{}Class}|hyperpage}{9}
+\indexentry{MIDI\_\discretionary {-}{}{}Class@{MIDI\_\discretionary {-}{}{}Class}!sendNoteOn@{sendNoteOn}|hyperpage}{9}
+\indexentry{sendNoteOn@{sendNoteOn}!MIDI_Class@{MIDI\_\discretionary {-}{}{}Class}|hyperpage}{9}
+\indexentry{MIDI\_\discretionary {-}{}{}Class@{MIDI\_\discretionary {-}{}{}Class}!sendPitchBend@{sendPitchBend}|hyperpage}{10}
+\indexentry{sendPitchBend@{sendPitchBend}!MIDI_Class@{MIDI\_\discretionary {-}{}{}Class}|hyperpage}{10}
+\indexentry{MIDI\_\discretionary {-}{}{}Class@{MIDI\_\discretionary {-}{}{}Class}!sendPitchBend@{sendPitchBend}|hyperpage}{10}
+\indexentry{sendPitchBend@{sendPitchBend}!MIDI_Class@{MIDI\_\discretionary {-}{}{}Class}|hyperpage}{10}
+\indexentry{MIDI\_\discretionary {-}{}{}Class@{MIDI\_\discretionary {-}{}{}Class}!sendPolyPressure@{sendPolyPressure}|hyperpage}{10}
+\indexentry{sendPolyPressure@{sendPolyPressure}!MIDI_Class@{MIDI\_\discretionary {-}{}{}Class}|hyperpage}{10}
+\indexentry{MIDI\_\discretionary {-}{}{}Class@{MIDI\_\discretionary {-}{}{}Class}!sendProgramChange@{sendProgramChange}|hyperpage}{10}
+\indexentry{sendProgramChange@{sendProgramChange}!MIDI_Class@{MIDI\_\discretionary {-}{}{}Class}|hyperpage}{10}
+\indexentry{MIDI\_\discretionary {-}{}{}Class@{MIDI\_\discretionary {-}{}{}Class}!sendRealTime@{sendRealTime}|hyperpage}{11}
+\indexentry{sendRealTime@{sendRealTime}!MIDI_Class@{MIDI\_\discretionary {-}{}{}Class}|hyperpage}{11}
+\indexentry{MIDI\_\discretionary {-}{}{}Class@{MIDI\_\discretionary {-}{}{}Class}!sendSongPosition@{sendSongPosition}|hyperpage}{11}
+\indexentry{sendSongPosition@{sendSongPosition}!MIDI_Class@{MIDI\_\discretionary {-}{}{}Class}|hyperpage}{11}
+\indexentry{MIDI\_\discretionary {-}{}{}Class@{MIDI\_\discretionary {-}{}{}Class}!sendSongSelect@{sendSongSelect}|hyperpage}{11}
+\indexentry{sendSongSelect@{sendSongSelect}!MIDI_Class@{MIDI\_\discretionary {-}{}{}Class}|hyperpage}{11}
+\indexentry{MIDI\_\discretionary {-}{}{}Class@{MIDI\_\discretionary {-}{}{}Class}!sendSysEx@{sendSysEx}|hyperpage}{12}
+\indexentry{sendSysEx@{sendSysEx}!MIDI_Class@{MIDI\_\discretionary {-}{}{}Class}|hyperpage}{12}
+\indexentry{MIDI\_\discretionary {-}{}{}Class@{MIDI\_\discretionary {-}{}{}Class}!sendTimeCodeQuarterFrame@{sendTimeCodeQuarterFrame}|hyperpage}{12}
+\indexentry{sendTimeCodeQuarterFrame@{sendTimeCodeQuarterFrame}!MIDI_Class@{MIDI\_\discretionary {-}{}{}Class}|hyperpage}{12}
+\indexentry{MIDI\_\discretionary {-}{}{}Class@{MIDI\_\discretionary {-}{}{}Class}!sendTimeCodeQuarterFrame@{sendTimeCodeQuarterFrame}|hyperpage}{12}
+\indexentry{sendTimeCodeQuarterFrame@{sendTimeCodeQuarterFrame}!MIDI_Class@{MIDI\_\discretionary {-}{}{}Class}|hyperpage}{12}
+\indexentry{MIDI\_\discretionary {-}{}{}Class@{MIDI\_\discretionary {-}{}{}Class}!sendTuneRequest@{sendTuneRequest}|hyperpage}{13}
+\indexentry{sendTuneRequest@{sendTuneRequest}!MIDI_Class@{MIDI\_\discretionary {-}{}{}Class}|hyperpage}{13}
+\indexentry{MIDI\_\discretionary {-}{}{}Class@{MIDI\_\discretionary {-}{}{}Class}!setInputChannel@{setInputChannel}|hyperpage}{13}
+\indexentry{setInputChannel@{setInputChannel}!MIDI_Class@{MIDI\_\discretionary {-}{}{}Class}|hyperpage}{13}
+\indexentry{MIDI\_\discretionary {-}{}{}Class@{MIDI\_\discretionary {-}{}{}Class}!setThruFilterMode@{setThruFilterMode}|hyperpage}{13}
+\indexentry{setThruFilterMode@{setThruFilterMode}!MIDI_Class@{MIDI\_\discretionary {-}{}{}Class}|hyperpage}{13}
+\indexentry{MIDI\_\discretionary {-}{}{}Class@{MIDI\_\discretionary {-}{}{}Class}!setThruFilterMode@{setThruFilterMode}|hyperpage}{13}
+\indexentry{setThruFilterMode@{setThruFilterMode}!MIDI_Class@{MIDI\_\discretionary {-}{}{}Class}|hyperpage}{13}
+\indexentry{MIDI\_\discretionary {-}{}{}Class@{MIDI\_\discretionary {-}{}{}Class}!turnThruOff@{turnThruOff}|hyperpage}{14}
+\indexentry{turnThruOff@{turnThruOff}!MIDI_Class@{MIDI\_\discretionary {-}{}{}Class}|hyperpage}{14}
+\indexentry{MIDI\_\discretionary {-}{}{}Class@{MIDI\_\discretionary {-}{}{}Class}!turnThruOn@{turnThruOn}|hyperpage}{14}
+\indexentry{turnThruOn@{turnThruOn}!MIDI_Class@{MIDI\_\discretionary {-}{}{}Class}|hyperpage}{14}
+\indexentry{midimsg@{midimsg}|hyperpage}{15}
+\indexentry{midimsg@{midimsg}!channel@{channel}|hyperpage}{15}
+\indexentry{channel@{channel}!midimsg@{midimsg}|hyperpage}{15}
+\indexentry{midimsg@{midimsg}!data1@{data1}|hyperpage}{15}
+\indexentry{data1@{data1}!midimsg@{midimsg}|hyperpage}{15}
+\indexentry{midimsg@{midimsg}!data2@{data2}|hyperpage}{15}
+\indexentry{data2@{data2}!midimsg@{midimsg}|hyperpage}{15}
+\indexentry{midimsg@{midimsg}!sysex\_\discretionary {-}{}{}array@{sysex\_\discretionary {-}{}{}array}|hyperpage}{15}
+\indexentry{sysex\_\discretionary {-}{}{}array@{sysex\_\discretionary {-}{}{}array}!midimsg@{midimsg}|hyperpage}{15}
+\indexentry{midimsg@{midimsg}!type@{type}|hyperpage}{16}
+\indexentry{type@{type}!midimsg@{midimsg}|hyperpage}{16}
+\indexentry{midimsg@{midimsg}!valid@{valid}|hyperpage}{16}
+\indexentry{valid@{valid}!midimsg@{midimsg}|hyperpage}{16}
+\indexentry{/Users/franky/Documents/Dropbox/SVN/embedded/toolbox/libraries/MIDILib/trunk/Arduino/Compatibility\_\discretionary {-}{}{}v2.5.h@{/Users/franky/Documents/Dropbox/SVN/embedded/toolbox/libraries/MIDILib/trunk/Arduino/Compatibility\_\discretionary {-}{}{}v2.5.h}|hyperpage}{17}
+\indexentry{Compatibility\_\discretionary {-}{}{}v2.5.h@{Compatibility\_\discretionary {-}{}{}v2.5.h}!ATCanal@{ATCanal}|hyperpage}{18}
+\indexentry{ATCanal@{ATCanal}!Compatibility_v2.5.h@{Compatibility\_\discretionary {-}{}{}v2.5.h}|hyperpage}{18}
+\indexentry{Compatibility\_\discretionary {-}{}{}v2.5.h@{Compatibility\_\discretionary {-}{}{}v2.5.h}!ATPoly@{ATPoly}|hyperpage}{18}
+\indexentry{ATPoly@{ATPoly}!Compatibility_v2.5.h@{Compatibility\_\discretionary {-}{}{}v2.5.h}|hyperpage}{18}
+\indexentry{Compatibility\_\discretionary {-}{}{}v2.5.h@{Compatibility\_\discretionary {-}{}{}v2.5.h}!CC@{CC}|hyperpage}{18}
+\indexentry{CC@{CC}!Compatibility_v2.5.h@{Compatibility\_\discretionary {-}{}{}v2.5.h}|hyperpage}{18}
+\indexentry{Compatibility\_\discretionary {-}{}{}v2.5.h@{Compatibility\_\discretionary {-}{}{}v2.5.h}!MIDI\_\discretionary {-}{}{}FILTER\_\discretionary {-}{}{}ANTICANAL@{MIDI\_\discretionary {-}{}{}FILTER\_\discretionary {-}{}{}ANTICANAL}|hyperpage}{18}
+\indexentry{MIDI\_\discretionary {-}{}{}FILTER\_\discretionary {-}{}{}ANTICANAL@{MIDI\_\discretionary {-}{}{}FILTER\_\discretionary {-}{}{}ANTICANAL}!Compatibility_v2.5.h@{Compatibility\_\discretionary {-}{}{}v2.5.h}|hyperpage}{18}
+\indexentry{Compatibility\_\discretionary {-}{}{}v2.5.h@{Compatibility\_\discretionary {-}{}{}v2.5.h}!MIDI\_\discretionary {-}{}{}FILTER\_\discretionary {-}{}{}CANAL@{MIDI\_\discretionary {-}{}{}FILTER\_\discretionary {-}{}{}CANAL}|hyperpage}{18}
+\indexentry{MIDI\_\discretionary {-}{}{}FILTER\_\discretionary {-}{}{}CANAL@{MIDI\_\discretionary {-}{}{}FILTER\_\discretionary {-}{}{}CANAL}!Compatibility_v2.5.h@{Compatibility\_\discretionary {-}{}{}v2.5.h}|hyperpage}{18}
+\indexentry{Compatibility\_\discretionary {-}{}{}v2.5.h@{Compatibility\_\discretionary {-}{}{}v2.5.h}!MIDI\_\discretionary {-}{}{}FILTER\_\discretionary {-}{}{}FULL@{MIDI\_\discretionary {-}{}{}FILTER\_\discretionary {-}{}{}FULL}|hyperpage}{18}
+\indexentry{MIDI\_\discretionary {-}{}{}FILTER\_\discretionary {-}{}{}FULL@{MIDI\_\discretionary {-}{}{}FILTER\_\discretionary {-}{}{}FULL}!Compatibility_v2.5.h@{Compatibility\_\discretionary {-}{}{}v2.5.h}|hyperpage}{18}
+\indexentry{Compatibility\_\discretionary {-}{}{}v2.5.h@{Compatibility\_\discretionary {-}{}{}v2.5.h}!MIDI\_\discretionary {-}{}{}FILTER\_\discretionary {-}{}{}OFF@{MIDI\_\discretionary {-}{}{}FILTER\_\discretionary {-}{}{}OFF}|hyperpage}{18}
+\indexentry{MIDI\_\discretionary {-}{}{}FILTER\_\discretionary {-}{}{}OFF@{MIDI\_\discretionary {-}{}{}FILTER\_\discretionary {-}{}{}OFF}!Compatibility_v2.5.h@{Compatibility\_\discretionary {-}{}{}v2.5.h}|hyperpage}{18}
+\indexentry{Compatibility\_\discretionary {-}{}{}v2.5.h@{Compatibility\_\discretionary {-}{}{}v2.5.h}!MIDI\_\discretionary {-}{}{}rate@{MIDI\_\discretionary {-}{}{}rate}|hyperpage}{18}
+\indexentry{MIDI\_\discretionary {-}{}{}rate@{MIDI\_\discretionary {-}{}{}rate}!Compatibility_v2.5.h@{Compatibility\_\discretionary {-}{}{}v2.5.h}|hyperpage}{18}
+\indexentry{Compatibility\_\discretionary {-}{}{}v2.5.h@{Compatibility\_\discretionary {-}{}{}v2.5.h}!PC@{PC}|hyperpage}{18}
+\indexentry{PC@{PC}!Compatibility_v2.5.h@{Compatibility\_\discretionary {-}{}{}v2.5.h}|hyperpage}{18}
+\indexentry{Compatibility\_\discretionary {-}{}{}v2.5.h@{Compatibility\_\discretionary {-}{}{}v2.5.h}!SysEx@{SysEx}|hyperpage}{18}
+\indexentry{SysEx@{SysEx}!Compatibility_v2.5.h@{Compatibility\_\discretionary {-}{}{}v2.5.h}|hyperpage}{18}
+\indexentry{/Users/franky/Documents/Dropbox/SVN/embedded/toolbox/libraries/MIDILib/trunk/Arduino/MIDI.cpp@{/Users/franky/Documents/Dropbox/SVN/embedded/toolbox/libraries/MIDILib/trunk/Arduino/MIDI.cpp}|hyperpage}{20}
+\indexentry{MIDI.cpp@{MIDI.cpp}!MIDI@{MIDI}|hyperpage}{20}
+\indexentry{MIDI@{MIDI}!MIDI.cpp@{MIDI.cpp}|hyperpage}{20}
+\indexentry{/Users/franky/Documents/Dropbox/SVN/embedded/toolbox/libraries/MIDILib/trunk/Arduino/MIDI.h@{/Users/franky/Documents/Dropbox/SVN/embedded/toolbox/libraries/MIDILib/trunk/Arduino/MIDI.h}|hyperpage}{21}
+\indexentry{MIDI.h@{MIDI.h}!COMPATIBILITY\_\discretionary {-}{}{}V25@{COMPATIBILITY\_\discretionary {-}{}{}V25}|hyperpage}{22}
+\indexentry{COMPATIBILITY\_\discretionary {-}{}{}V25@{COMPATIBILITY\_\discretionary {-}{}{}V25}!MIDI.h@{MIDI.h}|hyperpage}{22}
+\indexentry{MIDI.h@{MIDI.h}!COMPFLAG\_\discretionary {-}{}{}MIDI\_\discretionary {-}{}{}IN@{COMPFLAG\_\discretionary {-}{}{}MIDI\_\discretionary {-}{}{}IN}|hyperpage}{22}
+\indexentry{COMPFLAG\_\discretionary {-}{}{}MIDI\_\discretionary {-}{}{}IN@{COMPFLAG\_\discretionary {-}{}{}MIDI\_\discretionary {-}{}{}IN}!MIDI.h@{MIDI.h}|hyperpage}{22}
+\indexentry{MIDI.h@{MIDI.h}!COMPFLAG\_\discretionary {-}{}{}MIDI\_\discretionary {-}{}{}OUT@{COMPFLAG\_\discretionary {-}{}{}MIDI\_\discretionary {-}{}{}OUT}|hyperpage}{22}
+\indexentry{COMPFLAG\_\discretionary {-}{}{}MIDI\_\discretionary {-}{}{}OUT@{COMPFLAG\_\discretionary {-}{}{}MIDI\_\discretionary {-}{}{}OUT}!MIDI.h@{MIDI.h}|hyperpage}{22}
+\indexentry{MIDI.h@{MIDI.h}!MIDI\_\discretionary {-}{}{}BAUDRATE@{MIDI\_\discretionary {-}{}{}BAUDRATE}|hyperpage}{22}
+\indexentry{MIDI\_\discretionary {-}{}{}BAUDRATE@{MIDI\_\discretionary {-}{}{}BAUDRATE}!MIDI.h@{MIDI.h}|hyperpage}{22}
+\indexentry{MIDI.h@{MIDI.h}!MIDI\_\discretionary {-}{}{}CHANNEL\_\discretionary {-}{}{}OFF@{MIDI\_\discretionary {-}{}{}CHANNEL\_\discretionary {-}{}{}OFF}|hyperpage}{22}
+\indexentry{MIDI\_\discretionary {-}{}{}CHANNEL\_\discretionary {-}{}{}OFF@{MIDI\_\discretionary {-}{}{}CHANNEL\_\discretionary {-}{}{}OFF}!MIDI.h@{MIDI.h}|hyperpage}{22}
+\indexentry{MIDI.h@{MIDI.h}!MIDI\_\discretionary {-}{}{}CHANNEL\_\discretionary {-}{}{}OMNI@{MIDI\_\discretionary {-}{}{}CHANNEL\_\discretionary {-}{}{}OMNI}|hyperpage}{22}
+\indexentry{MIDI\_\discretionary {-}{}{}CHANNEL\_\discretionary {-}{}{}OMNI@{MIDI\_\discretionary {-}{}{}CHANNEL\_\discretionary {-}{}{}OMNI}!MIDI.h@{MIDI.h}|hyperpage}{22}
+\indexentry{MIDI.h@{MIDI.h}!MIDI\_\discretionary {-}{}{}SYSEX\_\discretionary {-}{}{}ARRAY\_\discretionary {-}{}{}SIZE@{MIDI\_\discretionary {-}{}{}SYSEX\_\discretionary {-}{}{}ARRAY\_\discretionary {-}{}{}SIZE}|hyperpage}{22}
+\indexentry{MIDI\_\discretionary {-}{}{}SYSEX\_\discretionary {-}{}{}ARRAY\_\discretionary {-}{}{}SIZE@{MIDI\_\discretionary {-}{}{}SYSEX\_\discretionary {-}{}{}ARRAY\_\discretionary {-}{}{}SIZE}!MIDI.h@{MIDI.h}|hyperpage}{22}
+\indexentry{MIDI.h@{MIDI.h}!USE\_\discretionary {-}{}{}RUNNING\_\discretionary {-}{}{}STATUS@{USE\_\discretionary {-}{}{}RUNNING\_\discretionary {-}{}{}STATUS}|hyperpage}{22}
+\indexentry{USE\_\discretionary {-}{}{}RUNNING\_\discretionary {-}{}{}STATUS@{USE\_\discretionary {-}{}{}RUNNING\_\discretionary {-}{}{}STATUS}!MIDI.h@{MIDI.h}|hyperpage}{22}
+\indexentry{MIDI.h@{MIDI.h}!USE\_\discretionary {-}{}{}SERIAL\_\discretionary {-}{}{}PORT@{USE\_\discretionary {-}{}{}SERIAL\_\discretionary {-}{}{}PORT}|hyperpage}{22}
+\indexentry{USE\_\discretionary {-}{}{}SERIAL\_\discretionary {-}{}{}PORT@{USE\_\discretionary {-}{}{}SERIAL\_\discretionary {-}{}{}PORT}!MIDI.h@{MIDI.h}|hyperpage}{22}
+\indexentry{MIDI.h@{MIDI.h}!byte@{byte}|hyperpage}{23}
+\indexentry{byte@{byte}!MIDI.h@{MIDI.h}|hyperpage}{23}
+\indexentry{MIDI.h@{MIDI.h}!kMIDIType@{kMIDIType}|hyperpage}{23}
+\indexentry{kMIDIType@{kMIDIType}!MIDI.h@{MIDI.h}|hyperpage}{23}
+\indexentry{NoteOff@{NoteOff}!MIDI.h@{MIDI.h}|hyperpage}{23}
+\indexentry{MIDI.h@{MIDI.h}!NoteOff@{NoteOff}|hyperpage}{23}
+\indexentry{NoteOn@{NoteOn}!MIDI.h@{MIDI.h}|hyperpage}{23}
+\indexentry{MIDI.h@{MIDI.h}!NoteOn@{NoteOn}|hyperpage}{23}
+\indexentry{AfterTouchPoly@{AfterTouchPoly}!MIDI.h@{MIDI.h}|hyperpage}{23}
+\indexentry{MIDI.h@{MIDI.h}!AfterTouchPoly@{AfterTouchPoly}|hyperpage}{23}
+\indexentry{ControlChange@{ControlChange}!MIDI.h@{MIDI.h}|hyperpage}{23}
+\indexentry{MIDI.h@{MIDI.h}!ControlChange@{ControlChange}|hyperpage}{23}
+\indexentry{ProgramChange@{ProgramChange}!MIDI.h@{MIDI.h}|hyperpage}{23}
+\indexentry{MIDI.h@{MIDI.h}!ProgramChange@{ProgramChange}|hyperpage}{23}
+\indexentry{AfterTouchChannel@{AfterTouchChannel}!MIDI.h@{MIDI.h}|hyperpage}{23}
+\indexentry{MIDI.h@{MIDI.h}!AfterTouchChannel@{AfterTouchChannel}|hyperpage}{23}
+\indexentry{PitchBend@{PitchBend}!MIDI.h@{MIDI.h}|hyperpage}{23}
+\indexentry{MIDI.h@{MIDI.h}!PitchBend@{PitchBend}|hyperpage}{23}
+\indexentry{SystemExclusive@{SystemExclusive}!MIDI.h@{MIDI.h}|hyperpage}{23}
+\indexentry{MIDI.h@{MIDI.h}!SystemExclusive@{SystemExclusive}|hyperpage}{23}
+\indexentry{TimeCodeQuarterFrame@{TimeCodeQuarterFrame}!MIDI.h@{MIDI.h}|hyperpage}{23}
+\indexentry{MIDI.h@{MIDI.h}!TimeCodeQuarterFrame@{TimeCodeQuarterFrame}|hyperpage}{23}
+\indexentry{SongPosition@{SongPosition}!MIDI.h@{MIDI.h}|hyperpage}{23}
+\indexentry{MIDI.h@{MIDI.h}!SongPosition@{SongPosition}|hyperpage}{23}
+\indexentry{SongSelect@{SongSelect}!MIDI.h@{MIDI.h}|hyperpage}{23}
+\indexentry{MIDI.h@{MIDI.h}!SongSelect@{SongSelect}|hyperpage}{23}
+\indexentry{TuneRequest@{TuneRequest}!MIDI.h@{MIDI.h}|hyperpage}{23}
+\indexentry{MIDI.h@{MIDI.h}!TuneRequest@{TuneRequest}|hyperpage}{23}
+\indexentry{Clock@{Clock}!MIDI.h@{MIDI.h}|hyperpage}{23}
+\indexentry{MIDI.h@{MIDI.h}!Clock@{Clock}|hyperpage}{23}
+\indexentry{Start@{Start}!MIDI.h@{MIDI.h}|hyperpage}{23}
+\indexentry{MIDI.h@{MIDI.h}!Start@{Start}|hyperpage}{23}
+\indexentry{Continue@{Continue}!MIDI.h@{MIDI.h}|hyperpage}{23}
+\indexentry{MIDI.h@{MIDI.h}!Continue@{Continue}|hyperpage}{23}
+\indexentry{Stop@{Stop}!MIDI.h@{MIDI.h}|hyperpage}{23}
+\indexentry{MIDI.h@{MIDI.h}!Stop@{Stop}|hyperpage}{23}
+\indexentry{ActiveSensing@{ActiveSensing}!MIDI.h@{MIDI.h}|hyperpage}{23}
+\indexentry{MIDI.h@{MIDI.h}!ActiveSensing@{ActiveSensing}|hyperpage}{23}
+\indexentry{SystemReset@{SystemReset}!MIDI.h@{MIDI.h}|hyperpage}{23}
+\indexentry{MIDI.h@{MIDI.h}!SystemReset@{SystemReset}|hyperpage}{23}
+\indexentry{InvalidType@{InvalidType}!MIDI.h@{MIDI.h}|hyperpage}{23}
+\indexentry{MIDI.h@{MIDI.h}!InvalidType@{InvalidType}|hyperpage}{23}
+\indexentry{MIDI.h@{MIDI.h}!kThruFilterMode@{kThruFilterMode}|hyperpage}{24}
+\indexentry{kThruFilterMode@{kThruFilterMode}!MIDI.h@{MIDI.h}|hyperpage}{24}
+\indexentry{Off@{Off}!MIDI.h@{MIDI.h}|hyperpage}{24}
+\indexentry{MIDI.h@{MIDI.h}!Off@{Off}|hyperpage}{24}
+\indexentry{Full@{Full}!MIDI.h@{MIDI.h}|hyperpage}{24}
+\indexentry{MIDI.h@{MIDI.h}!Full@{Full}|hyperpage}{24}
+\indexentry{SameChannel@{SameChannel}!MIDI.h@{MIDI.h}|hyperpage}{24}
+\indexentry{MIDI.h@{MIDI.h}!SameChannel@{SameChannel}|hyperpage}{24}
+\indexentry{DifferentChannel@{DifferentChannel}!MIDI.h@{MIDI.h}|hyperpage}{24}
+\indexentry{MIDI.h@{MIDI.h}!DifferentChannel@{DifferentChannel}|hyperpage}{24}
+\indexentry{MIDI.h@{MIDI.h}!MIDI@{MIDI}|hyperpage}{24}
+\indexentry{MIDI@{MIDI}!MIDI.h@{MIDI.h}|hyperpage}{24}

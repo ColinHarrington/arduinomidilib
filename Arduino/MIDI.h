@@ -114,8 +114,8 @@ struct midimsg {
 
 
 /*! The main class for MIDI handling.
-	See member descriptions for knowing how to use it,
-	or go see the examples supplied with the library.
+	See member descriptions to know how to use it,
+	or check out the examples supplied with the library.
  */
 class MIDI_Class {
 	

@@ -11,16 +11,6 @@
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
-    <li>
-      <form action="search.php" method="get">
-        <table cellspacing="0" cellpadding="0" border="0">
-          <tr>
-            <td><label>&nbsp;<u>S</u>earch&nbsp;for&nbsp;</label></td>
-            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
-          </tr>
-        </table>
-      </form>
-    </li>
     </ul>
   </div>
   <div class="tabs">
@@ -42,13 +32,7 @@
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_i_d_i___class.html#cea4c4db7092ba5cb7c147a3fb215e07">~MIDI_Class</a> ()</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_i_d_i___class.html#a7c9ed4d1e9b133fa4570c8724b1a212">begin</a> (<a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a> inChannel=1)</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_i_d_i___class.html#8e7be5af3a32cb91f596dbb8d8c297bf">read</a> ()</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_i_d_i___class.html#f31de9257a6e9084d3c495aeb1113d34">read</a> (<a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a> channel)</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_i_d_i___class.html#9b288ace3160641541e6348a7652bca2">send</a> (<a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a> type, <a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a> param1, <a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a> param2, <a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a> canal)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_i_d_i___class.html#c34d163205bb01ac5e03df7e64facebe">begin</a> (const <a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a> inChannel=1)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_i_d_i___class.html#9664e523b35d8b42749e7bc3ba888943">sendNoteOn</a> (<a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a> NoteNumber, <a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a> Velocity, <a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a> Channel)</td></tr>
 
@@ -58,21 +42,33 @@
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_i_d_i___class.html#3a80e9bd2cfdb619be91d80e8f3b7825">sendControlChange</a> (<a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a> ControlNumber, <a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a> ControlValue, <a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a> Channel)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_i_d_i___class.html#25e1979a9e80976a8019bd0a2629cc26">sendPitchBend</a> (int PitchValue, <a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a> Channel)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_i_d_i___class.html#45dcd73e3b8a107334e687750514f8b5">sendPitchBend</a> (unsigned int PitchValue, <a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a> Channel)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_i_d_i___class.html#16800e955a1d0d66e6bda6727588b1eb">sendPitchBend</a> (double PitchValue, <a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a> Channel)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_i_d_i___class.html#028ec5a49dccf9c28b00e11e7a3d1d05">sendPolyPressure</a> (<a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a> NoteNumber, <a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a> Pressure, <a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a> Channel)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_i_d_i___class.html#73b57f656a80166b98dc1b57ea9a56dc">sendAfterTouch</a> (<a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a> Pressure, <a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a> Channel)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_i_d_i___class.html#e99cffccec6b45cc8c15891a1b9d1f3a">sendSysEx</a> (<a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a> length, <a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a> *array)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_i_d_i___class.html#73a36cacf4e77ca081979f9c7066ee28">sendSysEx</a> (<a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a> length, <a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a> *array, bool ArrayContainsBoundaries=false)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_i_d_i___class.html#47214ae45652e930d8b27fd00ff36185">turnThruOn</a> ()</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_i_d_i___class.html#d9b1bd53330652f0360a0a6ed80b5b9d">sendTimeCodeQuarterFrame</a> (<a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a> TypeNibble, <a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a> ValuesNibble)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_i_d_i___class.html#c1999ba222737523008d6f1c579d6816">turnThruOff</a> ()</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_i_d_i___class.html#1f720df72c5253d85d1d547d09357ea0">sendTimeCodeQuarterFrame</a> (<a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a> data)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_i_d_i___class.html#60890997a68c72fcf67f7f10c2eb00fb">turnThru</a> (bool state)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_i_d_i___class.html#0b9a6c3437016b8dc9678d6c43ca693f">sendSongPosition</a> (unsigned int Beats)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_i_d_i___class.html#048175637560e944c0b8de5e6d4e8615">getType</a> ()</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_i_d_i___class.html#0b957074192d439e8e69af9eef6fab77">sendSongSelect</a> (<a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a> SongNumber)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_i_d_i___class.html#9d9a51ca4a888c7c4c0d91a9e678c751">sendTuneRequest</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_i_d_i___class.html#e9086dd31c41ea773925a069dbd0080b">sendRealTime</a> (<a class="el" href="_m_i_d_i_8h.html#802feb46a169642d43b2415d02390545">kMIDIType</a> Type)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_i_d_i___class.html#8e7be5af3a32cb91f596dbb8d8c297bf">read</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_i_d_i___class.html#581b5b973cd81e5aa9d6b91c220342b7">read</a> (const <a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a> Channel)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="_m_i_d_i_8h.html#802feb46a169642d43b2415d02390545">kMIDIType</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_i_d_i___class.html#b43d8c2b277cf2408865b4f63111080b">getType</a> ()</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_i_d_i___class.html#6b7ac8309663b69decfd1bd2925fcbef">getChannel</a> ()</td></tr>
 
@@ -86,24 +82,24 @@
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_i_d_i___class.html#f05fb3c0857d2f50d6c21414eb18ef53">getInputChannel</a> ()</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_i_d_i___class.html#a307a0e8cd8da83624d413161b8df59c">getFilterMode</a> ()</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_i_d_i___class.html#35a66d47ba598c7ebbee7fbf654dafe8">setInputChannel</a> (const <a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a> Channel)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="_m_i_d_i_8h.html#315ccd12c0a15c11eca5cc4acdb6397d">kThruFilterMode</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_i_d_i___class.html#8952fc757cefe98856ba7cfc811bbbb3">getFilterMode</a> ()</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_i_d_i___class.html#76c71d380b9221207062aa669a9c0005">getThruState</a> ()</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_i_d_i___class.html#01add37fe31e69ef2a706f76573bbaf5">setDeviceID</a> (<a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a> sysID)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_i_d_i___class.html#7fd1759eda22c18f6122b4231e1f0a6d">turnThruOn</a> (<a class="el" href="_m_i_d_i_8h.html#315ccd12c0a15c11eca5cc4acdb6397d">kThruFilterMode</a> inThruFilterMode=Full)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_i_d_i___class.html#24b40d9c00c99206067f14417f0d3026">delMsg</a> ()</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_i_d_i___class.html#c1999ba222737523008d6f1c579d6816">turnThruOff</a> ()</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_i_d_i___class.html#2a0998c1e2f79192cef2390ad5e8b95b">delSysEx</a> ()</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_i_d_i___class.html#be50e76aa11dc7127bd28659c181ab77">setThruFilterMode</a> (const <a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a> inThruFilterMode)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_i_d_i___class.html#6b40f3dbe3ab8bdc348e50715fba7fbd">setInputChannel</a> (<a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a> channel)</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_i_d_i___class.html#5c1dda2b95eaf9024ae8b76e96273a82">setFilter</a> (<a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a> filter)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_i_d_i___class.html#33d450180a10a36bef08e68015c4d922">setThruFilterMode</a> (const <a class="el" href="_m_i_d_i_8h.html#315ccd12c0a15c11eca5cc4acdb6397d">kThruFilterMode</a> inThruFilterMode)</td></tr>
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-
-<p>Definition at line <a class="el" href="_m_i_d_i_8h-source.html#l00069">69</a> of file <a class="el" href="_m_i_d_i_8h-source.html">MIDI.h</a>.</p>
+The main class for MIDI handling. See member descriptions to know how to use it, or check out the examples supplied with the library. 
+<p>Definition at line <a class="el" href="_m_i_d_i_8h-source.html#l00120">120</a> of file <a class="el" href="_m_i_d_i_8h-source.html">MIDI.h</a>.</p>
 <hr><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" name="5e395e8f748ec53a0818bffd0e2f176f"></a><!-- doxytag: member="MIDI_Class::MIDI_Class" ref="5e395e8f748ec53a0818bffd0e2f176f" args="()" -->
 <div class="memitem">
@@ -122,7 +118,10 @@
 
 <p>
 Default constructor for <a class="el" href="class_m_i_d_i___class.html">MIDI_Class</a>. 
-<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00034">34</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00022">22</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00022"></a>00022 { }
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -144,19 +143,22 @@ Default constructor for <a class="el" href="class_m_i_d_i___class.html">MIDI_Cla
 <p>
 Default destructor for <a class="el" href="class_m_i_d_i___class.html">MIDI_Class</a>.<br>
  This is not really useful for the Arduino, as it is never called... 
-<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00038">38</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00026">26</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00026"></a>00026 { }
+</pre></div>
+<p>
 
 </div>
 </div><p>
 <hr><h2>Member Function Documentation</h2>
-<a class="anchor" name="a7c9ed4d1e9b133fa4570c8724b1a212"></a><!-- doxytag: member="MIDI_Class::begin" ref="a7c9ed4d1e9b133fa4570c8724b1a212" args="(byte inChannel=1)" -->
+<a class="anchor" name="c34d163205bb01ac5e03df7e64facebe"></a><!-- doxytag: member="MIDI_Class::begin" ref="c34d163205bb01ac5e03df7e64facebe" args="(const byte inChannel=1)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void MIDI_Class::begin           </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a>&nbsp;</td>
+          <td class="paramtype">const <a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a>&nbsp;</td>
           <td class="paramname"> <em>inChannel</em> = <code>1</code>          </td>
           <td>&nbsp;)&nbsp;</td>
           <td></td>
@@ -167,9 +169,49 @@ Default destructor for <a class="el" href="class_m_i_d_i___class.html">MIDI_Clas
 
 <p>
 Call the begin method in the setup() function of the Arduino. All parameters are set to their default values:<ul>
-<li>Full thru mirroring</li><li>Input channel set to 1 if no value specified </li></ul>
+<li>Input channel set to 1 if no value is specified</li><li>Full thru mirroring </li></ul>
 
-<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00046">46</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00034">34</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00034"></a>00034                                            {
+<a name="l00035"></a>00035         
+<a name="l00036"></a>00036         <span class="comment">// Initialise the Serial port</span>
+<a name="l00037"></a>00037         <a class="code" href="_m_i_d_i_8h.html#9f150c76e70559513c7f5d20496c8c9c">USE_SERIAL_PORT</a>.begin(<a class="code" href="_m_i_d_i_8h.html#2d027d77d9e279583f292ce854cbafb2">MIDI_BAUDRATE</a>);
+<a name="l00038"></a>00038         
+<a name="l00039"></a>00039         
+<a name="l00040"></a>00040 <span class="preprocessor">#if COMPFLAG_MIDI_OUT</span>
+<a name="l00041"></a>00041 <span class="preprocessor"></span>        
+<a name="l00042"></a>00042 <span class="preprocessor">#if USE_RUNNING_STATUS</span>
+<a name="l00043"></a>00043 <span class="preprocessor"></span>        mRunningStatus_TX = <a class="code" href="_m_i_d_i_8h.html#802feb46a169642d43b2415d02390545791c6b5c1e5f30ce6c7b0937e93adbbb">InvalidType</a>;
+<a name="l00044"></a>00044 <span class="preprocessor">#endif // USE_RUNNING_STATUS</span>
+<a name="l00045"></a>00045 <span class="preprocessor"></span>        
+<a name="l00046"></a>00046 <span class="preprocessor">#endif // COMPFLAG_MIDI_OUT</span>
+<a name="l00047"></a>00047 <span class="preprocessor"></span>        
+<a name="l00048"></a>00048         
+<a name="l00049"></a>00049 <span class="preprocessor">#if COMPFLAG_MIDI_IN</span>
+<a name="l00050"></a>00050 <span class="preprocessor"></span>        
+<a name="l00051"></a>00051         mInputChannel = inChannel;
+<a name="l00052"></a>00052         mRunningStatus_RX = <a class="code" href="_m_i_d_i_8h.html#802feb46a169642d43b2415d02390545791c6b5c1e5f30ce6c7b0937e93adbbb">InvalidType</a>;
+<a name="l00053"></a>00053         mPendingMessageIndex = 0;
+<a name="l00054"></a>00054         mPendingMessageExpectedLenght = 0;
+<a name="l00055"></a>00055         
+<a name="l00056"></a>00056         mMessage.<a class="code" href="structmidimsg.html#dd91395b86cb7ace5ba8c1654ab61d2e">valid</a> = <span class="keyword">false</span>;
+<a name="l00057"></a>00057         mMessage.<a class="code" href="structmidimsg.html#c2aa51d6154e6434f4426f925c6e5287">type</a> = <a class="code" href="_m_i_d_i_8h.html#802feb46a169642d43b2415d02390545791c6b5c1e5f30ce6c7b0937e93adbbb">InvalidType</a>;
+<a name="l00058"></a>00058         mMessage.<a class="code" href="structmidimsg.html#b0be990f365123787ec088f55ae6e46b">channel</a> = 0;
+<a name="l00059"></a>00059         mMessage.<a class="code" href="structmidimsg.html#d0a225fbc23de9f631331d6aa52ab981">data1</a> = 0;
+<a name="l00060"></a>00060         mMessage.<a class="code" href="structmidimsg.html#240be209353b132d10757bf345146e6b">data2</a> = 0;
+<a name="l00061"></a>00061         
+<a name="l00062"></a>00062 <span class="preprocessor">#endif // COMPFLAG_MIDI_IN</span>
+<a name="l00063"></a>00063 <span class="preprocessor"></span>        
+<a name="l00064"></a>00064         
+<a name="l00065"></a>00065 <span class="preprocessor">#if (COMPFLAG_MIDI_IN &amp;&amp; COMPFLAG_MIDI_OUT) // Thru</span>
+<a name="l00066"></a>00066 <span class="preprocessor"></span>        
+<a name="l00067"></a>00067         mThruFilterMode = <a class="code" href="_m_i_d_i_8h.html#315ccd12c0a15c11eca5cc4acdb6397d8b7c5cd8bd8eb51ee6d3fd0eac584679">Full</a>;
+<a name="l00068"></a>00068         
+<a name="l00069"></a>00069 <span class="preprocessor">#endif // Thru</span>
+<a name="l00070"></a>00070 <span class="preprocessor"></span>        
+<a name="l00071"></a>00071 }
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -190,49 +232,10 @@ Call the begin method in the setup() function of the Arduino. All parameters are
 
 <p>
 Check if a valid message is stored in the structure. 
-<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00148">148</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
-
-</div>
-</div><p>
-<a class="anchor" name="24b40d9c00c99206067f14417f0d3026"></a><!-- doxytag: member="MIDI_Class::delMsg" ref="24b40d9c00c99206067f14417f0d3026" args="()" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void MIDI_Class::delMsg           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
+<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00571">571</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00571"></a>00571 { <span class="keywordflow">return</span> mMessage.<a class="code" href="structmidimsg.html#dd91395b86cb7ace5ba8c1654ab61d2e">valid</a>; }
+</pre></div>
 <p>
-Use this method to delete the message stored in the structure. 
-<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00152">152</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
-
-</div>
-</div><p>
-<a class="anchor" name="2a0998c1e2f79192cef2390ad5e8b95b"></a><!-- doxytag: member="MIDI_Class::delSysEx" ref="2a0998c1e2f79192cef2390ad5e8b95b" args="()" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void MIDI_Class::delSysEx           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-
-<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00161">161</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
 
 </div>
 </div><p>
@@ -253,7 +256,10 @@ Use this method to delete the message stored in the structure.
 
 <p>
 Getter method: access to the channel of the message stored in the structure. 
-<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00140">140</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00563">563</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00563"></a>00563 { <span class="keywordflow">return</span> mMessage.<a class="code" href="structmidimsg.html#b0be990f365123787ec088f55ae6e46b">channel</a>; }
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -275,7 +281,10 @@ Getter method: access to the channel of the message stored in the structure.
 <p>
 Getter method: access to the first data byte of the message stored in the structure. <br>
  If the message is SysEx, the length of the array is stocked there. 
-<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00142">142</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00565">565</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00565"></a>00565 { <span class="keywordflow">return</span> mMessage.<a class="code" href="structmidimsg.html#d0a225fbc23de9f631331d6aa52ab981">data1</a>; }
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -296,16 +305,19 @@ Getter method: access to the first data byte of the message stored in the struct
 
 <p>
 Getter method: access to the second data byte of the message stored in the structure. 
-<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00144">144</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00567">567</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00567"></a>00567 { <span class="keywordflow">return</span> mMessage.<a class="code" href="structmidimsg.html#240be209353b132d10757bf345146e6b">data2</a>; }
+</pre></div>
+<p>
 
 </div>
 </div><p>
-<a class="anchor" name="a307a0e8cd8da83624d413161b8df59c"></a><!-- doxytag: member="MIDI_Class::getFilterMode" ref="a307a0e8cd8da83624d413161b8df59c" args="()" -->
+<a class="anchor" name="8952fc757cefe98856ba7cfc811bbbb3"></a><!-- doxytag: member="MIDI_Class::getFilterMode" ref="8952fc757cefe98856ba7cfc811bbbb3" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a> MIDI_Class::getFilterMode           </td>
+          <td class="memname"><a class="el" href="_m_i_d_i_8h.html#315ccd12c0a15c11eca5cc4acdb6397d">kThruFilterMode</a> MIDI_Class::getFilterMode           </td>
           <td>(</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
@@ -317,7 +329,10 @@ Getter method: access to the second data byte of the message stored in the struc
 
 <p>
 
-<p>Definition at line <a class="el" href="_m_i_d_i_8h-source.html#l00105">105</a> of file <a class="el" href="_m_i_d_i_8h-source.html">MIDI.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_i_d_i_8h-source.html#l00226">226</a> of file <a class="el" href="_m_i_d_i_8h-source.html">MIDI.h</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00226"></a>00226 { <span class="keywordflow">return</span> mThruFilterMode; }
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -338,7 +353,10 @@ Getter method: access to the second data byte of the message stored in the struc
 
 <p>
 
-<p>Definition at line <a class="el" href="_m_i_d_i_8h-source.html#l00104">104</a> of file <a class="el" href="_m_i_d_i_8h-source.html">MIDI.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_i_d_i_8h-source.html#l00186">186</a> of file <a class="el" href="_m_i_d_i_8h-source.html">MIDI.h</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00186"></a>00186 { <span class="keywordflow">return</span> mInputChannel; }
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -359,7 +377,10 @@ Getter method: access to the second data byte of the message stored in the struc
 
 <p>
 Getter method: access to the System Exclusive byte array. Array length is stocked in Data1. 
-<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00146">146</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00569">569</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00569"></a>00569 { <span class="keywordflow">return</span> mMessage.<a class="code" href="structmidimsg.html#253df8383f977227e7d45ba488d98601">sysex_array</a>; }
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -380,16 +401,19 @@ Getter method: access to the System Exclusive byte array. Array length is stocke
 
 <p>
 
-<p>Definition at line <a class="el" href="_m_i_d_i_8h-source.html#l00106">106</a> of file <a class="el" href="_m_i_d_i_8h-source.html">MIDI.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_i_d_i_8h-source.html#l00227">227</a> of file <a class="el" href="_m_i_d_i_8h-source.html">MIDI.h</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00227"></a>00227 { <span class="keywordflow">return</span> mThruActivated; }
+</pre></div>
+<p>
 
 </div>
 </div><p>
-<a class="anchor" name="048175637560e944c0b8de5e6d4e8615"></a><!-- doxytag: member="MIDI_Class::getType" ref="048175637560e944c0b8de5e6d4e8615" args="()" -->
+<a class="anchor" name="b43d8c2b277cf2408865b4f63111080b"></a><!-- doxytag: member="MIDI_Class::getType" ref="b43d8c2b277cf2408865b4f63111080b" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a> MIDI_Class::getType           </td>
+          <td class="memname"><a class="el" href="_m_i_d_i_8h.html#802feb46a169642d43b2415d02390545">kMIDIType</a> MIDI_Class::getType           </td>
           <td>(</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
@@ -400,20 +424,24 @@ Getter method: access to the System Exclusive byte array. Array length is stocke
 <div class="memdoc">
 
 <p>
-Getter method: access to the message type stored in the structure. 
-<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00138">138</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+Getter method: access to the message type stored in the structure. <br>
+ Returns an enumerated type. 
+<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00561">561</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00561"></a>00561 { <span class="keywordflow">return</span> mMessage.<a class="code" href="structmidimsg.html#c2aa51d6154e6434f4426f925c6e5287">type</a>; }
+</pre></div>
+<p>
 
 </div>
 </div><p>
-<a class="anchor" name="f31de9257a6e9084d3c495aeb1113d34"></a><!-- doxytag: member="MIDI_Class::read" ref="f31de9257a6e9084d3c495aeb1113d34" args="(byte channel)" -->
+<a class="anchor" name="581b5b973cd81e5aa9d6b91c220342b7"></a><!-- doxytag: member="MIDI_Class::read" ref="581b5b973cd81e5aa9d6b91c220342b7" args="(const byte Channel)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">bool MIDI_Class::read           </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a>&nbsp;</td>
-          <td class="paramname"> <em>channel</em>          </td>
+          <td class="paramtype">const <a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a>&nbsp;</td>
+          <td class="paramname"> <em>inChannel</em>          </td>
           <td>&nbsp;)&nbsp;</td>
           <td></td>
         </tr>
@@ -422,8 +450,18 @@ Getter method: access to the message type stored in the structure.
 <div class="memdoc">
 
 <p>
-Reading/mirroring method, the same as <a class="el" href="class_m_i_d_i___class.html#8e7be5af3a32cb91f596dbb8d8c297bf">read()</a> with a given input channel to read on. 
-<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00334">334</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+Reading/thru-ing method, the same as <a class="el" href="class_m_i_d_i___class.html#8e7be5af3a32cb91f596dbb8d8c297bf">read()</a> with a given input channel to read on. 
+<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00278">278</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00278"></a>00278                                           {
+<a name="l00279"></a>00279         
+<a name="l00280"></a>00280         <span class="keywordflow">if</span> (inChannel &gt;= <a class="code" href="_m_i_d_i_8h.html#e5f8dc293002c1090c3551ba40f6aee8">MIDI_CHANNEL_OFF</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>; <span class="comment">// MIDI Input disabled.</span>
+<a name="l00281"></a>00281         
+<a name="l00282"></a>00282         <span class="keywordflow">if</span> (parse(inChannel)) <span class="keywordflow">return</span> filter(inChannel);
+<a name="l00283"></a>00283         <span class="keywordflow">else</span> <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00284"></a>00284         
+<a name="l00285"></a>00285 }
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -443,62 +481,16 @@ Reading/mirroring method, the same as <a class="el" href="class_m_i_d_i___class.
 <div class="memdoc">
 
 <p>
-Read a MIDI message from the serial port using the main input channel (see <a class="el" href="class_m_i_d_i___class.html#6b40f3dbe3ab8bdc348e50715fba7fbd">setInputChannel()</a> for reference). <br>
+Read a MIDI message from the serial port using the main input channel (see <a class="el" href="class_m_i_d_i___class.html#35a66d47ba598c7ebbee7fbf654dafe8">setInputChannel()</a> for reference). <br>
  Returned value: true if any valid message has been stored in the structure, false if not. A valid message is a message that matches the input channel. <br>
 <br>
  If the Thru is enabled and the messages matches the filter, it is sent back on the MIDI output. 
-<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00330">330</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
-
-</div>
-</div><p>
-<a class="anchor" name="9b288ace3160641541e6348a7652bca2"></a><!-- doxytag: member="MIDI_Class::send" ref="9b288ace3160641541e6348a7652bca2" args="(byte type, byte param1, byte param2, byte canal)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void MIDI_Class::send           </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a>&nbsp;</td>
-          <td class="paramname"> <em>type</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a>&nbsp;</td>
-          <td class="paramname"> <em>data1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a>&nbsp;</td>
-          <td class="paramname"> <em>data2</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a>&nbsp;</td>
-          <td class="paramname"> <em>channel</em></td><td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td><td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
+<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00273">273</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00273"></a>00273                       {
+<a name="l00274"></a>00274         <span class="keywordflow">return</span> <a class="code" href="class_m_i_d_i___class.html#8e7be5af3a32cb91f596dbb8d8c297bf">read</a>(mInputChannel);
+<a name="l00275"></a>00275 }
+</pre></div>
 <p>
-Generate and send a custom MIDI mMessage. <dl compact><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>type</em>&nbsp;</td><td>The message type (see type defines for reference) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>data1</em>&nbsp;</td><td>The first data byte </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>data2</em>&nbsp;</td><td>The second data byte (if the message contains only 1 data byte, set this one to 0) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>channel</em>&nbsp;</td><td>The output channel on which the message will be sent </td></tr>
-  </table>
-</dl>
-
-<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00074">74</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
 
 </div>
 </div><p>
@@ -529,7 +521,10 @@ Generate and send a custom MIDI mMessage. <dl compact><dt><b>Parameters:</b></dt
 
 <p>
 Monophonic AfterTouch 
-<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00125">125</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00165">165</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00165"></a>00165 { send(<a class="code" href="_m_i_d_i_8h.html#802feb46a169642d43b2415d02390545040c84d19624cf23edd3f54c2d432793">AfterTouchChannel</a>,Pressure,0,Channel); }
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -566,7 +561,10 @@ Monophonic AfterTouch
 
 <p>
 Send a Control Change message 
-<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00121">121</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00161">161</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00161"></a>00161 { send(<a class="code" href="_m_i_d_i_8h.html#802feb46a169642d43b2415d02390545c150258f2e69ec1e535cee9df3f5bb1e">ControlChange</a>,ControlNumber,ControlValue,Channel); }
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -603,7 +601,10 @@ Send a Control Change message
 
 <p>
 Send a Note Off message (a real Note Off, not a Note On with null velocity) 
-<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00117">117</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00157">157</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00157"></a>00157 { send(<a class="code" href="_m_i_d_i_8h.html#802feb46a169642d43b2415d02390545d37718bd43a7976d5e89e8ee7819e5fd">NoteOff</a>,NoteNumber,Velocity,Channel); }
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -640,18 +641,21 @@ Send a Note Off message (a real Note Off, not a Note On with null velocity)
 
 <p>
 Send a Note On message 
-<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00115">115</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00155">155</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00155"></a>00155 { send(<a class="code" href="_m_i_d_i_8h.html#802feb46a169642d43b2415d02390545ffc541f2571710265776574dd39fc319">NoteOn</a>,NoteNumber,Velocity,Channel); }
+</pre></div>
+<p>
 
 </div>
 </div><p>
-<a class="anchor" name="25e1979a9e80976a8019bd0a2629cc26"></a><!-- doxytag: member="MIDI_Class::sendPitchBend" ref="25e1979a9e80976a8019bd0a2629cc26" args="(int PitchValue, byte Channel)" -->
+<a class="anchor" name="16800e955a1d0d66e6bda6727588b1eb"></a><!-- doxytag: member="MIDI_Class::sendPitchBend" ref="16800e955a1d0d66e6bda6727588b1eb" args="(double PitchValue, byte Channel)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void MIDI_Class::sendPitchBend           </td>
           <td>(</td>
-          <td class="paramtype">int&nbsp;</td>
+          <td class="paramtype">double&nbsp;</td>
           <td class="paramname"> <em>PitchValue</em>, </td>
         </tr>
         <tr>
@@ -669,6 +673,67 @@ Send a Note On message
 </div>
 <div class="memdoc">
 
+<p>
+Send a Pitch Bend message using a floating point value. <dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>PitchValue</em>&nbsp;</td><td>The amount of bend to send (in a floating point format), between -1 (maximum downwards bend) and +1 (max upwards bend), center value is 0. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Channel</em>&nbsp;</td><td>The channel to send the message on (1 to 16). </td></tr>
+  </table>
+</dl>
+
+<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00179">179</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00179"></a>00179                                                              {
+<a name="l00180"></a>00180 
+<a name="l00181"></a>00181         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> pitchval = (PitchValue+1.f)*8192;
+<a name="l00182"></a>00182         <span class="keywordflow">if</span> (pitchval &gt; 16383) pitchval = 16383;         <span class="comment">// overflow protection</span>
+<a name="l00183"></a>00183         <a class="code" href="class_m_i_d_i___class.html#45dcd73e3b8a107334e687750514f8b5">sendPitchBend</a>(pitchval,Channel);
+<a name="l00184"></a>00184         
+<a name="l00185"></a>00185 }
+</pre></div>
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="45dcd73e3b8a107334e687750514f8b5"></a><!-- doxytag: member="MIDI_Class::sendPitchBend" ref="45dcd73e3b8a107334e687750514f8b5" args="(unsigned int PitchValue, byte Channel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MIDI_Class::sendPitchBend           </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&nbsp;</td>
+          <td class="paramname"> <em>PitchValue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a>&nbsp;</td>
+          <td class="paramname"> <em>Channel</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Send a Pitch Bend message using an integer value. <dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>PitchValue</em>&nbsp;</td><td>The amount of bend to send (in an integer format), between 0 (maximum downwards bend) and 16383 (max upwards bend), center value is 8192. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Channel</em>&nbsp;</td><td>The channel to send the message on (1 to 16). </td></tr>
+  </table>
+</dl>
+
+<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00170">170</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00170"></a>00170                                                                    {
+<a name="l00171"></a>00171 
+<a name="l00172"></a>00172         send(<a class="code" href="_m_i_d_i_8h.html#802feb46a169642d43b2415d02390545d0eed86b1606c722a91a0cb9e71305e6">PitchBend</a>,(PitchValue &amp; 0x7F),(PitchValue &gt;&gt; 7) &amp; 0x7F,Channel);
+<a name="l00173"></a>00173         
+<a name="l00174"></a>00174 }
+</pre></div>
 <p>
 
 </div>
@@ -706,7 +771,10 @@ Send a Note On message
 
 <p>
 Polyphonic AfterTouch (carries the information of pressure of the given key/note) 
-<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00123">123</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00163">163</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00163"></a>00163 { send(<a class="code" href="_m_i_d_i_8h.html#802feb46a169642d43b2415d02390545ef074e16a30d86e0a42b873dd6843cd2">AfterTouchPoly</a>,NoteNumber,Pressure,Channel); }
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -737,11 +805,126 @@ Polyphonic AfterTouch (carries the information of pressure of the given key/note
 
 <p>
 Send a Program Change message 
-<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00119">119</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00159">159</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00159"></a>00159 { send(<a class="code" href="_m_i_d_i_8h.html#802feb46a169642d43b2415d023905451b28117f91e20a90f91f6a6886023186">ProgramChange</a>,ProgramNumber,0,Channel); }
+</pre></div>
+<p>
 
 </div>
 </div><p>
-<a class="anchor" name="e99cffccec6b45cc8c15891a1b9d1f3a"></a><!-- doxytag: member="MIDI_Class::sendSysEx" ref="e99cffccec6b45cc8c15891a1b9d1f3a" args="(byte length, byte *array)" -->
+<a class="anchor" name="e9086dd31c41ea773925a069dbd0080b"></a><!-- doxytag: member="MIDI_Class::sendRealTime" ref="e9086dd31c41ea773925a069dbd0080b" args="(kMIDIType Type)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MIDI_Class::sendRealTime           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_m_i_d_i_8h.html#802feb46a169642d43b2415d02390545">kMIDIType</a>&nbsp;</td>
+          <td class="paramname"> <em>Type</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Send a Real Time (one byte) message. <br>
+ You can also send a Tune Request with this method. <dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Type</em>&nbsp;</td><td>The available Real Time types are: Start, Stop, Continue, Clock, ActiveSensing and SystemReset. </td></tr>
+  </table>
+</dl>
+
+<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00245">245</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00245"></a>00245                                             {
+<a name="l00246"></a>00246         <span class="keywordflow">switch</span> (Type) {
+<a name="l00247"></a>00247                 <span class="keywordflow">case</span> <a class="code" href="_m_i_d_i_8h.html#802feb46a169642d43b2415d02390545afec2fa09eaa764d5d629798a8f8429c">TuneRequest</a>: <span class="comment">// Not really real-time, but one byte anyway.</span>
+<a name="l00248"></a>00248                 <span class="keywordflow">case</span> <a class="code" href="_m_i_d_i_8h.html#802feb46a169642d43b2415d023905454b52d61cc39d9427f91d3b8606319e2c">Clock</a>:
+<a name="l00249"></a>00249                 <span class="keywordflow">case</span> <a class="code" href="_m_i_d_i_8h.html#802feb46a169642d43b2415d02390545bd5f9c956752ce4dc707b4624b3a36f7">Start</a>:
+<a name="l00250"></a>00250                 <span class="keywordflow">case</span> <a class="code" href="_m_i_d_i_8h.html#802feb46a169642d43b2415d02390545f98d707eb4ed173ccfdbaf4eaa87100d">Stop</a>:      
+<a name="l00251"></a>00251                 <span class="keywordflow">case</span> <a class="code" href="_m_i_d_i_8h.html#802feb46a169642d43b2415d0239054545a66636ecd16b869e4aadd738813583">Continue</a>:
+<a name="l00252"></a>00252                 <span class="keywordflow">case</span> <a class="code" href="_m_i_d_i_8h.html#802feb46a169642d43b2415d0239054555c1135b4b41d3cff4b7832b81352823">ActiveSensing</a>:
+<a name="l00253"></a>00253                 <span class="keywordflow">case</span> <a class="code" href="_m_i_d_i_8h.html#802feb46a169642d43b2415d023905457256ac4658ec7af1eb4705b83266a603">SystemReset</a>:
+<a name="l00254"></a>00254                         <a class="code" href="_m_i_d_i_8h.html#9f150c76e70559513c7f5d20496c8c9c">USE_SERIAL_PORT</a>.write((<a class="code" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a>)Type);
+<a name="l00255"></a>00255                         <span class="keywordflow">break</span>;
+<a name="l00256"></a>00256                 <span class="keywordflow">default</span>:
+<a name="l00257"></a>00257                         <span class="comment">// Invalid Real Time marker</span>
+<a name="l00258"></a>00258                         <span class="keywordflow">break</span>;
+<a name="l00259"></a>00259         }
+<a name="l00260"></a>00260 }
+</pre></div>
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="0b9a6c3437016b8dc9678d6c43ca693f"></a><!-- doxytag: member="MIDI_Class::sendSongPosition" ref="0b9a6c3437016b8dc9678d6c43ca693f" args="(unsigned int Beats)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MIDI_Class::sendSongPosition           </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&nbsp;</td>
+          <td class="paramname"> <em>Beats</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Send a Song Position Pointer message. <dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Beats</em>&nbsp;</td><td>The number of beats since the start of the song. </td></tr>
+  </table>
+</dl>
+
+<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00226">226</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00226"></a>00226                                                     {
+<a name="l00227"></a>00227         
+<a name="l00228"></a>00228         <a class="code" href="_m_i_d_i_8h.html#9f150c76e70559513c7f5d20496c8c9c">USE_SERIAL_PORT</a>.write(<a class="code" href="_m_i_d_i_8h.html#802feb46a169642d43b2415d02390545996450aa045571374864c2dc9404e944">SongPosition</a>);
+<a name="l00229"></a>00229         <a class="code" href="_m_i_d_i_8h.html#9f150c76e70559513c7f5d20496c8c9c">USE_SERIAL_PORT</a>.write(Beats &amp; 0x7F);
+<a name="l00230"></a>00230         <a class="code" href="_m_i_d_i_8h.html#9f150c76e70559513c7f5d20496c8c9c">USE_SERIAL_PORT</a>.write((Beats &gt;&gt; 7) &amp; 0x7F);
+<a name="l00231"></a>00231         
+<a name="l00232"></a>00232 }
+</pre></div>
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="0b957074192d439e8e69af9eef6fab77"></a><!-- doxytag: member="MIDI_Class::sendSongSelect" ref="0b957074192d439e8e69af9eef6fab77" args="(byte SongNumber)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MIDI_Class::sendSongSelect           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a>&nbsp;</td>
+          <td class="paramname"> <em>SongNumber</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Send a Song Select message 
+<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00235">235</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00235"></a>00235                                                {
+<a name="l00236"></a>00236         
+<a name="l00237"></a>00237         <a class="code" href="_m_i_d_i_8h.html#9f150c76e70559513c7f5d20496c8c9c">USE_SERIAL_PORT</a>.write(<a class="code" href="_m_i_d_i_8h.html#802feb46a169642d43b2415d02390545d512934b4f2e896bee884c262f64acb1">SongSelect</a>);
+<a name="l00238"></a>00238         <a class="code" href="_m_i_d_i_8h.html#9f150c76e70559513c7f5d20496c8c9c">USE_SERIAL_PORT</a>.write(SongNumber &amp; 0x7F);
+<a name="l00239"></a>00239         
+<a name="l00240"></a>00240 }
+</pre></div>
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="73a36cacf4e77ca081979f9c7066ee28"></a><!-- doxytag: member="MIDI_Class::sendSysEx" ref="73a36cacf4e77ca081979f9c7066ee28" args="(byte length, byte *array, bool ArrayContainsBoundaries=false)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -755,7 +938,13 @@ Send a Program Change message
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a> *&nbsp;</td>
-          <td class="paramname"> <em>array</em></td><td>&nbsp;</td>
+          <td class="paramname"> <em>array</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>ArrayContainsBoundaries</em> = <code>false</code></td><td>&nbsp;</td>
         </tr>
         <tr>
           <td></td>
@@ -770,24 +959,31 @@ Send a Program Change message
 Generate and send a System Exclusive frame. <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"></td><td valign="top"><em>length</em>&nbsp;</td><td>The size of the array to send </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>array</em>&nbsp;</td><td>The byte array containing the data to send<br>
- Don't put F0 or F7 (start &amp; stop SysEx codes), but put destination device's Manufacturer's ID and/or Device ID in the buffer array. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>array</em>&nbsp;</td><td>The byte array containing the data to send </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>ArrayContainsBoundaries</em>&nbsp;</td><td>When set to 'true', 0xF0 &amp; 0xF7 bytes (start &amp; stop SysEx) will NOT be sent (and therefore must be included in the array).\ default value is set to 'false' for compatibility with previous versions of the library. </td></tr>
   </table>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00131">131</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00193">193</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00193"></a>00193                                                                                   {
+<a name="l00194"></a>00194         <span class="keywordflow">if</span> (!ArrayContainsBoundaries) <a class="code" href="_m_i_d_i_8h.html#9f150c76e70559513c7f5d20496c8c9c">USE_SERIAL_PORT</a>.write(0xF0);
+<a name="l00195"></a>00195         <span class="keywordflow">for</span> (<a class="code" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a> i=0;i&lt;length;i++) <a class="code" href="_m_i_d_i_8h.html#9f150c76e70559513c7f5d20496c8c9c">USE_SERIAL_PORT</a>.write(array[i]);
+<a name="l00196"></a>00196         <span class="keywordflow">if</span> (!ArrayContainsBoundaries) <a class="code" href="_m_i_d_i_8h.html#9f150c76e70559513c7f5d20496c8c9c">USE_SERIAL_PORT</a>.write(0xF7);
+<a name="l00197"></a>00197 }
+</pre></div>
+<p>
 
 </div>
 </div><p>
-<a class="anchor" name="01add37fe31e69ef2a706f76573bbaf5"></a><!-- doxytag: member="MIDI_Class::setDeviceID" ref="01add37fe31e69ef2a706f76573bbaf5" args="(byte sysID)" -->
+<a class="anchor" name="1f720df72c5253d85d1d547d09357ea0"></a><!-- doxytag: member="MIDI_Class::sendTimeCodeQuarterFrame" ref="1f720df72c5253d85d1d547d09357ea0" args="(byte data)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void MIDI_Class::setDeviceID           </td>
+          <td class="memname">void MIDI_Class::sendTimeCodeQuarterFrame           </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a>&nbsp;</td>
-          <td class="paramname"> <em>sysID</em>          </td>
+          <td class="paramname"> <em>data</em>          </td>
           <td>&nbsp;)&nbsp;</td>
           <td></td>
         </tr>
@@ -796,49 +992,102 @@ Generate and send a System Exclusive frame. <dl compact><dt><b>Parameters:</b></
 <div class="memdoc">
 
 <p>
-Set the System Exclusive Device ID (for listening to SysEx messages) 
-<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00165">165</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
-
-</div>
-</div><p>
-<a class="anchor" name="5c1dda2b95eaf9024ae8b76e96273a82"></a><!-- doxytag: member="MIDI_Class::setFilter" ref="5c1dda2b95eaf9024ae8b76e96273a82" args="(byte filter)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void MIDI_Class::setFilter           </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a>&nbsp;</td>
-          <td class="paramname"> <em>filter</em>          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-Set the filter for thru mirroring <dl compact><dt><b>Parameters:</b></dt><dd>
+Send a MIDI Time Code Quarter Frame. See MIDI Specification for more information. <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>filter</em>&nbsp;</td><td>a filter mode:<ul>
-<li>MIDI_FILTER_FULL Every incoming message is mirrored.</li><li>MIDI_FILTER_CANAL Every message matching the input channel is mirrored.</li><li>MIDI_FILTER_ANTICANAL Every message non-matching the input channel is mirrored. </li></ul>
-</td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>data</em>&nbsp;</td><td>if you want to encode directly the nibbles in your program, you can send the byte here. </td></tr>
   </table>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00177">177</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00216">216</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00216"></a>00216                                                    {
+<a name="l00217"></a>00217         
+<a name="l00218"></a>00218         <a class="code" href="_m_i_d_i_8h.html#9f150c76e70559513c7f5d20496c8c9c">USE_SERIAL_PORT</a>.write(<a class="code" href="_m_i_d_i_8h.html#802feb46a169642d43b2415d02390545faf9b74dab5ac5ae3542d66515c2afcf">TimeCodeQuarterFrame</a>);
+<a name="l00219"></a>00219         <a class="code" href="_m_i_d_i_8h.html#9f150c76e70559513c7f5d20496c8c9c">USE_SERIAL_PORT</a>.write(data);
+<a name="l00220"></a>00220         
+<a name="l00221"></a>00221 }
+</pre></div>
+<p>
 
 </div>
 </div><p>
-<a class="anchor" name="6b40f3dbe3ab8bdc348e50715fba7fbd"></a><!-- doxytag: member="MIDI_Class::setInputChannel" ref="6b40f3dbe3ab8bdc348e50715fba7fbd" args="(byte channel)" -->
+<a class="anchor" name="d9b1bd53330652f0360a0a6ed80b5b9d"></a><!-- doxytag: member="MIDI_Class::sendTimeCodeQuarterFrame" ref="d9b1bd53330652f0360a0a6ed80b5b9d" args="(byte TypeNibble, byte ValuesNibble)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MIDI_Class::sendTimeCodeQuarterFrame           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a>&nbsp;</td>
+          <td class="paramname"> <em>TypeNibble</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a>&nbsp;</td>
+          <td class="paramname"> <em>ValuesNibble</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Send a MIDI Time Code Quarter Frame. See MIDI Specification for more information. <dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>TypeNibble</em>&nbsp;</td><td>MTC type </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>ValuesNibble</em>&nbsp;</td><td>MTC data </td></tr>
+  </table>
+</dl>
+
+<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00206">206</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00206"></a>00206                                                                             {
+<a name="l00207"></a>00207         
+<a name="l00208"></a>00208         <a class="code" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a> data = ( ((TypeNibble &amp; 0x07) &lt;&lt; 4) | (ValuesNibble &amp; 0x0F) );
+<a name="l00209"></a>00209         <a class="code" href="class_m_i_d_i___class.html#d9b1bd53330652f0360a0a6ed80b5b9d">sendTimeCodeQuarterFrame</a>(data);
+<a name="l00210"></a>00210         
+<a name="l00211"></a>00211 }
+</pre></div>
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="9d9a51ca4a888c7c4c0d91a9e678c751"></a><!-- doxytag: member="MIDI_Class::sendTuneRequest" ref="9d9a51ca4a888c7c4c0d91a9e678c751" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MIDI_Class::sendTuneRequest           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Send a Tune Request message. When a MIDI unit receives this message, it should tune its oscillators (if equipped with any) 
+<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00200">200</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00200"></a>00200 { <a class="code" href="class_m_i_d_i___class.html#e9086dd31c41ea773925a069dbd0080b">sendRealTime</a>(<a class="code" href="_m_i_d_i_8h.html#802feb46a169642d43b2415d02390545afec2fa09eaa764d5d629798a8f8429c">TuneRequest</a>); }
+</pre></div>
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="35a66d47ba598c7ebbee7fbf654dafe8"></a><!-- doxytag: member="MIDI_Class::setInputChannel" ref="35a66d47ba598c7ebbee7fbf654dafe8" args="(const byte Channel)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void MIDI_Class::setInputChannel           </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a>&nbsp;</td>
-          <td class="paramname"> <em>channel</em>          </td>
+          <td class="paramtype">const <a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a>&nbsp;</td>
+          <td class="paramname"> <em>Channel</em>          </td>
           <td>&nbsp;)&nbsp;</td>
           <td></td>
         </tr>
@@ -849,23 +1098,26 @@ Set the filter for thru mirroring <dl compact><dt><b>Parameters:</b></dt><dd>
 <p>
 Set the value for the input MIDI channel <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>channel</em>&nbsp;</td><td>the channel value. Valid values are 1 to 16, MIDI_CHANNEL_OMNI if you want to listen all channels, and MIDI_CHANNEL_OFF to disable MIDI input. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Channel</em>&nbsp;</td><td>the channel value. Valid values are 1 to 16, MIDI_CHANNEL_OMNI if you want to listen to all channels, and MIDI_CHANNEL_OFF to disable MIDI input. </td></tr>
   </table>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00170">170</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00578">578</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00578"></a>00578 { mInputChannel = inChannel; }
+</pre></div>
+<p>
 
 </div>
 </div><p>
-<a class="anchor" name="60890997a68c72fcf67f7f10c2eb00fb"></a><!-- doxytag: member="MIDI_Class::turnThru" ref="60890997a68c72fcf67f7f10c2eb00fb" args="(bool state)" -->
+<a class="anchor" name="33d450180a10a36bef08e68015c4d922"></a><!-- doxytag: member="MIDI_Class::setThruFilterMode" ref="33d450180a10a36bef08e68015c4d922" args="(const kThruFilterMode inThruFilterMode)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void MIDI_Class::turnThru           </td>
+          <td class="memname">void MIDI_Class::setThruFilterMode           </td>
           <td>(</td>
-          <td class="paramtype">bool&nbsp;</td>
-          <td class="paramname"> <em>val</em>          </td>
+          <td class="paramtype">const <a class="el" href="_m_i_d_i_8h.html#315ccd12c0a15c11eca5cc4acdb6397d">kThruFilterMode</a>&nbsp;</td>
+          <td class="paramname"> <em>inThruFilterMode</em>          </td>
           <td>&nbsp;)&nbsp;</td>
           <td></td>
         </tr>
@@ -874,8 +1126,55 @@ Set the value for the input MIDI channel <dl compact><dt><b>Parameters:</b></dt>
 <div class="memdoc">
 
 <p>
-Setter method: set message mirroring to the specified value. 
-<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00184">184</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+Set the filter for thru mirroring <dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>inThruFilterMode</em>&nbsp;</td><td>a filter mode See kThruFilterMode for detailed description. </td></tr>
+  </table>
+</dl>
+
+<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00592">592</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00592"></a>00592                                                                    { 
+<a name="l00593"></a>00593         mThruFilterMode = inThruFilterMode;
+<a name="l00594"></a>00594         <span class="keywordflow">if</span> (mThruFilterMode != <a class="code" href="_m_i_d_i_8h.html#315ccd12c0a15c11eca5cc4acdb6397dd8a892b94d3a94ea861543c085ae782b">Off</a>) mThruActivated = <span class="keyword">true</span>;
+<a name="l00595"></a>00595         <span class="keywordflow">else</span> mThruActivated = <span class="keyword">false</span>;
+<a name="l00596"></a>00596 }
+</pre></div>
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="be50e76aa11dc7127bd28659c181ab77"></a><!-- doxytag: member="MIDI_Class::setThruFilterMode" ref="be50e76aa11dc7127bd28659c181ab77" args="(const byte inThruFilterMode)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MIDI_Class::setThruFilterMode           </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="_m_i_d_i_8h.html#b8ef12fab634c171394422d0ee8baf94">byte</a>&nbsp;</td>
+          <td class="paramname"> <em>inThruFilterMode</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Set the filter for thru mirroring <dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>inThruFilterMode</em>&nbsp;</td><td>a filter mode See kThruFilterMode for detailed description. <br>
+ This method uses a byte parameter and is for compatibility only, please use kThruFilterMode for future programs. </td></tr>
+  </table>
+</dl>
+
+<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00602">602</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00602"></a>00602                                                         { 
+<a name="l00603"></a>00603         mThruFilterMode = (<a class="code" href="_m_i_d_i_8h.html#315ccd12c0a15c11eca5cc4acdb6397d">kThruFilterMode</a>)inThruFilterMode;
+<a name="l00604"></a>00604         <span class="keywordflow">if</span> (mThruFilterMode != <a class="code" href="_m_i_d_i_8h.html#315ccd12c0a15c11eca5cc4acdb6397dd8a892b94d3a94ea861543c085ae782b">Off</a>) mThruActivated = <span class="keyword">true</span>;
+<a name="l00605"></a>00605         <span class="keywordflow">else</span> mThruActivated = <span class="keyword">false</span>;
+<a name="l00606"></a>00606 }
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -896,18 +1195,25 @@ Setter method: set message mirroring to the specified value.
 
 <p>
 Setter method: turn message mirroring off. 
-<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00182">182</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00615">615</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00615"></a>00615                              {
+<a name="l00616"></a>00616         mThruActivated = <span class="keyword">false</span>; 
+<a name="l00617"></a>00617         mThruFilterMode = <a class="code" href="_m_i_d_i_8h.html#315ccd12c0a15c11eca5cc4acdb6397dd8a892b94d3a94ea861543c085ae782b">Off</a>;
+<a name="l00618"></a>00618 }
+</pre></div>
+<p>
 
 </div>
 </div><p>
-<a class="anchor" name="47214ae45652e930d8b27fd00ff36185"></a><!-- doxytag: member="MIDI_Class::turnThruOn" ref="47214ae45652e930d8b27fd00ff36185" args="()" -->
+<a class="anchor" name="7fd1759eda22c18f6122b4231e1f0a6d"></a><!-- doxytag: member="MIDI_Class::turnThruOn" ref="7fd1759eda22c18f6122b4231e1f0a6d" args="(kThruFilterMode inThruFilterMode=Full)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void MIDI_Class::turnThruOn           </td>
           <td>(</td>
-          <td class="paramname">          </td>
+          <td class="paramtype"><a class="el" href="_m_i_d_i_8h.html#315ccd12c0a15c11eca5cc4acdb6397d">kThruFilterMode</a>&nbsp;</td>
+          <td class="paramname"> <em>inThruFilterMode</em> = <code>Full</code>          </td>
           <td>&nbsp;)&nbsp;</td>
           <td></td>
         </tr>
@@ -917,14 +1223,20 @@ Setter method: turn message mirroring off.
 
 <p>
 Setter method: turn message mirroring on. 
-<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00180">180</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_i_d_i_8cpp-source.html#l00610">610</a> of file <a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00610"></a>00610                                                             { 
+<a name="l00611"></a>00611         mThruActivated = <span class="keyword">true</span>;
+<a name="l00612"></a>00612         mThruFilterMode = inThruFilterMode;
+<a name="l00613"></a>00613 }
+</pre></div>
+<p>
 
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
-<li>/Users/franky/DIY/Arduino/Arduino.app/Contents/Resources/Java/hardware/libraries/MIDI/<a class="el" href="_m_i_d_i_8h-source.html">MIDI.h</a><li>/Users/franky/DIY/Arduino/Arduino.app/Contents/Resources/Java/hardware/libraries/MIDI/<a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a></ul>
+<li>/Users/franky/Documents/Dropbox/SVN/embedded/toolbox/libraries/MIDILib/trunk/Arduino/<a class="el" href="_m_i_d_i_8h-source.html">MIDI.h</a><li>/Users/franky/Documents/Dropbox/SVN/embedded/toolbox/libraries/MIDILib/trunk/Arduino/<a class="el" href="_m_i_d_i_8cpp-source.html">MIDI.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Mon Dec 14 14:45:29 2009 for Arduino MIDI Library by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sun Mar 6 15:48:00 2011 for Arduino MIDI Library by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
 </body>
