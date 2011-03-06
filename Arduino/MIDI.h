@@ -3,7 +3,7 @@
  *  Project		MIDI Library
  *	@brief		MIDI Library for the Arduino
  *	Version		3.0
- *  @author		François Best 
+ *  @author		Francois Best 
  *	@date		24/02/11
  *  License		GPL Forty Seven Effects - 2011
  */

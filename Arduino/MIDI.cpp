@@ -3,7 +3,7 @@
  *  Project		MIDI Library
  *	@brief		MIDI Library for the Arduino
  *	@version	3.0
- *  @author		François Best 
+ *  @author		Francois Best 
  *	@date		24/02/11
  *  @license	GPL Forty Seven Effects - 2011
  */
@@ -78,7 +78,7 @@ const byte MIDI_Class::genstatus(const kMIDIType inType,const byte inChannel) {
 	return ((byte)inType | ((inChannel-1) & 0x0F));
 }
 
-/*! Generate and send a custom MIDI mMessage.
+/* Generate and send a custom MIDI mMessage.
  \param type		The message type (see type defines for reference)
  \param data1	The first data byte.
  \param data2	The second data byte (if the message contains only 1 data byte, set this one to 0).
