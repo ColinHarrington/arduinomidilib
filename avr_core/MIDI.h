@@ -3,7 +3,7 @@
  *  Project		MIDI Library
  *	@brief		MIDI Library for the Arduino
  *	Version		3.0
- *  @author		François Best 
+ *  @author		Francois Best 
  *	@date		24/02/11
  *  License		GPL Forty Seven Effects - 2011
  */
@@ -114,8 +114,8 @@ struct midimsg {
 
 
 /*! The main class for MIDI handling.
-	See member descriptions for knowing how to use it,
-	or go see the examples supplied with the library.
+	See member descriptions to know how to use it,
+	or check out the examples supplied with the library.
  */
 class MIDI_Class {
 	
