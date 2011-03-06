@@ -80,14 +80,14 @@ const byte MIDI_Class::genstatus(const kMIDIType inType,const byte inChannel) {
 
 /*! Generate and send a custom MIDI mMessage.
  \param type		The message type (see type defines for reference)
- \param data1	The first data byte
- \param data2	The second data byte (if the message contains only 1 data byte, set this one to 0)
- \param channel	The output channel on which the message will be sent (values from 1 to 16)
+ \param data1	The first data byte.
+ \param data2	The second data byte (if the message contains only 1 data byte, set this one to 0).
+ \param channel	The output channel on which the message will be sent (values from 1 to 16). Note: you cannot send to OMNI.
  */
 void MIDI_Class::send(kMIDIType type, byte data1, byte data2, byte channel) {
 	
 	// Then test if channel is valid
-	if (channel >= MIDI_CHANNEL_OFF) {
+	if (channel >= MIDI_CHANNEL_OFF || channel == MIDI_CHANNEL_OMNI) {
 		
 #if USE_RUNNING_STATUS	
 		mRunningStatus_TX = InvalidType;
@@ -151,21 +151,49 @@ void MIDI_Class::send(kMIDIType type, byte data1, byte data2, byte channel) {
 	
 }
 
-/*! Send a Note On message */
+/*! Send a Note On message 
+	\param NoteNumber	Pitch value in the MIDI format (0 to 127). Take a look at the values, names and frequencies of notes here: http://www.phys.unsw.edu.au/jw/notes.html\n
+	\param Velocity		Note attack velocity (0 to 127). A NoteOn with 0 velocity is considered as a NoteOff.
+	\param Channel		The channel on which the message will be sent (1 to 16). 
+ */
 void MIDI_Class::sendNoteOn(byte NoteNumber,byte Velocity,byte Channel) { send(NoteOn,NoteNumber,Velocity,Channel); }
-/*! Send a Note Off message (a real Note Off, not a Note On with null velocity) */
+
+/*! Send a Note Off message (a real Note Off, not a Note On with null velocity)
+	\param NoteNumber	Pitch value in the MIDI format (0 to 127). Take a look at the values, names and frequencies of notes here: http://www.phys.unsw.edu.au/jw/notes.html\n
+	\param Velocity		Release velocity (0 to 127).
+	\param Channel		The channel on which the message will be sent (1 to 16).
+ */
 void MIDI_Class::sendNoteOff(byte NoteNumber,byte Velocity,byte Channel) { send(NoteOff,NoteNumber,Velocity,Channel); }
-/*! Send a Program Change message */
+
+/*! Send a Program Change message 
+	\param ProgramNumber	The Program to select (0 to 127).
+	\param Channel			The channel on which the message will be sent (1 to 16).
+ */
 void MIDI_Class::sendProgramChange(byte ProgramNumber,byte Channel) { send(ProgramChange,ProgramNumber,0,Channel); }
-/*! Send a Control Change message */
+
+/*! Send a Control Change message 
+	\param ControlNumber	The controller number (0 to 127). See the detailed description here: http://www.somascape.org/midi/tech/spec.html#ctrlnums
+	\param ControlValue		The value for the specified controller (0 to 127).
+	\param Channel			The channel on which the message will be sent (1 to 16). 
+ */
 void MIDI_Class::sendControlChange(byte ControlNumber, byte ControlValue,byte Channel) { send(ControlChange,ControlNumber,ControlValue,Channel); }
-/*! Polyphonic AfterTouch (carries the information of pressure of the given key/note) */
+
+/*! Send a Polyphonic AfterTouch message (applies to only one specified note)
+	\param NoteNumber		The note to apply AfterTouch to (0 to 127).
+	\param Pressure			The amount of AfterTouch to apply (0 to 127).
+	\param Channel			The channel on which the message will be sent (1 to 16). 
+ */
 void MIDI_Class::sendPolyPressure(byte NoteNumber,byte Pressure,byte Channel) { send(AfterTouchPoly,NoteNumber,Pressure,Channel); }
-/*! Monophonic AfterTouch */
+
+/*! Send a MonoPhonic AfterTouch message (applies to all notes)
+	\param Pressure			The amount of AfterTouch to apply to all notes.
+	\param Channel			The channel on which the message will be sent (1 to 16). 
+ */
 void MIDI_Class::sendAfterTouch(byte Pressure,byte Channel) { send(AfterTouchChannel,Pressure,0,Channel); }
+
 /*! Send a Pitch Bend message using an integer value.
  \param PitchValue	The amount of bend to send (in an integer format), between 0 (maximum downwards bend) and 16383 (max upwards bend), center value is 8192.
- \param Channel		The channel to send the message on (1 to 16).
+ \param Channel		The channel on which the message will be sent (1 to 16).
  */
 void MIDI_Class::sendPitchBend(unsigned int PitchValue,byte Channel) {
 
@@ -174,7 +202,7 @@ void MIDI_Class::sendPitchBend(unsigned int PitchValue,byte Channel) {
 }
 /*! Send a Pitch Bend message using a floating point value.
  \param PitchValue	The amount of bend to send (in a floating point format), between -1 (maximum downwards bend) and +1 (max upwards bend), center value is 0.
- \param Channel		The channel to send the message on (1 to 16).
+ \param Channel		The channel on which the message will be sent (1 to 16).
  */
 void MIDI_Class::sendPitchBend(double PitchValue,byte Channel) {
 

@@ -23,67 +23,67 @@
 \contentsline {subsubsection}{\numberline {3.1.3.12}read}{9}{subsubsection.3.1.3.12}
 \contentsline {subsubsection}{\numberline {3.1.3.13}sendAfterTouch}{9}{subsubsection.3.1.3.13}
 \contentsline {subsubsection}{\numberline {3.1.3.14}sendControlChange}{9}{subsubsection.3.1.3.14}
-\contentsline {subsubsection}{\numberline {3.1.3.15}sendNoteOff}{9}{subsubsection.3.1.3.15}
+\contentsline {subsubsection}{\numberline {3.1.3.15}sendNoteOff}{10}{subsubsection.3.1.3.15}
 \contentsline {subsubsection}{\numberline {3.1.3.16}sendNoteOn}{10}{subsubsection.3.1.3.16}
 \contentsline {subsubsection}{\numberline {3.1.3.17}sendPitchBend}{10}{subsubsection.3.1.3.17}
-\contentsline {subsubsection}{\numberline {3.1.3.18}sendPitchBend}{10}{subsubsection.3.1.3.18}
-\contentsline {subsubsection}{\numberline {3.1.3.19}sendPolyPressure}{10}{subsubsection.3.1.3.19}
+\contentsline {subsubsection}{\numberline {3.1.3.18}sendPitchBend}{11}{subsubsection.3.1.3.18}
+\contentsline {subsubsection}{\numberline {3.1.3.19}sendPolyPressure}{11}{subsubsection.3.1.3.19}
 \contentsline {subsubsection}{\numberline {3.1.3.20}sendProgramChange}{11}{subsubsection.3.1.3.20}
-\contentsline {subsubsection}{\numberline {3.1.3.21}sendRealTime}{11}{subsubsection.3.1.3.21}
-\contentsline {subsubsection}{\numberline {3.1.3.22}sendSongPosition}{11}{subsubsection.3.1.3.22}
+\contentsline {subsubsection}{\numberline {3.1.3.21}sendRealTime}{12}{subsubsection.3.1.3.21}
+\contentsline {subsubsection}{\numberline {3.1.3.22}sendSongPosition}{12}{subsubsection.3.1.3.22}
 \contentsline {subsubsection}{\numberline {3.1.3.23}sendSongSelect}{12}{subsubsection.3.1.3.23}
-\contentsline {subsubsection}{\numberline {3.1.3.24}sendSysEx}{12}{subsubsection.3.1.3.24}
-\contentsline {subsubsection}{\numberline {3.1.3.25}sendTimeCodeQuarterFrame}{12}{subsubsection.3.1.3.25}
+\contentsline {subsubsection}{\numberline {3.1.3.24}sendSysEx}{13}{subsubsection.3.1.3.24}
+\contentsline {subsubsection}{\numberline {3.1.3.25}sendTimeCodeQuarterFrame}{13}{subsubsection.3.1.3.25}
 \contentsline {subsubsection}{\numberline {3.1.3.26}sendTimeCodeQuarterFrame}{13}{subsubsection.3.1.3.26}
-\contentsline {subsubsection}{\numberline {3.1.3.27}sendTuneRequest}{13}{subsubsection.3.1.3.27}
-\contentsline {subsubsection}{\numberline {3.1.3.28}setInputChannel}{13}{subsubsection.3.1.3.28}
-\contentsline {subsubsection}{\numberline {3.1.3.29}setThruFilterMode}{13}{subsubsection.3.1.3.29}
+\contentsline {subsubsection}{\numberline {3.1.3.27}sendTuneRequest}{14}{subsubsection.3.1.3.27}
+\contentsline {subsubsection}{\numberline {3.1.3.28}setInputChannel}{14}{subsubsection.3.1.3.28}
+\contentsline {subsubsection}{\numberline {3.1.3.29}setThruFilterMode}{14}{subsubsection.3.1.3.29}
 \contentsline {subsubsection}{\numberline {3.1.3.30}setThruFilterMode}{14}{subsubsection.3.1.3.30}
-\contentsline {subsubsection}{\numberline {3.1.3.31}turnThruOff}{14}{subsubsection.3.1.3.31}
-\contentsline {subsubsection}{\numberline {3.1.3.32}turnThruOn}{14}{subsubsection.3.1.3.32}
-\contentsline {section}{\numberline {3.2}midimsg Struct Reference}{15}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Detailed Description}{15}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Member Data Documentation}{15}{subsection.3.2.2}
-\contentsline {subsubsection}{\numberline {3.2.2.1}channel}{15}{subsubsection.3.2.2.1}
-\contentsline {subsubsection}{\numberline {3.2.2.2}data1}{15}{subsubsection.3.2.2.2}
-\contentsline {subsubsection}{\numberline {3.2.2.3}data2}{15}{subsubsection.3.2.2.3}
-\contentsline {subsubsection}{\numberline {3.2.2.4}sysex\_\discretionary {-}{}{}array}{15}{subsubsection.3.2.2.4}
-\contentsline {subsubsection}{\numberline {3.2.2.5}type}{16}{subsubsection.3.2.2.5}
-\contentsline {subsubsection}{\numberline {3.2.2.6}valid}{16}{subsubsection.3.2.2.6}
-\contentsline {chapter}{\numberline {4}File Documentation}{17}{chapter.4}
-\contentsline {section}{\numberline {4.1}/Users/franky/Documents/Dropbox/SVN/embedded/toolbox/libraries/MIDILib/trunk/Arduino/Compatibility\_\discretionary {-}{}{}v2.5.h File Reference}{17}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Detailed Description}{17}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}Define Documentation}{18}{subsection.4.1.2}
-\contentsline {subsubsection}{\numberline {4.1.2.1}ATCanal}{18}{subsubsection.4.1.2.1}
-\contentsline {subsubsection}{\numberline {4.1.2.2}ATPoly}{18}{subsubsection.4.1.2.2}
-\contentsline {subsubsection}{\numberline {4.1.2.3}CC}{18}{subsubsection.4.1.2.3}
-\contentsline {subsubsection}{\numberline {4.1.2.4}MIDI\_\discretionary {-}{}{}FILTER\_\discretionary {-}{}{}ANTICANAL}{18}{subsubsection.4.1.2.4}
-\contentsline {subsubsection}{\numberline {4.1.2.5}MIDI\_\discretionary {-}{}{}FILTER\_\discretionary {-}{}{}CANAL}{18}{subsubsection.4.1.2.5}
-\contentsline {subsubsection}{\numberline {4.1.2.6}MIDI\_\discretionary {-}{}{}FILTER\_\discretionary {-}{}{}FULL}{18}{subsubsection.4.1.2.6}
-\contentsline {subsubsection}{\numberline {4.1.2.7}MIDI\_\discretionary {-}{}{}FILTER\_\discretionary {-}{}{}OFF}{18}{subsubsection.4.1.2.7}
-\contentsline {subsubsection}{\numberline {4.1.2.8}MIDI\_\discretionary {-}{}{}rate}{18}{subsubsection.4.1.2.8}
-\contentsline {subsubsection}{\numberline {4.1.2.9}PC}{18}{subsubsection.4.1.2.9}
-\contentsline {subsubsection}{\numberline {4.1.2.10}SysEx}{19}{subsubsection.4.1.2.10}
-\contentsline {section}{\numberline {4.2}/Users/franky/Documents/Dropbox/SVN/embedded/toolbox/libraries/MIDILib/trunk/Arduino/MIDI.cpp File Reference}{20}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Detailed Description}{20}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Variable Documentation}{20}{subsection.4.2.2}
-\contentsline {subsubsection}{\numberline {4.2.2.1}MIDI}{20}{subsubsection.4.2.2.1}
-\contentsline {section}{\numberline {4.3}/Users/franky/Documents/Dropbox/SVN/embedded/toolbox/libraries/MIDILib/trunk/Arduino/MIDI.h File Reference}{21}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Detailed Description}{22}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Define Documentation}{22}{subsection.4.3.2}
-\contentsline {subsubsection}{\numberline {4.3.2.1}COMPATIBILITY\_\discretionary {-}{}{}V25}{22}{subsubsection.4.3.2.1}
-\contentsline {subsubsection}{\numberline {4.3.2.2}COMPFLAG\_\discretionary {-}{}{}MIDI\_\discretionary {-}{}{}IN}{22}{subsubsection.4.3.2.2}
-\contentsline {subsubsection}{\numberline {4.3.2.3}COMPFLAG\_\discretionary {-}{}{}MIDI\_\discretionary {-}{}{}OUT}{22}{subsubsection.4.3.2.3}
-\contentsline {subsubsection}{\numberline {4.3.2.4}MIDI\_\discretionary {-}{}{}BAUDRATE}{22}{subsubsection.4.3.2.4}
-\contentsline {subsubsection}{\numberline {4.3.2.5}MIDI\_\discretionary {-}{}{}CHANNEL\_\discretionary {-}{}{}OFF}{22}{subsubsection.4.3.2.5}
-\contentsline {subsubsection}{\numberline {4.3.2.6}MIDI\_\discretionary {-}{}{}CHANNEL\_\discretionary {-}{}{}OMNI}{22}{subsubsection.4.3.2.6}
-\contentsline {subsubsection}{\numberline {4.3.2.7}MIDI\_\discretionary {-}{}{}SYSEX\_\discretionary {-}{}{}ARRAY\_\discretionary {-}{}{}SIZE}{22}{subsubsection.4.3.2.7}
-\contentsline {subsubsection}{\numberline {4.3.2.8}USE\_\discretionary {-}{}{}RUNNING\_\discretionary {-}{}{}STATUS}{22}{subsubsection.4.3.2.8}
-\contentsline {subsubsection}{\numberline {4.3.2.9}USE\_\discretionary {-}{}{}SERIAL\_\discretionary {-}{}{}PORT}{23}{subsubsection.4.3.2.9}
-\contentsline {subsection}{\numberline {4.3.3}Typedef Documentation}{23}{subsection.4.3.3}
-\contentsline {subsubsection}{\numberline {4.3.3.1}byte}{23}{subsubsection.4.3.3.1}
-\contentsline {subsection}{\numberline {4.3.4}Enumeration Type Documentation}{23}{subsection.4.3.4}
-\contentsline {subsubsection}{\numberline {4.3.4.1}kMIDIType}{23}{subsubsection.4.3.4.1}
-\contentsline {subsubsection}{\numberline {4.3.4.2}kThruFilterMode}{24}{subsubsection.4.3.4.2}
-\contentsline {subsection}{\numberline {4.3.5}Variable Documentation}{24}{subsection.4.3.5}
-\contentsline {subsubsection}{\numberline {4.3.5.1}MIDI}{24}{subsubsection.4.3.5.1}
+\contentsline {subsubsection}{\numberline {3.1.3.31}turnThruOff}{15}{subsubsection.3.1.3.31}
+\contentsline {subsubsection}{\numberline {3.1.3.32}turnThruOn}{15}{subsubsection.3.1.3.32}
+\contentsline {section}{\numberline {3.2}midimsg Struct Reference}{16}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Detailed Description}{16}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Member Data Documentation}{16}{subsection.3.2.2}
+\contentsline {subsubsection}{\numberline {3.2.2.1}channel}{16}{subsubsection.3.2.2.1}
+\contentsline {subsubsection}{\numberline {3.2.2.2}data1}{16}{subsubsection.3.2.2.2}
+\contentsline {subsubsection}{\numberline {3.2.2.3}data2}{16}{subsubsection.3.2.2.3}
+\contentsline {subsubsection}{\numberline {3.2.2.4}sysex\_\discretionary {-}{}{}array}{16}{subsubsection.3.2.2.4}
+\contentsline {subsubsection}{\numberline {3.2.2.5}type}{17}{subsubsection.3.2.2.5}
+\contentsline {subsubsection}{\numberline {3.2.2.6}valid}{17}{subsubsection.3.2.2.6}
+\contentsline {chapter}{\numberline {4}File Documentation}{19}{chapter.4}
+\contentsline {section}{\numberline {4.1}/Users/franky/Documents/Dropbox/SVN/embedded/toolbox/libraries/MIDILib/trunk/Arduino/Compatibility\_\discretionary {-}{}{}v2.5.h File Reference}{19}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Detailed Description}{19}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Define Documentation}{20}{subsection.4.1.2}
+\contentsline {subsubsection}{\numberline {4.1.2.1}ATCanal}{20}{subsubsection.4.1.2.1}
+\contentsline {subsubsection}{\numberline {4.1.2.2}ATPoly}{20}{subsubsection.4.1.2.2}
+\contentsline {subsubsection}{\numberline {4.1.2.3}CC}{20}{subsubsection.4.1.2.3}
+\contentsline {subsubsection}{\numberline {4.1.2.4}MIDI\_\discretionary {-}{}{}FILTER\_\discretionary {-}{}{}ANTICANAL}{20}{subsubsection.4.1.2.4}
+\contentsline {subsubsection}{\numberline {4.1.2.5}MIDI\_\discretionary {-}{}{}FILTER\_\discretionary {-}{}{}CANAL}{20}{subsubsection.4.1.2.5}
+\contentsline {subsubsection}{\numberline {4.1.2.6}MIDI\_\discretionary {-}{}{}FILTER\_\discretionary {-}{}{}FULL}{20}{subsubsection.4.1.2.6}
+\contentsline {subsubsection}{\numberline {4.1.2.7}MIDI\_\discretionary {-}{}{}FILTER\_\discretionary {-}{}{}OFF}{20}{subsubsection.4.1.2.7}
+\contentsline {subsubsection}{\numberline {4.1.2.8}MIDI\_\discretionary {-}{}{}rate}{20}{subsubsection.4.1.2.8}
+\contentsline {subsubsection}{\numberline {4.1.2.9}PC}{20}{subsubsection.4.1.2.9}
+\contentsline {subsubsection}{\numberline {4.1.2.10}SysEx}{21}{subsubsection.4.1.2.10}
+\contentsline {section}{\numberline {4.2}/Users/franky/Documents/Dropbox/SVN/embedded/toolbox/libraries/MIDILib/trunk/Arduino/MIDI.cpp File Reference}{22}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Detailed Description}{22}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Variable Documentation}{22}{subsection.4.2.2}
+\contentsline {subsubsection}{\numberline {4.2.2.1}MIDI}{22}{subsubsection.4.2.2.1}
+\contentsline {section}{\numberline {4.3}/Users/franky/Documents/Dropbox/SVN/embedded/toolbox/libraries/MIDILib/trunk/Arduino/MIDI.h File Reference}{23}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Detailed Description}{24}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Define Documentation}{24}{subsection.4.3.2}
+\contentsline {subsubsection}{\numberline {4.3.2.1}COMPATIBILITY\_\discretionary {-}{}{}V25}{24}{subsubsection.4.3.2.1}
+\contentsline {subsubsection}{\numberline {4.3.2.2}COMPFLAG\_\discretionary {-}{}{}MIDI\_\discretionary {-}{}{}IN}{24}{subsubsection.4.3.2.2}
+\contentsline {subsubsection}{\numberline {4.3.2.3}COMPFLAG\_\discretionary {-}{}{}MIDI\_\discretionary {-}{}{}OUT}{24}{subsubsection.4.3.2.3}
+\contentsline {subsubsection}{\numberline {4.3.2.4}MIDI\_\discretionary {-}{}{}BAUDRATE}{24}{subsubsection.4.3.2.4}
+\contentsline {subsubsection}{\numberline {4.3.2.5}MIDI\_\discretionary {-}{}{}CHANNEL\_\discretionary {-}{}{}OFF}{24}{subsubsection.4.3.2.5}
+\contentsline {subsubsection}{\numberline {4.3.2.6}MIDI\_\discretionary {-}{}{}CHANNEL\_\discretionary {-}{}{}OMNI}{24}{subsubsection.4.3.2.6}
+\contentsline {subsubsection}{\numberline {4.3.2.7}MIDI\_\discretionary {-}{}{}SYSEX\_\discretionary {-}{}{}ARRAY\_\discretionary {-}{}{}SIZE}{24}{subsubsection.4.3.2.7}
+\contentsline {subsubsection}{\numberline {4.3.2.8}USE\_\discretionary {-}{}{}RUNNING\_\discretionary {-}{}{}STATUS}{24}{subsubsection.4.3.2.8}
+\contentsline {subsubsection}{\numberline {4.3.2.9}USE\_\discretionary {-}{}{}SERIAL\_\discretionary {-}{}{}PORT}{25}{subsubsection.4.3.2.9}
+\contentsline {subsection}{\numberline {4.3.3}Typedef Documentation}{25}{subsection.4.3.3}
+\contentsline {subsubsection}{\numberline {4.3.3.1}byte}{25}{subsubsection.4.3.3.1}
+\contentsline {subsection}{\numberline {4.3.4}Enumeration Type Documentation}{25}{subsection.4.3.4}
+\contentsline {subsubsection}{\numberline {4.3.4.1}kMIDIType}{25}{subsubsection.4.3.4.1}
+\contentsline {subsubsection}{\numberline {4.3.4.2}kThruFilterMode}{26}{subsubsection.4.3.4.2}
+\contentsline {subsection}{\numberline {4.3.5}Variable Documentation}{26}{subsection.4.3.5}
+\contentsline {subsubsection}{\numberline {4.3.5.1}MIDI}{26}{subsubsection.4.3.5.1}

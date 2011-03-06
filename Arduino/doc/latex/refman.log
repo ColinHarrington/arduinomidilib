@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.11.25)  6 MAR 2011 15:48
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.11.25)  6 MAR 2011 16:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -837,22 +837,28 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <10> not available
 (Font)              Font shape `T1/ptm/b/it' tried instead on input line 125.
-[6] [7] [8] [9] [10] [11] [12] [13]
-Overfull \hbox (9.38939pt too wide) in paragraph at lines 807--808
+[6] [7] [8]
+Underfull \hbox (badness 4913) in paragraph at lines 398--398
+[]\T1/ptm/m/n/10 The con-troller num-ber (0 to 127). See the de-tailed de-scrip
+-tion here:
+ []
+
+[9] [10] [11] [12] [13] [14]
+Overfull \hbox (9.38939pt too wide) in paragraph at lines 839--840
 []\T1/ptm/m/n/10 /Users/franky/Documents/Dropbox/SVN/embedded/toolbox/libraries
 /MIDILib/trunk/Arduino/[][]MIDI.h[][] 
  []
 
 
-Overfull \hbox (18.82933pt too wide) in paragraph at lines 808--808
+Overfull \hbox (18.82933pt too wide) in paragraph at lines 840--840
 []\T1/ptm/m/n/10 /Users/franky/Documents/Dropbox/SVN/embedded/toolbox/libraries
 /MIDILib/trunk/Arduino/[][]MIDI.cpp[][] 
  []
 
-) [14]
+) [15]
 \openout2 = `structmidimsg.aux'.
 
- (./structmidimsg.tex [15
+ (./structmidimsg.tex [16
 
 ]
 Overfull \hbox (9.38939pt too wide) in paragraph at lines 94--94
@@ -860,7 +866,10 @@ Overfull \hbox (9.38939pt too wide) in paragraph at lines 94--94
 /MIDILib/trunk/Arduino/[][]MIDI.h[][] 
  []
 
-) [16]
+) [17] [18
+
+
+]
 Chapter 4.
 (./_compatibility__v2_85_8h.tex
 Overfull \hbox (285.78583pt too wide) in paragraph at lines 4--4
@@ -868,10 +877,7 @@ Overfull \hbox (285.78583pt too wide) in paragraph at lines 4--4
 es/MIDILib/trunk/Arduino/Compatibility_-
  []
 
-[17
-
-
-] [18])
+[19] [20])
 Overfull \hbox (46.22787pt too wide) has occurred while \output is active
 \T1/ptm/b/n/10 /Users/franky/Documents/Dropbox/SVN/embedded/toolbox/libraries/M
 IDILib/trunk/Arduino/Compatibility_- 
@@ -883,7 +889,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[19]
+[21]
 \openout2 = `_m_i_d_i_8cpp.aux'.
 
  (./_m_i_d_i_8cpp.tex
@@ -892,7 +898,7 @@ Overfull \hbox (249.38301pt too wide) in paragraph at lines 4--4
 es/MIDILib/trunk/Arduino/MIDI.cpp
  []
 
-) [20
+) [22
 
 ]
 \openout2 = `_m_i_d_i_8h.aux'.
@@ -915,10 +921,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[21
+[23
 
 
-] [22]
+] [24]
 Overfull \hbox (7.41403pt too wide) in paragraph at lines 307--307
 []\T1/pcr/m/n/8 77         TimeCodeQuarterFrame  = 0xF1,   // System Common - M
 IDI Time Code Quarter Frame[] 
@@ -936,7 +942,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[23]
+[25]
 Overfull \hbox (50.61406pt too wide) in paragraph at lines 350--350
 []\T1/pcr/m/n/8 93         Full                  = 1,  // Fully enabled Thru (e
 very incoming message is sent back).[] 
@@ -954,7 +960,7 @@ Overfull \hbox (108.2141pt too wide) in paragraph at lines 350--350
 the ones on the Input Channel will be sent back.[] 
  []
 
-) [24] (./refman.ind
+) [26] (./refman.ind
 Overfull \hbox (235.31177pt too wide) in paragraph at lines 5--7
 []\T1/ptm/m/n/10 /Users/franky/Documents/Dropbox/SVN/embedded/toolbox/libraries
 /MIDILib/trunk/Arduino/Compatibility_-
@@ -972,15 +978,15 @@ Overfull \hbox (204.18248pt too wide) in paragraph at lines 9--11
 /MIDILib/trunk/Arduino/MIDI.h,
  []
 
-[25
+[27
 
 
-] [26] [27]) (./refman.aux (./structmidimsg.aux) (./_m_i_d_i_8cpp.aux)
+] [28] [29]) (./refman.aux (./structmidimsg.aux) (./_m_i_d_i_8cpp.aux)
 (./_m_i_d_i_8h.aux)) ) 
 Here is how much of TeX's memory you used:
- 7204 strings out of 495061
- 106362 string characters out of 1182620
- 174193 words of memory out of 3000000
+ 7206 strings out of 495061
+ 106376 string characters out of 1182620
+ 174194 words of memory out of 3000000
  9997 multiletter control sequences out of 15000+50000
  41365 words of font info for 45 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
@@ -1000,9 +1006,9 @@ d but does not exist, replaced by a fixed one
 er/ucrr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb></usr/
 share/texmf-texlive/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texmf-texlive
 /fonts/type1/urw/times/utmr8a.pfb>
-Output written on refman.pdf (33 pages, 274969 bytes).
+Output written on refman.pdf (35 pages, 278225 bytes).
 PDF statistics:
- 1098 PDF objects out of 1200 (max. 8388607)
- 226 named destinations out of 1000 (max. 500000)
+ 1111 PDF objects out of 1200 (max. 8388607)
+ 228 named destinations out of 1000 (max. 500000)
  713 words of extra memory for PDF output out of 10000 (max. 10000000)
 

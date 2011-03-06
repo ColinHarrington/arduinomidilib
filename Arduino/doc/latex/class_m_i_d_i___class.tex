@@ -183,9 +183,9 @@ Definition at line 34 of file MIDI.cpp.
 
 Check if a valid message is stored in the structure. 
 
-Definition at line 571 of file MIDI.cpp.
+Definition at line 599 of file MIDI.cpp.
 
-\begin{Code}\begin{verbatim}571 { return mMessage.valid; }
+\begin{Code}\begin{verbatim}599 { return mMessage.valid; }
 \end{verbatim}
 \end{Code}
 
@@ -199,9 +199,9 @@ Definition at line 571 of file MIDI.cpp.
 
 Getter method: access to the channel of the message stored in the structure. 
 
-Definition at line 563 of file MIDI.cpp.
+Definition at line 591 of file MIDI.cpp.
 
-\begin{Code}\begin{verbatim}563 { return mMessage.channel; }
+\begin{Code}\begin{verbatim}591 { return mMessage.channel; }
 \end{verbatim}
 \end{Code}
 
@@ -216,9 +216,9 @@ Definition at line 563 of file MIDI.cpp.
 Getter method: access to the first data byte of the message stored in the structure. \par
  If the message is SysEx, the length of the array is stocked there. 
 
-Definition at line 565 of file MIDI.cpp.
+Definition at line 593 of file MIDI.cpp.
 
-\begin{Code}\begin{verbatim}565 { return mMessage.data1; }
+\begin{Code}\begin{verbatim}593 { return mMessage.data1; }
 \end{verbatim}
 \end{Code}
 
@@ -232,9 +232,9 @@ Definition at line 565 of file MIDI.cpp.
 
 Getter method: access to the second data byte of the message stored in the structure. 
 
-Definition at line 567 of file MIDI.cpp.
+Definition at line 595 of file MIDI.cpp.
 
-\begin{Code}\begin{verbatim}567 { return mMessage.data2; }
+\begin{Code}\begin{verbatim}595 { return mMessage.data2; }
 \end{verbatim}
 \end{Code}
 
@@ -280,9 +280,9 @@ Definition at line 186 of file MIDI.h.
 
 Getter method: access to the System Exclusive byte array. Array length is stocked in Data1. 
 
-Definition at line 569 of file MIDI.cpp.
+Definition at line 597 of file MIDI.cpp.
 
-\begin{Code}\begin{verbatim}569 { return mMessage.sysex_array; }
+\begin{Code}\begin{verbatim}597 { return mMessage.sysex_array; }
 \end{verbatim}
 \end{Code}
 
@@ -313,9 +313,9 @@ Definition at line 227 of file MIDI.h.
 Getter method: access to the message type stored in the structure. \par
  Returns an enumerated type. 
 
-Definition at line 561 of file MIDI.cpp.
+Definition at line 589 of file MIDI.cpp.
 
-\begin{Code}\begin{verbatim}561 { return mMessage.type; }
+\begin{Code}\begin{verbatim}589 { return mMessage.type; }
 \end{verbatim}
 \end{Code}
 
@@ -329,16 +329,16 @@ Definition at line 561 of file MIDI.cpp.
 
 Reading/thru-ing method, the same as \hyperlink{class_m_i_d_i___class_8e7be5af3a32cb91f596dbb8d8c297bf}{read()} with a given input channel to read on. 
 
-Definition at line 278 of file MIDI.cpp.
+Definition at line 306 of file MIDI.cpp.
 
-\begin{Code}\begin{verbatim}278                                           {
-279         
-280         if (inChannel >= MIDI_CHANNEL_OFF) return false; // MIDI Input disabled.
-281         
-282         if (parse(inChannel)) return filter(inChannel);
-283         else return false;
-284         
-285 }
+\begin{Code}\begin{verbatim}306                                           {
+307         
+308         if (inChannel >= MIDI_CHANNEL_OFF) return false; // MIDI Input disabled.
+309         
+310         if (parse(inChannel)) return filter(inChannel);
+311         else return false;
+312         
+313 }
 \end{verbatim}
 \end{Code}
 
@@ -355,11 +355,11 @@ Read a MIDI message from the serial port using the main input channel (see \hype
 \par
  If the Thru is enabled and the messages matches the filter, it is sent back on the MIDI output. 
 
-Definition at line 273 of file MIDI.cpp.
+Definition at line 301 of file MIDI.cpp.
 
-\begin{Code}\begin{verbatim}273                       {
-274         return read(mInputChannel);
-275 }
+\begin{Code}\begin{verbatim}301                       {
+302         return read(mInputChannel);
+303 }
 \end{verbatim}
 \end{Code}
 
@@ -371,11 +371,16 @@ Definition at line 273 of file MIDI.cpp.
 \label{class_m_i_d_i___class_73b57f656a80166b98dc1b57ea9a56dc}
 
 
-Monophonic AfterTouch 
+Send a MonoPhonic AfterTouch message (applies to all notes) \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em Pressure}]The amount of AfterTouch to apply to all notes. \item[{\em Channel}]The channel on which the message will be sent (1 to 16). \end{description}
+\end{Desc}
 
-Definition at line 165 of file MIDI.cpp.
 
-\begin{Code}\begin{verbatim}165 { send(AfterTouchChannel,Pressure,0,Channel); }
+Definition at line 192 of file MIDI.cpp.
+
+\begin{Code}\begin{verbatim}192 { send(AfterTouchChannel,Pressure,0,Channel); }
 \end{verbatim}
 \end{Code}
 
@@ -387,11 +392,16 @@ Definition at line 165 of file MIDI.cpp.
 \label{class_m_i_d_i___class_3a80e9bd2cfdb619be91d80e8f3b7825}
 
 
-Send a Control Change message 
+Send a Control Change message \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em ControlNumber}]The controller number (0 to 127). See the detailed description here: \href{http://www.somascape.org/midi/tech/spec.html#ctrlnums}{\tt http://www.somascape.org/midi/tech/spec.html\#ctrlnums} \item[{\em ControlValue}]The value for the specified controller (0 to 127). \item[{\em Channel}]The channel on which the message will be sent (1 to 16). \end{description}
+\end{Desc}
 
-Definition at line 161 of file MIDI.cpp.
 
-\begin{Code}\begin{verbatim}161 { send(ControlChange,ControlNumber,ControlValue,Channel); }
+Definition at line 179 of file MIDI.cpp.
+
+\begin{Code}\begin{verbatim}179 { send(ControlChange,ControlNumber,ControlValue,Channel); }
 \end{verbatim}
 \end{Code}
 
@@ -403,11 +413,17 @@ Definition at line 161 of file MIDI.cpp.
 \label{class_m_i_d_i___class_381e1e8019aae5f872279cda496f964c}
 
 
-Send a Note Off message (a real Note Off, not a Note On with null velocity) 
+Send a Note Off message (a real Note Off, not a Note On with null velocity) \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em NoteNumber}]Pitch value in the MIDI format (0 to 127). Take a look at the values, names and frequencies of notes here: \href{http://www.phys.unsw.edu.au/jw/notes.html}{\tt http://www.phys.unsw.edu.au/jw/notes.html}\par
+ \item[{\em Velocity}]Release velocity (0 to 127). \item[{\em Channel}]The channel on which the message will be sent (1 to 16). \end{description}
+\end{Desc}
 
-Definition at line 157 of file MIDI.cpp.
 
-\begin{Code}\begin{verbatim}157 { send(NoteOff,NoteNumber,Velocity,Channel); }
+Definition at line 166 of file MIDI.cpp.
+
+\begin{Code}\begin{verbatim}166 { send(NoteOff,NoteNumber,Velocity,Channel); }
 \end{verbatim}
 \end{Code}
 
@@ -419,11 +435,17 @@ Definition at line 157 of file MIDI.cpp.
 \label{class_m_i_d_i___class_9664e523b35d8b42749e7bc3ba888943}
 
 
-Send a Note On message 
+Send a Note On message \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em NoteNumber}]Pitch value in the MIDI format (0 to 127). Take a look at the values, names and frequencies of notes here: \href{http://www.phys.unsw.edu.au/jw/notes.html}{\tt http://www.phys.unsw.edu.au/jw/notes.html}\par
+ \item[{\em Velocity}]Note attack velocity (0 to 127). A NoteOn with 0 velocity is considered as a NoteOff. \item[{\em Channel}]The channel on which the message will be sent (1 to 16). \end{description}
+\end{Desc}
 
-Definition at line 155 of file MIDI.cpp.
 
-\begin{Code}\begin{verbatim}155 { send(NoteOn,NoteNumber,Velocity,Channel); }
+Definition at line 159 of file MIDI.cpp.
+
+\begin{Code}\begin{verbatim}159 { send(NoteOn,NoteNumber,Velocity,Channel); }
 \end{verbatim}
 \end{Code}
 
@@ -438,19 +460,19 @@ Definition at line 155 of file MIDI.cpp.
 Send a Pitch Bend message using a floating point value. \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em PitchValue}]The amount of bend to send (in a floating point format), between -1 (maximum downwards bend) and +1 (max upwards bend), center value is 0. \item[{\em Channel}]The channel to send the message on (1 to 16). \end{description}
+\item[{\em PitchValue}]The amount of bend to send (in a floating point format), between -1 (maximum downwards bend) and +1 (max upwards bend), center value is 0. \item[{\em Channel}]The channel on which the message will be sent (1 to 16). \end{description}
 \end{Desc}
 
 
-Definition at line 179 of file MIDI.cpp.
+Definition at line 207 of file MIDI.cpp.
 
-\begin{Code}\begin{verbatim}179                                                              {
-180 
-181         unsigned int pitchval = (PitchValue+1.f)*8192;
-182         if (pitchval > 16383) pitchval = 16383;         // overflow protection
-183         sendPitchBend(pitchval,Channel);
-184         
-185 }
+\begin{Code}\begin{verbatim}207                                                              {
+208 
+209         unsigned int pitchval = (PitchValue+1.f)*8192;
+210         if (pitchval > 16383) pitchval = 16383;         // overflow protection
+211         sendPitchBend(pitchval,Channel);
+212         
+213 }
 \end{verbatim}
 \end{Code}
 
@@ -465,17 +487,17 @@ Definition at line 179 of file MIDI.cpp.
 Send a Pitch Bend message using an integer value. \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em PitchValue}]The amount of bend to send (in an integer format), between 0 (maximum downwards bend) and 16383 (max upwards bend), center value is 8192. \item[{\em Channel}]The channel to send the message on (1 to 16). \end{description}
+\item[{\em PitchValue}]The amount of bend to send (in an integer format), between 0 (maximum downwards bend) and 16383 (max upwards bend), center value is 8192. \item[{\em Channel}]The channel on which the message will be sent (1 to 16). \end{description}
 \end{Desc}
 
 
-Definition at line 170 of file MIDI.cpp.
+Definition at line 198 of file MIDI.cpp.
 
-\begin{Code}\begin{verbatim}170                                                                    {
-171 
-172         send(PitchBend,(PitchValue & 0x7F),(PitchValue >> 7) & 0x7F,Channel);
-173         
-174 }
+\begin{Code}\begin{verbatim}198                                                                    {
+199 
+200         send(PitchBend,(PitchValue & 0x7F),(PitchValue >> 7) & 0x7F,Channel);
+201         
+202 }
 \end{verbatim}
 \end{Code}
 
@@ -487,11 +509,16 @@ Definition at line 170 of file MIDI.cpp.
 \label{class_m_i_d_i___class_028ec5a49dccf9c28b00e11e7a3d1d05}
 
 
-Polyphonic AfterTouch (carries the information of pressure of the given key/note) 
+Send a Polyphonic AfterTouch message (applies to only one specified note) \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em NoteNumber}]The note to apply AfterTouch to (0 to 127). \item[{\em Pressure}]The amount of AfterTouch to apply (0 to 127). \item[{\em Channel}]The channel on which the message will be sent (1 to 16). \end{description}
+\end{Desc}
 
-Definition at line 163 of file MIDI.cpp.
 
-\begin{Code}\begin{verbatim}163 { send(AfterTouchPoly,NoteNumber,Pressure,Channel); }
+Definition at line 186 of file MIDI.cpp.
+
+\begin{Code}\begin{verbatim}186 { send(AfterTouchPoly,NoteNumber,Pressure,Channel); }
 \end{verbatim}
 \end{Code}
 
@@ -503,11 +530,16 @@ Definition at line 163 of file MIDI.cpp.
 \label{class_m_i_d_i___class_803c2652837c09775d115354672bf69d}
 
 
-Send a Program Change message 
+Send a Program Change message \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em ProgramNumber}]The Program to select (0 to 127). \item[{\em Channel}]The channel on which the message will be sent (1 to 16). \end{description}
+\end{Desc}
 
-Definition at line 159 of file MIDI.cpp.
 
-\begin{Code}\begin{verbatim}159 { send(ProgramChange,ProgramNumber,0,Channel); }
+Definition at line 172 of file MIDI.cpp.
+
+\begin{Code}\begin{verbatim}172 { send(ProgramChange,ProgramNumber,0,Channel); }
 \end{verbatim}
 \end{Code}
 
@@ -527,24 +559,24 @@ Send a Real Time (one byte) message. \par
 \end{Desc}
 
 
-Definition at line 245 of file MIDI.cpp.
+Definition at line 273 of file MIDI.cpp.
 
-\begin{Code}\begin{verbatim}245                                             {
-246         switch (Type) {
-247                 case TuneRequest: // Not really real-time, but one byte anyway.
-248                 case Clock:
-249                 case Start:
-250                 case Stop:      
-251                 case Continue:
-252                 case ActiveSensing:
-253                 case SystemReset:
-254                         USE_SERIAL_PORT.write((byte)Type);
-255                         break;
-256                 default:
-257                         // Invalid Real Time marker
-258                         break;
-259         }
-260 }
+\begin{Code}\begin{verbatim}273                                             {
+274         switch (Type) {
+275                 case TuneRequest: // Not really real-time, but one byte anyway.
+276                 case Clock:
+277                 case Start:
+278                 case Stop:      
+279                 case Continue:
+280                 case ActiveSensing:
+281                 case SystemReset:
+282                         USE_SERIAL_PORT.write((byte)Type);
+283                         break;
+284                 default:
+285                         // Invalid Real Time marker
+286                         break;
+287         }
+288 }
 \end{verbatim}
 \end{Code}
 
@@ -563,15 +595,15 @@ Send a Song Position Pointer message. \begin{Desc}
 \end{Desc}
 
 
-Definition at line 226 of file MIDI.cpp.
+Definition at line 254 of file MIDI.cpp.
 
-\begin{Code}\begin{verbatim}226                                                     {
-227         
-228         USE_SERIAL_PORT.write(SongPosition);
-229         USE_SERIAL_PORT.write(Beats & 0x7F);
-230         USE_SERIAL_PORT.write((Beats >> 7) & 0x7F);
-231         
-232 }
+\begin{Code}\begin{verbatim}254                                                     {
+255         
+256         USE_SERIAL_PORT.write(SongPosition);
+257         USE_SERIAL_PORT.write(Beats & 0x7F);
+258         USE_SERIAL_PORT.write((Beats >> 7) & 0x7F);
+259         
+260 }
 \end{verbatim}
 \end{Code}
 
@@ -585,14 +617,14 @@ Definition at line 226 of file MIDI.cpp.
 
 Send a Song Select message 
 
-Definition at line 235 of file MIDI.cpp.
+Definition at line 263 of file MIDI.cpp.
 
-\begin{Code}\begin{verbatim}235                                                {
-236         
-237         USE_SERIAL_PORT.write(SongSelect);
-238         USE_SERIAL_PORT.write(SongNumber & 0x7F);
-239         
-240 }
+\begin{Code}\begin{verbatim}263                                                {
+264         
+265         USE_SERIAL_PORT.write(SongSelect);
+266         USE_SERIAL_PORT.write(SongNumber & 0x7F);
+267         
+268 }
 \end{verbatim}
 \end{Code}
 
@@ -611,13 +643,13 @@ Generate and send a System Exclusive frame. \begin{Desc}
 \end{Desc}
 
 
-Definition at line 193 of file MIDI.cpp.
+Definition at line 221 of file MIDI.cpp.
 
-\begin{Code}\begin{verbatim}193                                                                                   {
-194         if (!ArrayContainsBoundaries) USE_SERIAL_PORT.write(0xF0);
-195         for (byte i=0;i<length;i++) USE_SERIAL_PORT.write(array[i]);
-196         if (!ArrayContainsBoundaries) USE_SERIAL_PORT.write(0xF7);
-197 }
+\begin{Code}\begin{verbatim}221                                                                                   {
+222         if (!ArrayContainsBoundaries) USE_SERIAL_PORT.write(0xF0);
+223         for (byte i=0;i<length;i++) USE_SERIAL_PORT.write(array[i]);
+224         if (!ArrayContainsBoundaries) USE_SERIAL_PORT.write(0xF7);
+225 }
 \end{verbatim}
 \end{Code}
 
@@ -636,14 +668,14 @@ Send a MIDI Time Code Quarter Frame. See MIDI Specification for more information
 \end{Desc}
 
 
-Definition at line 216 of file MIDI.cpp.
+Definition at line 244 of file MIDI.cpp.
 
-\begin{Code}\begin{verbatim}216                                                    {
-217         
-218         USE_SERIAL_PORT.write(TimeCodeQuarterFrame);
-219         USE_SERIAL_PORT.write(data);
-220         
-221 }
+\begin{Code}\begin{verbatim}244                                                    {
+245         
+246         USE_SERIAL_PORT.write(TimeCodeQuarterFrame);
+247         USE_SERIAL_PORT.write(data);
+248         
+249 }
 \end{verbatim}
 \end{Code}
 
@@ -662,14 +694,14 @@ Send a MIDI Time Code Quarter Frame. See MIDI Specification for more information
 \end{Desc}
 
 
-Definition at line 206 of file MIDI.cpp.
+Definition at line 234 of file MIDI.cpp.
 
-\begin{Code}\begin{verbatim}206                                                                             {
-207         
-208         byte data = ( ((TypeNibble & 0x07) << 4) | (ValuesNibble & 0x0F) );
-209         sendTimeCodeQuarterFrame(data);
-210         
-211 }
+\begin{Code}\begin{verbatim}234                                                                             {
+235         
+236         byte data = ( ((TypeNibble & 0x07) << 4) | (ValuesNibble & 0x0F) );
+237         sendTimeCodeQuarterFrame(data);
+238         
+239 }
 \end{verbatim}
 \end{Code}
 
@@ -683,9 +715,9 @@ Definition at line 206 of file MIDI.cpp.
 
 Send a Tune Request message. When a MIDI unit receives this message, it should tune its oscillators (if equipped with any) 
 
-Definition at line 200 of file MIDI.cpp.
+Definition at line 228 of file MIDI.cpp.
 
-\begin{Code}\begin{verbatim}200 { sendRealTime(TuneRequest); }
+\begin{Code}\begin{verbatim}228 { sendRealTime(TuneRequest); }
 \end{verbatim}
 \end{Code}
 
@@ -704,9 +736,9 @@ Set the value for the input MIDI channel \begin{Desc}
 \end{Desc}
 
 
-Definition at line 578 of file MIDI.cpp.
+Definition at line 606 of file MIDI.cpp.
 
-\begin{Code}\begin{verbatim}578 { mInputChannel = inChannel; }
+\begin{Code}\begin{verbatim}606 { mInputChannel = inChannel; }
 \end{verbatim}
 \end{Code}
 
@@ -725,13 +757,13 @@ Set the filter for thru mirroring \begin{Desc}
 \end{Desc}
 
 
-Definition at line 592 of file MIDI.cpp.
+Definition at line 620 of file MIDI.cpp.
 
-\begin{Code}\begin{verbatim}592                                                                    { 
-593         mThruFilterMode = inThruFilterMode;
-594         if (mThruFilterMode != Off) mThruActivated = true;
-595         else mThruActivated = false;
-596 }
+\begin{Code}\begin{verbatim}620                                                                    { 
+621         mThruFilterMode = inThruFilterMode;
+622         if (mThruFilterMode != Off) mThruActivated = true;
+623         else mThruActivated = false;
+624 }
 \end{verbatim}
 \end{Code}
 
@@ -751,13 +783,13 @@ Set the filter for thru mirroring \begin{Desc}
 \end{Desc}
 
 
-Definition at line 602 of file MIDI.cpp.
+Definition at line 630 of file MIDI.cpp.
 
-\begin{Code}\begin{verbatim}602                                                         { 
-603         mThruFilterMode = (kThruFilterMode)inThruFilterMode;
-604         if (mThruFilterMode != Off) mThruActivated = true;
-605         else mThruActivated = false;
-606 }
+\begin{Code}\begin{verbatim}630                                                         { 
+631         mThruFilterMode = (kThruFilterMode)inThruFilterMode;
+632         if (mThruFilterMode != Off) mThruActivated = true;
+633         else mThruActivated = false;
+634 }
 \end{verbatim}
 \end{Code}
 
@@ -771,12 +803,12 @@ Definition at line 602 of file MIDI.cpp.
 
 Setter method: turn message mirroring off. 
 
-Definition at line 615 of file MIDI.cpp.
+Definition at line 643 of file MIDI.cpp.
 
-\begin{Code}\begin{verbatim}615                              {
-616         mThruActivated = false; 
-617         mThruFilterMode = Off;
-618 }
+\begin{Code}\begin{verbatim}643                              {
+644         mThruActivated = false; 
+645         mThruFilterMode = Off;
+646 }
 \end{verbatim}
 \end{Code}
 
@@ -790,12 +822,12 @@ Definition at line 615 of file MIDI.cpp.
 
 Setter method: turn message mirroring on. 
 
-Definition at line 610 of file MIDI.cpp.
+Definition at line 638 of file MIDI.cpp.
 
-\begin{Code}\begin{verbatim}610                                                             { 
-611         mThruActivated = true;
-612         mThruFilterMode = inThruFilterMode;
-613 }
+\begin{Code}\begin{verbatim}638                                                             { 
+639         mThruActivated = true;
+640         mThruFilterMode = inThruFilterMode;
+641 }
 \end{verbatim}
 \end{Code}
 
