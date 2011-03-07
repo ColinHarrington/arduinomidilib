@@ -242,7 +242,7 @@ void MIDI_Class::sendTimeCodeQuarterFrame(byte TypeNibble, byte ValuesNibble) {
  */
 void MIDI_Class::sendTimeCodeQuarterFrame(byte data) {
 	
-	USE_SERIAL_PORT.write(TimeCodeQuarterFrame);
+	USE_SERIAL_PORT.write((byte)TimeCodeQuarterFrame);
 	USE_SERIAL_PORT.write(data);
 	
 }
@@ -252,7 +252,7 @@ void MIDI_Class::sendTimeCodeQuarterFrame(byte data) {
  */
 void MIDI_Class::sendSongPosition(unsigned int Beats) {
 	
-	USE_SERIAL_PORT.write(SongPosition);
+	USE_SERIAL_PORT.write((byte)SongPosition);
 	USE_SERIAL_PORT.write(Beats & 0x7F);
 	USE_SERIAL_PORT.write((Beats >> 7) & 0x7F);
 	
@@ -261,7 +261,7 @@ void MIDI_Class::sendSongPosition(unsigned int Beats) {
 /*! Send a Song Select message */
 void MIDI_Class::sendSongSelect(byte SongNumber) {
 	
-	USE_SERIAL_PORT.write(SongSelect);
+	USE_SERIAL_PORT.write((byte)SongSelect);
 	USE_SERIAL_PORT.write(SongNumber & 0x7F);
 	
 }
@@ -409,6 +409,7 @@ bool MIDI_Class::parse(byte inChannel) {
 					
 				case SystemExclusive:
 					mPendingMessageExpectedLenght = MIDI_SYSEX_ARRAY_SIZE; // As the message can be any lenght between 3 and MIDI_SYSEX_ARRAY_SIZE bytes
+					// TODO: mRunningStatus_RX = InvalidType; ?
 					break;
 					
 				case InvalidType:
@@ -467,12 +468,13 @@ bool MIDI_Class::parse(byte inChannel) {
 						if (getTypeFromStatusByte(mPendingMessage[0]) == SystemExclusive) {
 							
 							// Store System Exclusive array in midimsg structure
+							// TODO: could use a pointer here to avoid copy.
 							for (byte i=0;i<MIDI_SYSEX_ARRAY_SIZE;i++) {
 								mMessage.sysex_array[i] = mPendingMessage[i];
 							}
 							
-							// Get length
-							mMessage.data1 = mPendingMessageIndex+1;
+							mMessage.type = SystemExclusive;
+							mMessage.data1 = mPendingMessageIndex+1;	// Get length
 							mMessage.data2 = 0;
 							mMessage.channel = 0;
 							mMessage.valid = true;
