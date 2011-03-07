@@ -243,7 +243,7 @@ void MIDI_Class::sendTimeCodeQuarterFrame(byte TypeNibble, byte ValuesNibble) {
  */
 void MIDI_Class::sendTimeCodeQuarterFrame(byte data) {
 	
-	USE_SERIAL_PORT.write(TimeCodeQuarterFrame);
+	USE_SERIAL_PORT.write((byte)TimeCodeQuarterFrame);
 	USE_SERIAL_PORT.write(data);
 	
 }
@@ -253,7 +253,7 @@ void MIDI_Class::sendTimeCodeQuarterFrame(byte data) {
  */
 void MIDI_Class::sendSongPosition(unsigned int Beats) {
 	
-	USE_SERIAL_PORT.write(SongPosition);
+	USE_SERIAL_PORT.write((byte)SongPosition);
 	USE_SERIAL_PORT.write(Beats & 0x7F);
 	USE_SERIAL_PORT.write((Beats >> 7) & 0x7F);
 	
@@ -262,7 +262,7 @@ void MIDI_Class::sendSongPosition(unsigned int Beats) {
 /*! Send a Song Select message */
 void MIDI_Class::sendSongSelect(byte SongNumber) {
 	
-	USE_SERIAL_PORT.write(SongSelect);
+	USE_SERIAL_PORT.write((byte)SongSelect);
 	USE_SERIAL_PORT.write(SongNumber & 0x7F);
 	
 }
@@ -472,8 +472,8 @@ bool MIDI_Class::parse(byte inChannel) {
 								mMessage.sysex_array[i] = mPendingMessage[i];
 							}
 							
-							// Get length
-							mMessage.data1 = mPendingMessageIndex+1;
+							mMessage.type = SystemExclusive;
+							mMessage.data1 = mPendingMessageIndex+1;	// Get length
 							mMessage.data2 = 0;
 							mMessage.channel = 0;
 							mMessage.valid = true;
