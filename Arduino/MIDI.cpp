@@ -148,7 +148,6 @@ void MIDI_Class::send(kMIDIType type, byte data1, byte data2, byte channel) {
 			break;
 	}
 	
-	
 }
 
 /*! Send a Note On message 
@@ -307,8 +306,12 @@ bool MIDI_Class::read(const byte inChannel) {
 	
 	if (inChannel >= MIDI_CHANNEL_OFF) return false; // MIDI Input disabled.
 	
+#if COMPFLAG_MIDI_OUT
 	if (parse(inChannel)) return filter(inChannel);
 	else return false;
+#else
+	return parse(inChannel);
+#endif
 	
 }
 

@@ -306,8 +306,12 @@ bool MIDI_Class::read(const byte inChannel) {
 	
 	if (inChannel >= MIDI_CHANNEL_OFF) return false; // MIDI Input disabled.
 	
+#if COMPFLAG_MIDI_OUT
 	if (parse(inChannel)) return filter(inChannel);
 	else return false;
+#else
+	return parse(inChannel);
+#endif
 	
 }
 
