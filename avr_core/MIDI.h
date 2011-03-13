@@ -28,8 +28,6 @@
  */
 
 
-#define USE_USB_CONNECTION      0           // Set this setting to 1 if you want the MIDI connection
-											// to be established through the USB cable.
 
 #define COMPILE_MIDI_IN         1           // Set this setting to 1 to use the MIDI input.
 #define COMPILE_MIDI_OUT        1           // Set this setting to 1 to use the MIDI output. 
@@ -37,11 +35,8 @@
                                             // Please note that the Thru will work only when both COMPILE_MIDI_IN and COMPILE_MIDI_OUT set to 1.
 
 
-#if USE_USB_CONNECTION
-  #define USE_SERIAL_PORT       Serial      // This Serial port is the one connected to the USB plug.
-#else
-  #define USE_SERIAL_PORT       Serial1     // Change the number (to Serial1 for example) if you want
-#endif                                      // to use a different serial port for MIDI I/O.
+#define USE_SERIAL_PORT         Serial1     // Change the number (to Serial1 for example) if you want
+                                            // to use a different serial port for MIDI I/O.
 
 
 #define USE_RUNNING_STATUS		1			// Running status enables short messages when sending multiple values
@@ -53,11 +48,7 @@
 // (do not modify anything under this line unless you know what you are doing)
 
 
-#if USE_USB_CONNECTION
-  #define MIDI_BAUDRATE			42	// TODO: Find the exact value
-#else 
-  #define MIDI_BAUDRATE			31250
-#endif
+#define MIDI_BAUDRATE			31250
 
 
 #define MIDI_CHANNEL_OMNI		0

@@ -88,7 +88,7 @@ const byte MIDI_Class::genstatus(const kMIDIType inType,const byte inChannel) {
 void MIDI_Class::send(kMIDIType type, byte data1, byte data2, byte channel) {
 	
 	// Then test if channel is valid
-	if (channel >= MIDI_CHANNEL_OFF || channel == MIDI_CHANNEL_OMNI) {
+	if (channel >= MIDI_CHANNEL_OFF || channel == MIDI_CHANNEL_OMNI || type < NoteOff) {
 		
 #if USE_RUNNING_STATUS	
 		mRunningStatus_TX = InvalidType;
@@ -97,57 +97,39 @@ void MIDI_Class::send(kMIDIType type, byte data1, byte data2, byte channel) {
 		return; // Don't send anything
 	}
 	
-	switch (type) {
-			// Channel messages
-		case NoteOff:
-		case NoteOn:
-		case ProgramChange:
-		case ControlChange:
-		case PitchBend:
-		case AfterTouchPoly:
-		case AfterTouchChannel:	
-		{
-			
-			// Protection: remove MSBs on data
-			data1 &= 0x7F;
-			data2 &= 0x7F;
-			
-			byte statusbyte = genstatus(type,channel);
-			
+	if (type <= PitchBend) {
+		// Channel messages
+		
+		// Protection: remove MSBs on data
+		data1 &= 0x7F;
+		data2 &= 0x7F;
+		
+		byte statusbyte = genstatus(type,channel);
+		
 #if USE_RUNNING_STATUS
-			// Check Running Status
-			if (mRunningStatus_TX != statusbyte) {
-				// New message, memorise and send header
-				mRunningStatus_TX = statusbyte;
-				USE_SERIAL_PORT.write(mRunningStatus_TX);
-			}
-#else
-			// Don't care about running status, send the Control byte.
-			USE_SERIAL_PORT.write(statusbyte);
-#endif
-			
-			// Then send data
-			USE_SERIAL_PORT.write(data1);
-			if (type != ProgramChange && type != AfterTouchChannel) {
-				USE_SERIAL_PORT.write(data2);
-			}
+		// Check Running Status
+		if (mRunningStatus_TX != statusbyte) {
+			// New message, memorise and send header
+			mRunningStatus_TX = statusbyte;
+			USE_SERIAL_PORT.write(mRunningStatus_TX);
 		}
-			break;
-			
-			// Real Time messages
-		case Clock:
-		case Start:
-		case Stop:	
-		case Continue:
-		case ActiveSensing:
-		case SystemReset:
-		case TuneRequest: // Not really real-time, but one byte anyway.
-			sendRealTime(type);
-			break;
-			
-		default:
-			break;
+#else
+		// Don't care about running status, send the Control byte.
+		USE_SERIAL_PORT.write(statusbyte);
+#endif
+		
+		// Then send data
+		USE_SERIAL_PORT.write(data1);
+		if (type != ProgramChange && type != AfterTouchChannel) {
+			USE_SERIAL_PORT.write(data2);
+		}
+		return;
 	}
+	if (type >= TuneRequest && type <= SystemReset) {
+		// System Real-time and 1 byte.
+		sendRealTime(type);
+	}
+
 	
 }
 
@@ -222,6 +204,9 @@ void MIDI_Class::sendSysEx(byte length, byte * array, bool ArrayContainsBoundari
 	if (!ArrayContainsBoundaries) USE_SERIAL_PORT.write(0xF0);
 	for (byte i=0;i<length;i++) USE_SERIAL_PORT.write(array[i]);
 	if (!ArrayContainsBoundaries) USE_SERIAL_PORT.write(0xF7);
+#if USE_RUNNING_STATUS
+	mRunningStatus_TX = InvalidType;
+#endif
 }
 
 /*! Send a Tune Request message. When a MIDI unit receives this message, it should tune its oscillators (if equipped with any) */
@@ -235,7 +220,7 @@ void MIDI_Class::sendTimeCodeQuarterFrame(byte TypeNibble, byte ValuesNibble) {
 	
 	byte data = ( ((TypeNibble & 0x07) << 4) | (ValuesNibble & 0x0F) );
 	sendTimeCodeQuarterFrame(data);
-	
+
 }
 
 /*! Send a MIDI Time Code Quarter Frame. See MIDI Specification for more information.
@@ -245,7 +230,9 @@ void MIDI_Class::sendTimeCodeQuarterFrame(byte data) {
 	
 	USE_SERIAL_PORT.write((byte)TimeCodeQuarterFrame);
 	USE_SERIAL_PORT.write(data);
-	
+#if USE_RUNNING_STATUS
+	mRunningStatus_TX = InvalidType;
+#endif
 }
 
 /*! Send a Song Position Pointer message.
@@ -256,7 +243,9 @@ void MIDI_Class::sendSongPosition(unsigned int Beats) {
 	USE_SERIAL_PORT.write((byte)SongPosition);
 	USE_SERIAL_PORT.write(Beats & 0x7F);
 	USE_SERIAL_PORT.write((Beats >> 7) & 0x7F);
-	
+#if USE_RUNNING_STATUS
+	mRunningStatus_TX = InvalidType;
+#endif
 }
 
 /*! Send a Song Select message */
@@ -264,7 +253,9 @@ void MIDI_Class::sendSongSelect(byte SongNumber) {
 	
 	USE_SERIAL_PORT.write((byte)SongSelect);
 	USE_SERIAL_PORT.write(SongNumber & 0x7F);
-	
+#if USE_RUNNING_STATUS
+	mRunningStatus_TX = InvalidType;
+#endif
 }
 
 /*! Send a Real Time (one byte) message. \n You can also send a Tune Request with this method.
@@ -285,6 +276,9 @@ void MIDI_Class::sendRealTime(kMIDIType Type) {
 			// Invalid Real Time marker
 			break;
 	}
+#if USE_RUNNING_STATUS
+	mRunningStatus_TX = InvalidType;
+#endif	
 }
 
 #endif // COMPILE_MIDI_OUT
@@ -420,6 +414,7 @@ bool MIDI_Class::parse(byte inChannel) {
 					
 				case SystemExclusive:
 					mPendingMessageExpectedLenght = MIDI_SYSEX_ARRAY_SIZE; // As the message can be any lenght between 3 and MIDI_SYSEX_ARRAY_SIZE bytes
+					mRunningStatus_RX = InvalidType;
 					break;
 					
 				case InvalidType:
