@@ -31,8 +31,10 @@
 #define USE_USB_CONNECTION      0           // Set this setting to 1 if you want the MIDI connection
 											// to be established through the USB cable.
 
-#define COMPFLAG_MIDI_IN        1           // Set this setting to 1 to use the MIDI input.
-#define COMPFLAG_MIDI_OUT       1           // Set this setting to 1 to use the MIDI output. 
+#define COMPILE_MIDI_IN         1           // Set this setting to 1 to use the MIDI input.
+#define COMPILE_MIDI_OUT        1           // Set this setting to 1 to use the MIDI output. 
+#define COMPILE_MIDI_THRU       1           // Set this setting to 1 to use the MIDI Soft Thru feature
+                                            // Please note that the Thru will work only when both COMPILE_MIDI_IN and COMPILE_MIDI_OUT set to 1.
 
 
 #if USE_USB_CONNECTION
@@ -132,7 +134,7 @@ public:
 	
 	
 /* ####### OUTPUT COMPILATION BLOCK ####### */	
-#if COMPFLAG_MIDI_OUT
+#if COMPILE_MIDI_OUT
 
 public:	
 	
@@ -163,12 +165,12 @@ private:
 	byte			mRunningStatus_TX;
 #endif // USE_RUNNING_STATUS
 
-#endif	// COMPFLAG_MIDI_OUT
+#endif	// COMPILE_MIDI_OUT
 	
 
 	
 /* ####### INPUT COMPILATION BLOCK ####### */
-#if COMPFLAG_MIDI_IN	
+#if COMPILE_MIDI_IN	
 	
 public:
 	
@@ -200,9 +202,8 @@ private:
 		else return (kMIDIType)inStatus;
 	}
 	
-	bool filter(byte inChannel);
+	bool input_filter(byte inChannel);
 	bool parse(byte inChannel);
-	
 	
 	// Attributes
 	byte			mRunningStatus_RX;
@@ -214,11 +215,11 @@ private:
 	
 	midimsg			mMessage;
 	
-#endif // COMPFLAG_MIDI_IN
+#endif // COMPILE_MIDI_IN
 	
 
 /* ####### THRU COMPILATION BLOCK ####### */
-#if (COMPFLAG_MIDI_IN && COMPFLAG_MIDI_OUT) // Thru
+#if (COMPILE_MIDI_IN && COMPILE_MIDI_OUT && COMPILE_MIDI_THRU) // Thru
 	
 public:
 	
@@ -236,6 +237,8 @@ public:
 	
 	
 private:
+	
+	void thru_filter(byte inChannel);
 	
 	bool				mThruActivated;
 	kThruFilterMode		mThruFilterMode;

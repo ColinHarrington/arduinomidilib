@@ -37,16 +37,16 @@ void MIDI_Class::begin(const byte inChannel) {
 	USE_SERIAL_PORT.begin(MIDI_BAUDRATE);
 	
 	
-#if COMPFLAG_MIDI_OUT
+#if COMPILE_MIDI_OUT
 	
 #if USE_RUNNING_STATUS
 	mRunningStatus_TX = InvalidType;
 #endif // USE_RUNNING_STATUS
 	
-#endif // COMPFLAG_MIDI_OUT
+#endif // COMPILE_MIDI_OUT
 	
 	
-#if COMPFLAG_MIDI_IN
+#if COMPILE_MIDI_IN
 	
 	mInputChannel = inChannel;
 	mRunningStatus_RX = InvalidType;
@@ -59,19 +59,20 @@ void MIDI_Class::begin(const byte inChannel) {
 	mMessage.data1 = 0;
 	mMessage.data2 = 0;
 	
-#endif // COMPFLAG_MIDI_IN
+#endif // COMPILE_MIDI_IN
 	
 	
-#if (COMPFLAG_MIDI_IN && COMPFLAG_MIDI_OUT) // Thru
+#if (COMPILE_MIDI_IN && COMPILE_MIDI_OUT && COMPILE_MIDI_THRU) // Thru
 	
 	mThruFilterMode = Full;
+	mThruActivated = true;
 	
 #endif // Thru
 	
 }
 
 
-#if COMPFLAG_MIDI_OUT
+#if COMPILE_MIDI_OUT
 
 // Private method for generating a status byte from channel and type
 const byte MIDI_Class::genstatus(const kMIDIType inType,const byte inChannel) {
@@ -286,11 +287,11 @@ void MIDI_Class::sendRealTime(kMIDIType Type) {
 	}
 }
 
-#endif // COMPFLAG_MIDI_OUT
+#endif // COMPILE_MIDI_OUT
 
 
 
-#if COMPFLAG_MIDI_IN
+#if COMPILE_MIDI_IN
 
 /*! Read a MIDI message from the serial port using the main input channel (see setInputChannel() for reference). \n
  Returned value: true if any valid message has been stored in the structure, false if not.
@@ -306,13 +307,19 @@ bool MIDI_Class::read(const byte inChannel) {
 	
 	if (inChannel >= MIDI_CHANNEL_OFF) return false; // MIDI Input disabled.
 	
-#if COMPFLAG_MIDI_OUT
-	if (parse(inChannel)) return filter(inChannel);
-	else return false;
-#else
-	return parse(inChannel);
-#endif
 	
+	if (parse(inChannel)) {
+		if (input_filter(inChannel)) {
+			
+#if (COMPILE_MIDI_OUT && COMPILE_MIDI_THRU)
+			thru_filter(inChannel);
+#endif
+			
+			return true;
+		}
+	}
+	
+	return false;
 }
 
 // Private method: MIDI parser
@@ -528,7 +535,7 @@ bool MIDI_Class::parse(byte inChannel) {
 				mMessage.type = getTypeFromStatusByte(mPendingMessage[0]);
 				mMessage.channel = (mPendingMessage[0] & 0x0F)+1; // Don't check if it is a Channel Message
 				
-				mMessage.data1 = mPendingMessage[1]; // Checking this is futile, as 1 byte message were processed in the switch.
+				mMessage.data1 = mPendingMessage[1];
 				mMessage.data2 = mPendingMessage[2];
 				
 				// Reset local variables
@@ -575,6 +582,39 @@ bool MIDI_Class::parse(byte inChannel) {
 }
 
 
+// Private method: check if the received message is on the listened channel
+bool MIDI_Class::input_filter(byte inChannel) {
+	
+	
+	// This method handles recognition of channel (to know if the message is destinated to the Arduino)
+	
+	
+	if (mMessage.type == InvalidType) return false;
+	
+	
+	// First, check if the received message is Channel
+	if (mMessage.type >= NoteOff && mMessage.type <= PitchBend) {
+		
+		// Then we need to know if we listen to it
+		if ((mMessage.channel == mInputChannel) || (mInputChannel == MIDI_CHANNEL_OMNI)) {
+			return true;
+			
+		}
+		else {
+			// We don't listen to this channel
+			return false;
+		}
+		
+	}
+	else {
+		
+		// System messages are always received
+		return true;
+	}
+	
+}
+
+
 // Getters
 /*! Getter method: access to the message type stored in the structure. \n Returns an enumerated type. */
 kMIDIType MIDI_Class::getType() { return mMessage.type; }
@@ -597,12 +637,12 @@ bool MIDI_Class::check() { return mMessage.valid; }
 void MIDI_Class::setInputChannel(const byte Channel) { mInputChannel = Channel; }
 
 
-#endif // COMPFLAG_MIDI_IN
+#endif // COMPILE_MIDI_IN
 
 
 
 
-#if (COMPFLAG_MIDI_IN && COMPFLAG_MIDI_OUT) // Thru
+#if (COMPILE_MIDI_IN && COMPILE_MIDI_OUT && COMPILE_MIDI_THRU) // Thru
 
 /*! Set the filter for thru mirroring
  \param inThruFilterMode a filter mode
@@ -636,13 +676,11 @@ void MIDI_Class::turnThruOff() {
 	mThruFilterMode = Off;
 }
 
-/* This method is called upon reception of a message and checks if the message stored is destinated to be read (matching channel).
-	It also takes care of Thru filtering and sending.
- */
-bool MIDI_Class::filter(byte inChannel) {
+// This method is called upon reception of a message and takes care of Thru filtering and sending.
+void MIDI_Class::thru_filter(byte inChannel) {
 	
 	/*
-		This method handles both recognition of channel (to know if the message is destinated to the Arduino) and Soft-Thru filtering.
+	 This method handles Soft-Thru filtering.
 	 
 		Soft-Thru filtering:
 		- All system messages (System Exclusive, Common and Real Time) are passed to output unless filter is set to Off
@@ -650,35 +688,32 @@ bool MIDI_Class::filter(byte inChannel) {
 	 
 	 */
 	
+	// If the feature is disabled, don't do anything.
+	if (!mThruActivated || (mThruFilterMode == Off)) return;
 	
-	bool validate_message = false;
 	
 	// First, check if the received message is Channel
 	if (mMessage.type >= NoteOff && mMessage.type <= PitchBend) {
 		
-		// Then we need to know if we listen to it
-		if ((mMessage.channel == mInputChannel) || (mInputChannel == MIDI_CHANNEL_OMNI)) {
-			validate_message = true;
-			
-		}
-		else {
-			// We don't listen to this channel
-			validate_message = false;
-		}
+		
+		bool filter_condition = ((mMessage.channel == mInputChannel) || (mInputChannel == MIDI_CHANNEL_OMNI));
 		
 		// Now let's pass it to the output
 		switch (mThruFilterMode) {
 			case Full:
 				send(mMessage.type,mMessage.data1,mMessage.data2,mMessage.channel);
+				return;
 				break;
 			case SameChannel:
-				if (validate_message) {
+				if (filter_condition) {
 					send(mMessage.type,mMessage.data1,mMessage.data2,mMessage.channel);
+					return;
 				}
 				break;
 			case DifferentChannel:
-				if (!validate_message) {
+				if (!filter_condition) {
 					send(mMessage.type,mMessage.data1,mMessage.data2,mMessage.channel);
+					return;
 				}
 			case Off:
 				// Do nothing
@@ -689,9 +724,6 @@ bool MIDI_Class::filter(byte inChannel) {
 		
 	}
 	else {
-		
-		// System messages are always received
-		validate_message = true;
 		
 		// Send the message to the output
 		if (mThruFilterMode != Off) {
@@ -705,23 +737,28 @@ bool MIDI_Class::filter(byte inChannel) {
 				case SystemReset:
 				case TuneRequest:	
 					sendRealTime(mMessage.type);
+					return;
 					break;
 					
 				case SystemExclusive:
 					// Send SysEx (0xF0 and 0xF7 are included in the buffer)
 					sendSysEx(mMessage.data1,mMessage.sysex_array,true); 
+					return;
 					break;
 					
 				case SongSelect:
 					sendSongSelect(mMessage.data1); // TODO: check this
+					return;
 					break;
 					
 				case SongPosition:
 					sendSongPosition(mMessage.data1 | ((unsigned)mMessage.data2<<7));	// TODO: check this
+					return;
 					break;
-				
+					
 				case TimeCodeQuarterFrame:
 					sendTimeCodeQuarterFrame(mMessage.data1,mMessage.data2); // TODO: check this
+					return;
 					break;
 				default:
 					break;
@@ -730,11 +767,7 @@ bool MIDI_Class::filter(byte inChannel) {
 		}
 		
 	}
-
 	
-	
-	
-	return validate_message;
 }
 
 
