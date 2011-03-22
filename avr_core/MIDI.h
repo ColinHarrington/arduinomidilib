@@ -148,7 +148,6 @@ public:
 	
 private:
 	
-	const byte genstatus(const kMIDIType inType,const byte inChannel);
 	void send(kMIDIType type, byte param1, byte param2, byte channel);
 	
 	// Attributes
