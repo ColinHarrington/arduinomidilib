@@ -27,9 +27,9 @@ MIDI_Class::~MIDI_Class() { }
 
 
 /*! Call the begin method in the setup() function of the Arduino.
-	All parameters are set to their default values:
-	- Input channel set to 1 if no value is specified
-	- Full thru mirroring
+ All parameters are set to their default values:
+ - Input channel set to 1 if no value is specified
+ - Full thru mirroring
  */
 void MIDI_Class::begin(const byte inChannel) {
 	
@@ -129,47 +129,47 @@ void MIDI_Class::send(kMIDIType type, byte data1, byte data2, byte channel) {
 		// System Real-time and 1 byte.
 		sendRealTime(type);
 	}
-
+	
 	
 }
 
 /*! Send a Note On message 
-	\param NoteNumber	Pitch value in the MIDI format (0 to 127). Take a look at the values, names and frequencies of notes here: http://www.phys.unsw.edu.au/jw/notes.html\n
-	\param Velocity		Note attack velocity (0 to 127). A NoteOn with 0 velocity is considered as a NoteOff.
-	\param Channel		The channel on which the message will be sent (1 to 16). 
+ \param NoteNumber	Pitch value in the MIDI format (0 to 127). Take a look at the values, names and frequencies of notes here: http://www.phys.unsw.edu.au/jw/notes.html\n
+ \param Velocity		Note attack velocity (0 to 127). A NoteOn with 0 velocity is considered as a NoteOff.
+ \param Channel		The channel on which the message will be sent (1 to 16). 
  */
 void MIDI_Class::sendNoteOn(byte NoteNumber,byte Velocity,byte Channel) { send(NoteOn,NoteNumber,Velocity,Channel); }
 
 /*! Send a Note Off message (a real Note Off, not a Note On with null velocity)
-	\param NoteNumber	Pitch value in the MIDI format (0 to 127). Take a look at the values, names and frequencies of notes here: http://www.phys.unsw.edu.au/jw/notes.html\n
-	\param Velocity		Release velocity (0 to 127).
-	\param Channel		The channel on which the message will be sent (1 to 16).
+ \param NoteNumber	Pitch value in the MIDI format (0 to 127). Take a look at the values, names and frequencies of notes here: http://www.phys.unsw.edu.au/jw/notes.html\n
+ \param Velocity		Release velocity (0 to 127).
+ \param Channel		The channel on which the message will be sent (1 to 16).
  */
 void MIDI_Class::sendNoteOff(byte NoteNumber,byte Velocity,byte Channel) { send(NoteOff,NoteNumber,Velocity,Channel); }
 
 /*! Send a Program Change message 
-	\param ProgramNumber	The Program to select (0 to 127).
-	\param Channel			The channel on which the message will be sent (1 to 16).
+ \param ProgramNumber	The Program to select (0 to 127).
+ \param Channel			The channel on which the message will be sent (1 to 16).
  */
 void MIDI_Class::sendProgramChange(byte ProgramNumber,byte Channel) { send(ProgramChange,ProgramNumber,0,Channel); }
 
 /*! Send a Control Change message 
-	\param ControlNumber	The controller number (0 to 127). See the detailed description here: http://www.somascape.org/midi/tech/spec.html#ctrlnums
-	\param ControlValue		The value for the specified controller (0 to 127).
-	\param Channel			The channel on which the message will be sent (1 to 16). 
+ \param ControlNumber	The controller number (0 to 127). See the detailed description here: http://www.somascape.org/midi/tech/spec.html#ctrlnums
+ \param ControlValue		The value for the specified controller (0 to 127).
+ \param Channel			The channel on which the message will be sent (1 to 16). 
  */
 void MIDI_Class::sendControlChange(byte ControlNumber, byte ControlValue,byte Channel) { send(ControlChange,ControlNumber,ControlValue,Channel); }
 
 /*! Send a Polyphonic AfterTouch message (applies to only one specified note)
-	\param NoteNumber		The note to apply AfterTouch to (0 to 127).
-	\param Pressure			The amount of AfterTouch to apply (0 to 127).
-	\param Channel			The channel on which the message will be sent (1 to 16). 
+ \param NoteNumber		The note to apply AfterTouch to (0 to 127).
+ \param Pressure			The amount of AfterTouch to apply (0 to 127).
+ \param Channel			The channel on which the message will be sent (1 to 16). 
  */
 void MIDI_Class::sendPolyPressure(byte NoteNumber,byte Pressure,byte Channel) { send(AfterTouchPoly,NoteNumber,Pressure,Channel); }
 
 /*! Send a MonoPhonic AfterTouch message (applies to all notes)
-	\param Pressure			The amount of AfterTouch to apply to all notes.
-	\param Channel			The channel on which the message will be sent (1 to 16). 
+ \param Pressure			The amount of AfterTouch to apply to all notes.
+ \param Channel			The channel on which the message will be sent (1 to 16). 
  */
 void MIDI_Class::sendAfterTouch(byte Pressure,byte Channel) { send(AfterTouchChannel,Pressure,0,Channel); }
 
@@ -178,7 +178,7 @@ void MIDI_Class::sendAfterTouch(byte Pressure,byte Channel) { send(AfterTouchCha
  \param Channel		The channel on which the message will be sent (1 to 16).
  */
 void MIDI_Class::sendPitchBend(unsigned int PitchValue,byte Channel) {
-
+	
 	send(PitchBend,(PitchValue & 0x7F),(PitchValue >> 7) & 0x7F,Channel);
 	
 }
@@ -187,7 +187,7 @@ void MIDI_Class::sendPitchBend(unsigned int PitchValue,byte Channel) {
  \param Channel		The channel on which the message will be sent (1 to 16).
  */
 void MIDI_Class::sendPitchBend(double PitchValue,byte Channel) {
-
+	
 	unsigned int pitchval = (PitchValue+1.f)*8192;
 	if (pitchval > 16383) pitchval = 16383;		// overflow protection
 	sendPitchBend(pitchval,Channel);
@@ -213,18 +213,18 @@ void MIDI_Class::sendSysEx(byte length, byte * array, bool ArrayContainsBoundari
 void MIDI_Class::sendTuneRequest() { sendRealTime(TuneRequest); }
 
 /*! Send a MIDI Time Code Quarter Frame. See MIDI Specification for more information.
-	\param TypeNibble	MTC type
-	\param ValuesNibble	MTC data
+ \param TypeNibble	MTC type
+ \param ValuesNibble	MTC data
  */
 void MIDI_Class::sendTimeCodeQuarterFrame(byte TypeNibble, byte ValuesNibble) {
 	
 	byte data = ( ((TypeNibble & 0x07) << 4) | (ValuesNibble & 0x0F) );
 	sendTimeCodeQuarterFrame(data);
-
+	
 }
 
 /*! Send a MIDI Time Code Quarter Frame. See MIDI Specification for more information.
-	\param data	 if you want to encode directly the nibbles in your program, you can send the byte here.
+ \param data	 if you want to encode directly the nibbles in your program, you can send the byte here.
  */
 void MIDI_Class::sendTimeCodeQuarterFrame(byte data) {
 	
@@ -236,7 +236,7 @@ void MIDI_Class::sendTimeCodeQuarterFrame(byte data) {
 }
 
 /*! Send a Song Position Pointer message.
-	\param Beats	The number of beats since the start of the song.
+ \param Beats	The number of beats since the start of the song.
  */
 void MIDI_Class::sendSongPosition(unsigned int Beats) {
 	
@@ -259,7 +259,7 @@ void MIDI_Class::sendSongSelect(byte SongNumber) {
 }
 
 /*! Send a Real Time (one byte) message. \n You can also send a Tune Request with this method.
-	\param Type The available Real Time types are: Start, Stop, Continue, Clock, ActiveSensing and SystemReset. 
+ \param Type The available Real Time types are: Start, Stop, Continue, Clock, ActiveSensing and SystemReset. 
  */
 void MIDI_Class::sendRealTime(kMIDIType Type) {
 	switch (Type) {
@@ -333,8 +333,8 @@ bool MIDI_Class::parse(byte inChannel) {
 		/* Parsing algorithm:
 		 Get a byte from the serial buffer.
 		 * If there is no pending message to be recomposed, start a new one.
-			- Find type and channel (if pertinent)
-			- Look for other bytes in buffer, call parser recursively, until the message is assembled or the buffer is empty.
+		 - Find type and channel (if pertinent)
+		 - Look for other bytes in buffer, call parser recursively, until the message is assembled or the buffer is empty.
 		 * Else, add the extracted byte to the pending message, and check validity. When the message is done, store it.
 		 */
 		
@@ -448,7 +448,7 @@ bool MIDI_Class::parse(byte inChannel) {
 					case Stop:
 					case ActiveSensing:
 					case SystemReset:
-
+						
 						/*
 						 This is tricky. Here we will have to extract the one-byte message,
 						 pass it to the structure for being read outside the MIDI class,
@@ -467,7 +467,7 @@ bool MIDI_Class::parse(byte inChannel) {
 						return true;
 						
 						break;
-					
+						
 						// End of Exclusive
 					case 0xF7:
 						if (getTypeFromStatusByte(mPendingMessage[0]) == SystemExclusive) {
@@ -496,7 +496,7 @@ bool MIDI_Class::parse(byte inChannel) {
 							mRunningStatus_RX = InvalidType;
 							return false;
 						}
-
+						
 						break;
 					default:
 						break;
@@ -525,7 +525,6 @@ bool MIDI_Class::parse(byte inChannel) {
 				}
 				
 				
-
 				
 				mMessage.type = getTypeFromStatusByte(mPendingMessage[0]);
 				mMessage.channel = (mPendingMessage[0] & 0x0F)+1; // Don't check if it is a Channel Message
@@ -677,9 +676,9 @@ void MIDI_Class::thru_filter(byte inChannel) {
 	/*
 	 This method handles Soft-Thru filtering.
 	 
-		Soft-Thru filtering:
-		- All system messages (System Exclusive, Common and Real Time) are passed to output unless filter is set to Off
-		- Channel messages are passed to the output whether their channel is matching the input channel and the filter setting
+	 Soft-Thru filtering:
+	 - All system messages (System Exclusive, Common and Real Time) are passed to output unless filter is set to Off
+	 - Channel messages are passed to the output whether their channel is matching the input channel and the filter setting
 	 
 	 */
 	
@@ -721,44 +720,41 @@ void MIDI_Class::thru_filter(byte inChannel) {
 	else {
 		
 		// Send the message to the output
-		if (mThruFilterMode != Off) {
-			switch (mMessage.type) {
-					// Real Time and 1 byte
-				case Clock:
-				case Start:
-				case Stop:
-				case Continue:
-				case ActiveSensing:
-				case SystemReset:
-				case TuneRequest:	
-					sendRealTime(mMessage.type);
-					return;
-					break;
-					
-				case SystemExclusive:
-					// Send SysEx (0xF0 and 0xF7 are included in the buffer)
-					sendSysEx(mMessage.data1,mMessage.sysex_array,true); 
-					return;
-					break;
-					
-				case SongSelect:
-					sendSongSelect(mMessage.data1); // TODO: check this
-					return;
-					break;
-					
-				case SongPosition:
-					sendSongPosition(mMessage.data1 | ((unsigned)mMessage.data2<<7));	// TODO: check this
-					return;
-					break;
-					
-				case TimeCodeQuarterFrame:
-					sendTimeCodeQuarterFrame(mMessage.data1,mMessage.data2); // TODO: check this
-					return;
-					break;
-				default:
-					break;
-			}
-			
+		switch (mMessage.type) {
+				// Real Time and 1 byte
+			case Clock:
+			case Start:
+			case Stop:
+			case Continue:
+			case ActiveSensing:
+			case SystemReset:
+			case TuneRequest:	
+				sendRealTime(mMessage.type);
+				return;
+				break;
+				
+			case SystemExclusive:
+				// Send SysEx (0xF0 and 0xF7 are included in the buffer)
+				sendSysEx(mMessage.data1,mMessage.sysex_array,true); 
+				return;
+				break;
+				
+			case SongSelect:
+				sendSongSelect(mMessage.data1); // TODO: check this
+				return;
+				break;
+				
+			case SongPosition:
+				sendSongPosition(mMessage.data1 | ((unsigned)mMessage.data2<<7));	// TODO: check this
+				return;
+				break;
+				
+			case TimeCodeQuarterFrame:
+				sendTimeCodeQuarterFrame(mMessage.data1,mMessage.data2); // TODO: check this
+				return;
+				break;
+			default:
+				break;
 		}
 		
 	}
