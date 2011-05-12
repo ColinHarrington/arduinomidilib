@@ -14,6 +14,7 @@ MIDI_Class	KEYWORD1
 # Methods and Functions (KEYWORD2)
 #######################################
 
+send	KEYWORD2
 sendNoteOn	KEYWORD2
 sendNoteOff	KEYWORD2
 sendProgramChange	KEYWORD2
@@ -45,6 +46,25 @@ setStatus	KEYWORD2
 turnThruOn	KEYWORD2
 turnThruOff	KEYWORD2
 setThruFilterMode	KEYWORD2
+disconnectCallbackFromType	KEYWORD2
+setHandleNoteOff	KEYWORD2
+setHandleNoteOn	KEYWORD2
+setHandleAfterTouchPoly	KEYWORD2
+setHandleControlChange	KEYWORD2
+setHandleProgramChange	KEYWORD2
+setHandleAfterTouchChannel	KEYWORD2
+setHandlePitchBend	KEYWORD2
+setHandleSystemExclusive	KEYWORD2
+setHandleTimeCodeQuarterFrame	KEYWORD2
+setHandleSongPosition	KEYWORD2
+setHandleSongSelect	KEYWORD2
+setHandleTuneRequest	KEYWORD2
+setHandleClock	KEYWORD2
+setHandleStart	KEYWORD2
+setHandleContinue	KEYWORD2
+setHandleStop	KEYWORD2
+setHandleActiveSensing	KEYWORD2
+setHandleSystemReset	KEYWORD2
 
 
 #######################################

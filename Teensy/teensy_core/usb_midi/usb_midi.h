@@ -1,15 +1,15 @@
 /*!
- *  @file		MIDI.h
- *  Project		MIDI Library
- *	@brief		MIDI Library for the Arduino
+ *  @file		usb_midi.h
+ *  Project		Teensy MIDI Core
+ *	@brief		MIDI Library for Teensy - USB side
  *	Version		3.1
  *  @author		Francois Best 
- *	@date		24/02/11
+ *	@date		28/04/11
  *  License		GPL Forty Seven Effects - 2011
  */
 
-#ifndef LIB_MIDI_H_
-#define LIB_MIDI_H_
+#ifndef _TEENSY_LIB_MIDI_USB_FSE_H_
+#define _TEENSY_LIB_MIDI_USB_FSE_H_
 
 #include <inttypes.h> 
 
@@ -27,17 +27,13 @@
     ###############################################################
  */
 
-#define COMPATIBILITY_V25		1			// Enable compatibility with MIDI Library v2.5
-
+#define CONVERT_USB_TO_MIDI     1           // Set this to 1 to forward incoming messages on the USB MIDI to the UART.
+#define CONVERT_MIDI_TO_USB     1           // Set this to 1 to forward incoming messages on the UART to the USB MIDI.
 
 #define COMPILE_MIDI_IN         1           // Set this setting to 1 to use the MIDI input.
 #define COMPILE_MIDI_OUT        1           // Set this setting to 1 to use the MIDI output. 
 #define COMPILE_MIDI_THRU       1           // Set this setting to 1 to use the MIDI Soft Thru feature
                                             // Please note that the Thru will work only when both COMPILE_MIDI_IN and COMPILE_MIDI_OUT set to 1.
-
-
-#define USE_SERIAL_PORT         Serial      // Change the number (to Serial1 for example) if you want
-                                            // to use a different serial port for MIDI I/O.
 
 
 #define USE_RUNNING_STATUS		1			// Running status enables short messages when sending multiple values
@@ -52,16 +48,13 @@
 // END OF CONFIGURATION AREA 
 // (do not modify anything under this line unless you know what you are doing)
 
-#if COMPATIBILITY_V25
-#include "Compatibility_v2.5.h"
-#endif
 
 #define MIDI_BAUDRATE			31250
 
 #define MIDI_CHANNEL_OMNI		0
 #define MIDI_CHANNEL_OFF		17 // and over
 
-#define MIDI_SYSEX_ARRAY_SIZE	255
+#define MIDI_SYSEX_ARRAY_SIZE	60
 
 /*! Type definition for practical use (because "unsigned char" is a bit long to write.. )*/
 typedef uint8_t byte;
@@ -69,33 +62,33 @@ typedef uint16_t word;
 
 /*! Enumeration of MIDI types */
 enum kMIDIType {
-	NoteOff	              = 0x80,	///< Note Off
-	NoteOn                = 0x90,	///< Note On
-	AfterTouchPoly        = 0xA0,	///< Polyphonic AfterTouch
-	ControlChange         = 0xB0,	///< Control Change / Channel Mode
-	ProgramChange         = 0xC0,	///< Program Change
-	AfterTouchChannel     = 0xD0,	///< Channel (monophonic) AfterTouch
-	PitchBend             = 0xE0,	///< Pitch Bend
-	SystemExclusive       = 0xF0,	///< System Exclusive
-	TimeCodeQuarterFrame  = 0xF1,	///< System Common - MIDI Time Code Quarter Frame
-	SongPosition          = 0xF2,	///< System Common - Song Position Pointer
-	SongSelect            = 0xF3,	///< System Common - Song Select
-	TuneRequest           = 0xF6,	///< System Common - Tune Request
-	Clock                 = 0xF8,	///< System Real Time - Timing Clock
-	Start                 = 0xFA,	///< System Real Time - Start
-	Continue              = 0xFB,	///< System Real Time - Continue
-	Stop                  = 0xFC,	///< System Real Time - Stop
-	ActiveSensing         = 0xFE,	///< System Real Time - Active Sensing
-	SystemReset           = 0xFF,	///< System Real Time - System Reset
-	InvalidType           = 0x00    ///< For notifying errors
+	NoteOff	              = 0x80,	// Note Off
+	NoteOn                = 0x90,	// Note On
+	AfterTouchPoly        = 0xA0,	// Polyphonic AfterTouch
+	ControlChange         = 0xB0,	// Control Change / Channel Mode
+	ProgramChange         = 0xC0,	// Program Change
+	AfterTouchChannel     = 0xD0,	// Channel (monophonic) AfterTouch
+	PitchBend             = 0xE0,	// Pitch Bend
+	SystemExclusive       = 0xF0,	// System Exclusive
+	TimeCodeQuarterFrame  = 0xF1,	// System Common - MIDI Time Code Quarter Frame
+	SongPosition          = 0xF2,	// System Common - Song Position Pointer
+	SongSelect            = 0xF3,	// System Common - Song Select
+	TuneRequest           = 0xF6,	// System Common - Tune Request
+	Clock                 = 0xF8,	// System Real Time - Timing Clock
+	Start                 = 0xFA,	// System Real Time - Start
+	Continue              = 0xFB,	// System Real Time - Continue
+	Stop                  = 0xFC,	// System Real Time - Stop
+	ActiveSensing         = 0xFE,	// System Real Time - Active Sensing
+	SystemReset           = 0xFF,	// System Real Time - System Reset
+	InvalidType           = 0x00    // For notifying errors
 };
 
 /*! Enumeration of Thru filter modes */
 enum kThruFilterMode {
-	Off                   = 0,  ///< Thru disabled (nothing passes through).
-	Full                  = 1,  ///< Fully enabled Thru (every incoming message is sent back).
-	SameChannel           = 2,  ///< Only the messages on the Input Channel will be sent back.
-	DifferentChannel      = 3   ///< All the messages but the ones on the Input Channel will be sent back.
+	Off                   = 0,  // Thru disabled (nothing passes through).
+	Full                  = 1,  // Fully enabled Thru (every incoming message is sent back).
+	SameChannel           = 2,  // Only the messages on the Input Channel will be sent back.
+	DifferentChannel      = 3   // All the messages but the ones on the Input Channel will be sent back.
 };
 
 
@@ -118,7 +111,7 @@ struct midimsg {
 
 
 
-/*! \brief The main class for MIDI handling.\n
+/*! The main class for MIDI handling.
 	See member descriptions to know how to use it,
 	or check out the examples supplied with the library.
  */
@@ -145,7 +138,6 @@ public:
 	void sendNoteOff(byte NoteNumber,byte Velocity,byte Channel);
 	void sendProgramChange(byte ProgramNumber,byte Channel);
 	void sendControlChange(byte ControlNumber, byte ControlValue,byte Channel);
-	void sendPitchBend(int PitchValue,byte Channel);
 	void sendPitchBend(unsigned int PitchValue,byte Channel);
 	void sendPitchBend(double PitchValue,byte Channel);
 	void sendPolyPressure(byte NoteNumber,byte Pressure,byte Channel);
@@ -158,12 +150,11 @@ public:
 	void sendTuneRequest();
 	void sendRealTime(kMIDIType Type);
 	
-	void send(kMIDIType type, byte param1, byte param2, byte channel);
 	
 private:
 	
 	const byte genstatus(const kMIDIType inType,const byte inChannel);
-	
+	void send(kMIDIType type, byte param1, byte param2, byte channel);
 	
 	// Attributes
 #if USE_RUNNING_STATUS
@@ -198,17 +189,17 @@ public:
 	
 #if USE_CALLBACKS
 	
-	void setHandleNoteOff(void (*fptr)(byte channel, byte note, byte velocity));
-	void setHandleNoteOn(void (*fptr)(byte channel, byte note, byte velocity));
-	void setHandleAfterTouchPoly(void (*fptr)(byte channel, byte note, byte pressure));
-	void setHandleControlChange(void (*fptr)(byte channel, byte number, byte value));
-	void setHandleProgramChange(void (*fptr)(byte channel, byte number));
-	void setHandleAfterTouchChannel(void (*fptr)(byte channel, byte pressure));
-	void setHandlePitchBend(void (*fptr)(byte channel, int bend));
+	void setHandleNoteOff(void (*fptr)(byte ch, byte note, byte vel));
+	void setHandleNoteOn(void (*fptr)(byte ch, byte note, byte vel));
+	void setHandleAfterTouchPoly(void (*fptr)(byte ch, byte note, byte vel));
+	void setHandleControlChange(void (*fptr)(byte ch, byte, byte));
+	void setHandleProgramChange(void (*fptr)(byte ch, byte));
+	void setHandleAfterTouchChannel(void (*fptr)(byte ch, byte));
+	void setHandlePitchBend(void (*fptr)(byte ch, word));
 	void setHandleSystemExclusive(void (*fptr)(byte * array, byte size));
 	void setHandleTimeCodeQuarterFrame(void (*fptr)(byte data));
-	void setHandleSongPosition(void (*fptr)(unsigned int beats));
-	void setHandleSongSelect(void (*fptr)(byte songnumber));
+	void setHandleSongPosition(void (*fptr)(word beats));
+	void setHandleSongSelect(void (*fptr)(byte song_number));
 	void setHandleTuneRequest(void (*fptr)(void));
 	void setHandleClock(void (*fptr)(void));
 	void setHandleStart(void (*fptr)(void));
@@ -251,17 +242,17 @@ private:
 	
 	void launchCallback();
 	
-	void (*mNoteOffCallback)(byte channel, byte note, byte velocity);
-	void (*mNoteOnCallback)(byte channel, byte note, byte velocity);
-	void (*mAfterTouchPolyCallback)(byte channel, byte note, byte velocity);
-	void (*mControlChangeCallback)(byte channel, byte, byte);
-	void (*mProgramChangeCallback)(byte channel, byte);
-	void (*mAfterTouchChannelCallback)(byte channel, byte);
-	void (*mPitchBendCallback)(byte channel, int);
+	void (*mNoteOffCallback)(byte ch, byte note, byte vel);
+	void (*mNoteOnCallback)(byte ch, byte note, byte vel);
+	void (*mAfterTouchPolyCallback)(byte ch, byte note, byte vel);
+	void (*mControlChangeCallback)(byte ch, byte, byte);
+	void (*mProgramChangeCallback)(byte ch, byte);
+	void (*mAfterTouchChannelCallback)(byte ch, byte);
+	void (*mPitchBendCallback)(byte ch, word);
 	void (*mSystemExclusiveCallback)(byte * array, byte size);
 	void (*mTimeCodeQuarterFrameCallback)(byte data);
-	void (*mSongPositionCallback)(unsigned int beats);
-	void (*mSongSelectCallback)(byte songnumber);
+	void (*mSongPositionCallback)(word beats);
+	void (*mSongSelectCallback)(byte song_number);
 	void (*mTuneRequestCallback)(void);
 	void (*mClockCallback)(void);
 	void (*mStartCallback)(void);
@@ -305,6 +296,7 @@ private:
 	
 };
 
-extern MIDI_Class MIDI;
 
-#endif // LIB_MIDI_H_
+extern MIDI_Class usbMIDI;
+
+#endif // _TEENSY_LIB_MIDI_USB_H_

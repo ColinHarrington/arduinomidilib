@@ -9,11 +9,26 @@
  */
 
 #include "MIDI.h"
-#include "Serial.h"
 #include <stdlib.h>
+#include "WConstants.h" 
+#include "HardwareSerial.h"
 
 
-/*! \brief Main instance (the class comes pre-instantiated). */
+#if TEENSY_SUPPORT
+/* By default, no Serial instance is loaded.
+ Create one for the library and bind it.
+ */
+HardwareSerial Serial;
+
+// Now make sure we use the right one:
+#ifdef USE_SERIAL_PORT
+#undef USE_SERIAL_PORT
+#define USE_SERIAL_PORT Serial
+#endif
+
+#endif // TEENSY_SUPPORT
+
+/*! Main instance (the class comes pre-instantiated). */
 MIDI_Class MIDI;
 
 
@@ -373,7 +388,7 @@ bool MIDI_Class::read(const byte inChannel) {
 bool MIDI_Class::parse(byte inChannel) { 
 	
 	// If the buffer is full -> Don't Panic! Call the Vogons to destroy it.
-	if (USE_SERIAL_PORT.available() == UART_BUFFER_SIZE) { Serial << "Overflow, call the Vogons!!" << endl;
+	if (USE_SERIAL_PORT.available() == 128) {
 		USE_SERIAL_PORT.flush();
 	}	
 	
@@ -852,6 +867,11 @@ void MIDI_Class::thru_filter(byte inChannel) {
 	 - Channel messages are passed to the output whether their channel is matching the input channel and the filter setting
 	 
 	 */
+	
+#if TEENSY_SUPPORT && TEENSY_MIDI_TO_USB
+	// Pass the message to the USB side if enabled
+	
+#endif
 	
 	// If the feature is disabled, don't do anything.
 	if (!mThruActivated || (mThruFilterMode == Off)) return;

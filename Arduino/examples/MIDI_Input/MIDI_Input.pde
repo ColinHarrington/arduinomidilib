@@ -3,6 +3,10 @@
   MIDI Input tutorial
   by Franky
   28/07/2009
+  
+  NOTE: for easier MIDI input reading, 
+  take a look a the Callbacks example.
+  
 */
 
 #define LED 13   		// LED pin on Arduino board
