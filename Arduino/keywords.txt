@@ -65,6 +65,7 @@ setHandleContinue	KEYWORD2
 setHandleStop	KEYWORD2
 setHandleActiveSensing	KEYWORD2
 setHandleSystemReset	KEYWORD2
+getTypeFromStatusByte	KEYWORD2
 
 
 #######################################

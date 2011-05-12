@@ -193,6 +193,20 @@ public:
 	// Setters
 	void setInputChannel(const byte Channel);
 	
+	/*! \brief Extract an enumerated MIDI type from a status byte.
+	 
+	 This is a utility static method, used internally, made public so you can handle kMIDITypes more easily.
+	 */
+	static inline const kMIDIType getTypeFromStatusByte(const byte inStatus) {
+		if ((inStatus < 0x80) 
+			|| (inStatus == 0xF4) 
+			|| (inStatus == 0xF5) 
+			|| (inStatus == 0xF9) 
+			|| (inStatus == 0xFD)) return InvalidType; // data bytes and undefined.
+		if (inStatus < 0xF0) return (kMIDIType)(inStatus & 0xF0);	// Channel message, remove channel nibble.
+		else return (kMIDIType)inStatus;
+	}
+	
 	
 #if USE_CALLBACKS
 	
@@ -219,17 +233,8 @@ public:
 	
 #endif // USE_CALLBACKS
 	
-private:
 	
-	inline const kMIDIType getTypeFromStatusByte(const byte inStatus) {
-		if ((inStatus < 0x80) 
-			|| (inStatus == 0xF4) 
-			|| (inStatus == 0xF5) 
-			|| (inStatus == 0xF9) 
-			|| (inStatus == 0xFD)) return InvalidType; // data bytes and undefined.
-		if (inStatus < 0xF0) return (kMIDIType)(inStatus & 0xF0);	// Channel message, remove channel nibble.
-		else return (kMIDIType)inStatus;
-	}
+private:
 	
 	bool input_filter(byte inChannel);
 	bool parse(byte inChannel);
