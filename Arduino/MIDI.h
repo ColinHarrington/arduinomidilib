@@ -27,8 +27,6 @@
     ###############################################################
  */
 
-#define COMPATIBILITY_V25		1			// Enable compatibility with MIDI Library v2.5
-
 
 #define COMPILE_MIDI_IN         1           // Set this setting to 1 to use the MIDI input.
 #define COMPILE_MIDI_OUT        1           // Set this setting to 1 to use the MIDI output. 
@@ -52,9 +50,6 @@
 // END OF CONFIGURATION AREA 
 // (do not modify anything under this line unless you know what you are doing)
 
-#if COMPATIBILITY_V25
-#include "Compatibility_v2.5.h"
-#endif
 
 #define MIDI_BAUDRATE			31250
 
@@ -295,7 +290,6 @@ public:
 	void turnThruOn(kThruFilterMode inThruFilterMode = Full);
 	void turnThruOff();
 	
-	void setThruFilterMode(const byte inThruFilterMode);	// For compatibility only, avoid in future programs.
 	void setThruFilterMode(const kThruFilterMode inThruFilterMode);
 	
 	

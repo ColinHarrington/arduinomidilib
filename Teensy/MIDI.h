@@ -293,7 +293,6 @@ public:
 	void turnThruOn(kThruFilterMode inThruFilterMode = Full);
 	void turnThruOff();
 	
-	void setThruFilterMode(const byte inThruFilterMode);	// For compatibility only, avoid in future programs.
 	void setThruFilterMode(const kThruFilterMode inThruFilterMode);
 	
 	

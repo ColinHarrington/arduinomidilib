@@ -28,7 +28,6 @@
  */
 
 
-
 #define COMPILE_MIDI_IN         1           // Set this setting to 1 to use the MIDI input.
 #define COMPILE_MIDI_OUT        1           // Set this setting to 1 to use the MIDI output. 
 #define COMPILE_MIDI_THRU       1           // Set this setting to 1 to use the MIDI Soft Thru feature
@@ -288,7 +287,6 @@ public:
 	void turnThruOn(kThruFilterMode inThruFilterMode = Full);
 	void turnThruOff();
 	
-	void setThruFilterMode(const byte inThruFilterMode);	// For compatibility only, avoid in future programs.
 	void setThruFilterMode(const kThruFilterMode inThruFilterMode);
 	
 	

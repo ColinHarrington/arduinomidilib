@@ -78,16 +78,11 @@ getTypeFromStatusByte	KEYWORD2
 
 NoteOff	LITERAL1
 NoteOn	LITERAL1
-ATPoly	LITERAL1
 AfterTouchPoly	LITERAL1
-CC	LITERAL1
 ControlChange	LITERAL1
-PC	LITERAL1
 ProgramChange	LITERAL1
-ATCanal	LITERAL1
 AfterTouchChannel	LITERAL1
 PitchBend	LITERAL1
-SysEx	LITERAL1
 SystemExclusive	LITERAL1
 TimeCodeQuarterFrame	LITERAL1
 SongPosition	LITERAL1

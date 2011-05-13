@@ -832,17 +832,6 @@ void MIDI_Class::setThruFilterMode(kThruFilterMode inThruFilterMode) {
 	if (mThruFilterMode != Off) mThruActivated = true;
 	else mThruActivated = false;
 }
-/*! \brief Set the filter for thru mirroring
- \param inThruFilterMode a filter mode
- 
- This method uses a byte parameter and is for compatibility only, please use kThruFilterMode for future programs.
- @see kThruFilterMode
- */
-void MIDI_Class::setThruFilterMode(byte inThruFilterMode) { 
-	mThruFilterMode = (kThruFilterMode)inThruFilterMode;
-	if (mThruFilterMode != Off) mThruActivated = true;
-	else mThruActivated = false;
-}
 
 
 /*! \brief Setter method: turn message mirroring on. */
