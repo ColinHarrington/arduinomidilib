@@ -14,16 +14,16 @@
 #include "HardwareSerial.h"
 
 
-#if TEENSY_SUPPORT
+#if TEENSY_SUPPORT && defined(CORE_TEENSY)
 /* By default, no Serial instance is loaded.
  Create one for the library and bind it.
  */
-HardwareSerial Serial;
+HardwareSerial UARTSerial;
 
 // Now make sure we use the right one:
 #ifdef USE_SERIAL_PORT
 #undef USE_SERIAL_PORT
-#define USE_SERIAL_PORT Serial
+#define USE_SERIAL_PORT UARTSerial
 #endif
 
 #endif // TEENSY_SUPPORT
