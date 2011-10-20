@@ -60,7 +60,7 @@
 
 /*! Type definition for practical use (because "unsigned char" is a bit long to write.. )*/
 typedef uint8_t byte;
-typedef uint16_t word;
+//typedef uint16_t word;
 
 /*! Enumeration of MIDI types */
 enum kMIDIType {
